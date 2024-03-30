@@ -25,7 +25,7 @@ generator client {
 
 model User {
   id       Int    @id @default(autoincrement())
-  parentId Int?   @unique
+  parentId Int?
   parent   User?  @relation("UserToParent", fields: [parentId], references: [id])
   children User[] @relation("UserToParent")
 }

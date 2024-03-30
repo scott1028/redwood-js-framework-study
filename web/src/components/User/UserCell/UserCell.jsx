@@ -18,6 +18,6 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ user }) => {
-  console.debug('user:', user);
+  console.debug('user:', user)
   return <User user={user} />
 }

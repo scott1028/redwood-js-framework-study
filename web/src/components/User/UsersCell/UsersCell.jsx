@@ -29,17 +29,5 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ users }) => {
-  console.debug('users:', users);
-  const register = new Map();
-  users.sort((nextUser, currUser) => (currUser.parentId ?? -1) - (nextUser.parentId ?? -1)).forEach(user => {
-    const userNode = { ...user, children: [] };
-    if (!userNode.parentId) {
-      register.set(user.id, userNode);
-    } else {
-      register.get(userNode.parentId).children.push(userNode);
-      register.set(userNode.id, userNode);
-    }
-  });
-  console.debug('register:', register);
   return <Users users={users} />
 }

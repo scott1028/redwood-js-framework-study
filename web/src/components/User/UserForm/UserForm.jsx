@@ -9,6 +9,10 @@ import {
 
 const UserForm = (props) => {
   const onSubmit = (data) => {
+    if (props?.user?.id && data.parentId === props.user.id) {
+      console.error('user can not be refered to himself!')
+      return
+    }
     props.onSave(data, props?.user?.id)
   }
 
