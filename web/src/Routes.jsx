@@ -14,15 +14,14 @@ import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser" homeButtonLabel="Overview" homeButtonTo="root">
-        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
-        <Route path="/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
-        <Route path="/users/{id:Int}" page={UserUserPage} name="user" />
-        <Route path="/users" page={UserUsersPage} name="users" />
-      </Set>
-      <Set wrap={ScaffoldLayout} title="Users" titleTo="users">
-        <Route path="/usersTree" page={UserUsersTreePage} name="usersTree" />
-        <Route path="/" page={UserUsersTreePage} name="root" />
+      <Set wrap={ScaffoldLayout} title="People" titleTo="people" buttonLabel="New Person" buttonTo="newPerson" homeButtonLabel="Overview" homeButtonTo="root">
+        <Route path="/peopleTree/{x1:int}" page={PersonPersonTreePage} name="peopleTree" />
+        <Route path="/peopleTree" page={PersonPersonTreePage} name="peopleTree" />
+        <Route path="/people/new" page={PersonNewPersonPage} name="newPerson" />
+        <Route path="/people/{x1:Int}/edit" page={PersonEditPersonPage} name="editPerson" />
+        <Route path="/people/{x1:Int}" page={PersonPersonPage} name="person" />
+        <Route path="/people" page={PersonPeoplePage} name="people" />
+        <Route path="/" redirect="/peopleTree" name="root" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>

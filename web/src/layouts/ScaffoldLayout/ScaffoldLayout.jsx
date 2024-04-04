@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 import { Link, routes } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
 
@@ -24,17 +26,17 @@ const ScaffoldLayout = ({
             </Link>
           </h1>
         )}
-        {buttonTo && (
-          <Link to={routes[buttonTo]()} className="rw-button rw-button-green">
-            <div className="rw-button-icon">+</div> {buttonLabel}
-          </Link>
-        )}
         {homeButtonTo && (
           <h1 className="rw-heading rw-heading-primary">
             <Link to={routes[homeButtonTo]()} className="rw-link">
               {homeButtonLabel}
             </Link>
           </h1>
+        )}
+        {buttonTo && (
+          <Link to={routes[buttonTo]()} className="rw-button rw-button-green">
+            <div className="rw-button-icon">+</div> {buttonLabel}
+          </Link>
         )}
       </header>
       <main className="rw-main">{children}</main>

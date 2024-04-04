@@ -22,10 +22,30 @@ generator client {
 //   email String  @unique
 //   name  String?
 // }
+model Person {
+  x1   Int     @id @default(autoincrement())
+  x2   Int?
+  x3   Int?
+  x4   Int?
+  x5   Int?
+  x6   Int?
+  name String?
+  x8   Int?
+  x9   Int?
+  p1   Int?
+  p2   Int?
+  m1   Int?
+  m2   Int?
+  m3   Int?
+  p0   Int?
+  q1   Int?
+  q2   Int?
+  m0   Int?
+  n1   Int?
+  n2   Int?
+  h1   Int?
+  note String?
 
-model User {
-  id       Int    @id @default(autoincrement())
-  parentId Int?
-  parent   User?  @relation("UserToParent", fields: [parentId], references: [id])
-  children User[] @relation("UserToParent")
+  parent   Person?  @relation("PersonToParent", fields: [p0], references: [x1])
+  children Person[] @relation("PersonToParent")
 }
