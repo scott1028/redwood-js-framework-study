@@ -14,8 +14,13 @@ const PersonEntry = ({ id, parentId, childrenItems, wife, name, m0 }) => {
         onClick={() => setExpand((prevState) => !prevState)}
         role="presentation"
       >
-        id: {id}, name: {name} {parentId && <>(parentId: {parentId})</>}{' '}
-        {m0 && <>wife: ({wife.name ?? m0})</>}
+        name: {name ?? id}
+        {m0 && <>, wife: {wife.name ?? m0}</>}{' '}
+        {parentId && (
+          <>
+            (id: {id}, parentId: {parentId})
+          </>
+        )}{' '}
       </summary>
       {isExpanded && childrenItems?.length > 0 && (
         <ul className="tree">

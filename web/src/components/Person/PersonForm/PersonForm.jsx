@@ -6,6 +6,7 @@ import {
   NumberField,
   TextField,
   Submit,
+  TextAreaField,
 } from '@redwoodjs/forms'
 
 const PersonForm = (props) => {
@@ -21,6 +22,21 @@ const PersonForm = (props) => {
           wrapperClassName="rw-form-error-wrapper"
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
+        />
+
+        <Label
+          name="x1"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          X1
+        </Label>
+
+        <input
+          value={props.person?.x1}
+          className="rw-input"
+          readOnly
+          style={{ backgroundColor: '#00000010' }}
         />
 
         <Label
@@ -391,8 +407,9 @@ const PersonForm = (props) => {
           Note
         </Label>
 
-        <TextField
+        <TextAreaField
           name="note"
+          multiple
           defaultValue={props.person?.note}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
