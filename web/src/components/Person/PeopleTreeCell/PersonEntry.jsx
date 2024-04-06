@@ -3,9 +3,19 @@ import { Fragment, useState } from 'react'
 import './PersonEntry.css'
 
 // treeView style, ref: https://iamkate.com/code/tree-views/
-const PersonEntry = ({ id, parentId, childrenItems, wife, name, m0 }) => {
+const PersonEntry = ({
+  id,
+  parentId,
+  childrenItems,
+  wife1,
+  wife2,
+  wife3,
+  name,
+  m1,
+  m2,
+  m3,
+}) => {
   const [isExpanded, setExpand] = useState(true)
-  console.log('wife:', wife, 'name:', name, m0)
   return (
     <li>
       <summary
@@ -14,8 +24,10 @@ const PersonEntry = ({ id, parentId, childrenItems, wife, name, m0 }) => {
         onClick={() => setExpand((prevState) => !prevState)}
         role="presentation"
       >
-        name: {name ?? id}
-        {m0 && <>, wife: {wife.name ?? m0}</>}{' '}
+        {name ?? id}
+        {wife1 && <>, wife1: {wife1.name ?? m1}</>}{' '}
+        {wife2 && <>, wife1: {wife2.name ?? m2}</>}{' '}
+        {wife3 && <>, wife1: {wife3.name ?? m3}</>}{' '}
         {parentId && (
           <>
             (id: {id}, parentId: {parentId})

@@ -58,7 +58,9 @@ export const Loading = () => <div>Loading...</div>
 
 const idKey = 'x1'
 const parentIdKey = 'p0'
-const wifeIdKey = 'm0'
+const wifeId1Key = 'm1'
+const wifeId2Key = 'm2'
+const wifeId3Key = 'm3'
 
 export const Success = ({ people: _users, rootId }) => {
   const register = new Map()
@@ -70,7 +72,13 @@ export const Success = ({ people: _users, rootId }) => {
   })
   // cache map
   users.forEach((user) => {
-    const { [idKey]: id, [parentIdKey]: parentId, [wifeIdKey]: wifeId } = user
+    const {
+      [idKey]: id,
+      [parentIdKey]: parentId,
+      [wifeId1Key]: wifeId1,
+      [wifeId2Key]: wifeId2,
+      [wifeId3Key]: wifeId3,
+    } = user
     const restProperties = READABLE_PROPERTY_KEYS.map((key) => ({
       [key]: user[key],
     })).reduce((acc, curr) => ({ ...acc, ...curr }), {})
@@ -79,22 +87,37 @@ export const Success = ({ people: _users, rootId }) => {
       id,
       parentId,
       childrenItems: [],
-      wifeId,
-      wife: null,
+      wifeId1,
+      wifeId2,
+      wifeId3,
+      wife1: null,
+      wife2: null,
+      wife3: null,
     }
     register.set(userNode.id, userNode)
   })
   // map relationship
   users.forEach((user) => {
-    const { [idKey]: id, [parentIdKey]: parentId, [wifeIdKey]: wifeId } = user
-    console.log('wifeId:', wifeId)
+    const {
+      [idKey]: id,
+      [parentIdKey]: parentId,
+      [wifeId1Key]: wifeId1,
+      [wifeId2Key]: wifeId2,
+      [wifeId3Key]: wifeId3,
+    } = user
     const userNode = register.get(id)
     if (parentId) {
       register.set(id, userNode)
       register.get(parentId).childrenItems.push(userNode)
     }
-    if (wifeId) {
-      userNode.wife = register.get(wifeId)
+    if (wifeId1) {
+      userNode.wife1 = register.get(wifeId1)
+    }
+    if (wifeId2) {
+      userNode.wife2 = register.get(wifeId2)
+    }
+    if (wifeId3) {
+      userNode.wife3 = register.get(wifeId3)
     }
   })
   const items = Object.values(Object.fromEntries(register)).filter((user) => {
