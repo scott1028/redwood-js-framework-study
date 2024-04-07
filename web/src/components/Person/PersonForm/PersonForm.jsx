@@ -55,6 +55,12 @@ const PersonForm = (props) => {
           emptyAs={'null'}
         />
 
+        {/* <select name="x2" value={props.person?.x2}>
+          <option value="null">null</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select> */}
+
         <FieldError name="x2" className="rw-field-error" />
 
         <Label

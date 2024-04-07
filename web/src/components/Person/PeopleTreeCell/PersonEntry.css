@@ -69,8 +69,10 @@
 .tree summary.is-expandable::before {
   width         : calc(1.5 * var(--radius));
   height        : calc(1.5 * var(--radius));
+  /* border-radius : 0%; */
   border-radius : 50%;
   background    : #ddd;
+  /* background    : transparent; */
 }
 
 .tree summary::before {
@@ -79,7 +81,15 @@
 
 .tree summary[open]::before {
   z-index    : 1;
-  background : #696;
+  background    : #ddd;
+  /* background : #696; */
+  border-radius : 50%;
+  /* background : transparent; */
+}
+
+.tree summary span.is-viewed {
+  background: green;
+  color: white;
 }
 
 .tree details > summary::before {

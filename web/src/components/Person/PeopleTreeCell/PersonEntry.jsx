@@ -3,36 +3,54 @@ import { Fragment, useState } from 'react'
 import './PersonEntry.css'
 
 // treeView style, ref: https://iamkate.com/code/tree-views/
-const PersonEntry = ({
-  id,
-  parentId,
-  childrenItems,
-  wife1,
-  wife2,
-  wife3,
-  name,
-  m1,
-  m2,
-  m3,
-}) => {
-  const [isExpanded, setExpand] = useState(true)
+const PersonEntry = (props) => {
+  const {
+    id,
+    parentId,
+    // childrenItems,
+    // maried1,
+    // maried2,
+    // maried3,
+    name,
+    m1,
+    m2,
+    m3,
+    viewDetail,
+    onViewDetail,
+  } = props;
+  const { maried1, maried2, maried3, childrenItems, ...restProps } = props;
+  const [isExpanded, setExpand] = useState(false)
   return (
     <li>
       <summary
         className={childrenItems?.length > 0 ? 'is-expandable' : ''}
         open={isExpanded}
-        onClick={() => setExpand((prevState) => !prevState)}
-        role="presentation"
+        // onClick={() => setExpand((prevState) => !prevState)}
+        // role="presentation"
       >
-        {name ?? id}
-        {wife1 && <>, wife1: {wife1.name ?? m1}</>}{' '}
-        {wife2 && <>, wife1: {wife2.name ?? m2}</>}{' '}
-        {wife3 && <>, wife1: {wife3.name ?? m3}</>}{' '}
-        {parentId && (
+        <span className={`${viewDetail && viewDetail.id === id ? 'is-viewed' : ''}`}>
+          {
+            childrenItems?.length > 0 && (
+              <input
+                type="checkbox"
+                checked={isExpanded}
+                onClick={() => {
+                  onViewDetail(restProps)
+                  setExpand((prevState) => !prevState);
+                }}
+              />
+            )
+          }
+          {name ?? id}
           <>
-            (id: {id}, parentId: {parentId})
+            ({id})
           </>
-        )}{' '}
+          {maried1 && <>, {maried1.name ?? m1}</>}
+          {maried2 && <>, {maried2.name ?? m2}</>}
+          {maried3 && <>, {maried3.name ?? m3}</>}
+          {' '}
+        </span>
+        {/* <button onClick={() => onViewDetail(restProps)}>Detail</button> */}
       </summary>
       {isExpanded && childrenItems?.length > 0 && (
         <ul className="tree">
@@ -42,8 +60,10 @@ const PersonEntry = ({
               key={child.id}
               id={child.id}
               parentId={child.parentId}
-              wife={child.wife}
+              maried={child.maried}
               childrenItems={child.childrenItems}
+              viewDetail={viewDetail}
+              onViewDetail={onViewDetail}
             />
           ))}
         </ul>

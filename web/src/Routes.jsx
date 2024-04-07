@@ -21,7 +21,7 @@ const Routes = () => {
         <Route path="/people/{x1:Int}/edit" page={PersonEditPersonPage} name="editPerson" />
         <Route path="/people/{x1:Int}" page={PersonPersonPage} name="person" />
         <Route path="/people" page={PersonPeoplePage} name="people" />
-        <Route path="/" redirect="/peopleTree" name="root" />
+        <Route path="/" redirect="/peopleTree/1" name="root" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
