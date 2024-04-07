@@ -56,10 +56,85 @@ export const QUERY = gql`
   }
 `
 
-const idTOLabel = {
+const idTOLabel_x2 = {
   0: '刪除',
   1: '宗親',
   2: '配偶',
+}
+
+const idTOLabel_x3 = {
+  0: null,
+  1: '廣一',
+  2: '廣二',
+  3: '廣三',
+  4: '廣四',
+  5: '廣五',
+  6: '良房',
+}
+
+const idTOLabel_x4 = {
+  0: null,
+  1: '壽字輩',
+  2: '仕字輩',
+  3: '添字輩',
+  4: '江字輩',
+  5: '乾字輩',
+  6: '坤字輩',
+  7: '寬字輩',
+  8: '盛字輩',
+  9: '永字輩',
+  10: '和字輩',
+  11: '發字輩',
+  12: '登字輩',
+  13: '雲字輩',
+  14: '朝字輩',
+  15: '富字輩',
+  16: '貴字輩',
+  17: '創字輩',
+  18: '新字輩',
+  19: '傳字輩',
+  20: '康字輩',
+  21: '祥字輩',
+}
+
+const idTOLabel_x5 = {
+  0: null,
+  1: '男',
+  2: '女',
+}
+
+const idTOLabel_q1 = {
+  0: null,
+  1: '嫡生',
+  2: '入嗣',
+  3: '承鼎',
+  4: '收養',
+  5: '託養',
+}
+
+const idTOLabel_q2 = {
+  0: null,
+  1: '失婚',
+  2: '出嗣',
+  3: '失蹤',
+  4: '幼亡',
+}
+
+const idTOLabel_n1 = {
+  0: null,
+  1: '入嫁',
+  2: '出嫁',
+  3: '入贅',
+  4: '出贅',
+  5: '平婚',
+}
+
+const idTOLabel_n2 = {
+  0: null,
+  1: '離婚',
+  2: '改嫁',
+  3: '失蹤',
+  4: '早逝',
 }
 
 export const Loading = () => <div>Loading...</div>
@@ -158,10 +233,10 @@ export const Success = ({ people: _users, rootId }) => {
           <div style={{ border: '1px solid blue', overflow: 'auto', paddingLeft: 5, paddingRight: 20 }}>
             {/* <pre>{ JSON.stringify(viewDetail, null, 2) }</pre> */}
             <div>(1) 索引：{ viewDetail.x1 }</div>
-            <div>(2) 類別：{ viewDetail.x2 } { idTOLabel[viewDetail.x2] }</div>
-            <div>(3) 房序：{ viewDetail.x3 }</div>
-            <div>(4) 世代：{ viewDetail.x4 }</div>
-            <div>(5) 性別：{ viewDetail.x5 }</div>
+            <div>(2) 類別：{ viewDetail.x2 } { idTOLabel_x2[viewDetail.x2] }</div>
+            <div>(3) 房序：{ viewDetail.x3 } { idTOLabel_x3[viewDetail.x3] }</div>
+            <div>(4) 世代：{ viewDetail.x4 } { idTOLabel_x4[viewDetail.x4] }</div>
+            <div>(5) 性別：{ viewDetail.x5 } { idTOLabel_x5[viewDetail.x5] }</div>
             <div>(6) 排行：{ viewDetail.x6 }</div>
             <div>(7) 名字：{ viewDetail.name }</div>
             <div>(8) 出生：西元 { viewDetail.x8 }</div>
@@ -172,11 +247,11 @@ export const Success = ({ people: _users, rootId }) => {
             <div>(13) 婚配：{ viewDetail.m2 }</div>
             <div>(14) 婚配：{ viewDetail.m3 }</div>
             <div>(15) 承鼎：{ viewDetail.p0 }</div>
-            <div>(16) 屬性：{ viewDetail.q1 }</div>
-            <div>(17) 註記：{ viewDetail.q2 }</div>
+            <div>(16) 屬性：{ viewDetail.q1 } { idTOLabel_q1[viewDetail.q1] }</div>
+            <div>(17) 註記：{ viewDetail.q2 } { idTOLabel_q2[viewDetail.q2] }</div>
             <div>(18) 婚主：{ viewDetail.m0 }</div>
-            <div>(19) 屬性：{ viewDetail.n1 }</div>
-            <div>(20) 註記：{ viewDetail.n2 }</div>
+            <div>(19) 屬性：{ viewDetail.n1 } { idTOLabel_q1[viewDetail.n1] }</div>
+            <div>(20) 註記：{ viewDetail.n2 } { idTOLabel_q2[viewDetail.n2] }</div>
             <div>(21) 祿位：{ viewDetail.h1 }</div>
             <div>(22) 備註：{ viewDetail.note }</div>
             <button onClick={() => onViewDetail(null)}>( Close )</button>
