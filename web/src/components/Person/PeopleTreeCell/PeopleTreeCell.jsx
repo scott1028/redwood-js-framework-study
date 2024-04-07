@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 import PersonEntry from './PersonEntry'
 
@@ -146,7 +146,7 @@ const mariedId2Key = 'm2'
 const mariedId3Key = 'm3'
 
 export const Success = ({ people: _users, rootId }) => {
-  const [viewDetail, onViewDetail] = useState(null);
+  const [viewDetail, onViewDetail] = useState(null)
   const register = new Map()
   const users = [..._users].sort((nextUser, currUser) => {
     if (nextUser[parentIdKey] && currUser[parentIdKey]) {
@@ -211,7 +211,16 @@ export const Success = ({ people: _users, rootId }) => {
     return !user.parentId
   })
   return (
-    <div style={{ display: 'flex', position: 'absolute', top: 72, left: 0, bottom: 0, right: 0 }}>
+    <div
+      style={{
+        display: 'flex',
+        position: 'absolute',
+        top: 72,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      }}
+    >
       <div style={{ flex: 1, overflow: 'auto' }}>
         <ul className="tree tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers tree-buttons">
           {items.map((item) => (
@@ -228,36 +237,60 @@ export const Success = ({ people: _users, rootId }) => {
         </ul>
       </div>
       <div style={{ width: 'fit-content' }}>
-      {
-        viewDetail && (
-          <div style={{ border: '1px solid blue', overflow: 'auto', paddingLeft: 5, paddingRight: 20 }}>
+        {viewDetail && (
+          <div
+            style={{
+              border: '1px solid blue',
+              overflow: 'auto',
+              paddingLeft: 5,
+              paddingRight: 20,
+            }}
+          >
             {/* <pre>{ JSON.stringify(viewDetail, null, 2) }</pre> */}
-            <div>(1) 索引：{ viewDetail.x1 }</div>
-            <div>(2) 類別：{ viewDetail.x2 } { idTOLabel_x2[viewDetail.x2] }</div>
-            <div>(3) 房序：{ viewDetail.x3 } { idTOLabel_x3[viewDetail.x3] }</div>
-            <div>(4) 世代：{ viewDetail.x4 } { idTOLabel_x4[viewDetail.x4] }</div>
-            <div>(5) 性別：{ viewDetail.x5 } { idTOLabel_x5[viewDetail.x5] }</div>
-            <div>(6) 排行：{ viewDetail.x6 }</div>
-            <div>(7) 名字：{ viewDetail.name }</div>
-            <div>(8) 出生：西元 { viewDetail.x8 }</div>
-            <div>(9) 享年：{ viewDetail.x9 }</div>
-            <div>(10) 父親：{ viewDetail.p1 }</div>
-            <div>(11) 母親：{ viewDetail.p2 }</div>
-            <div>(12) 婚配：{ viewDetail.m1 }</div>
-            <div>(13) 婚配：{ viewDetail.m2 }</div>
-            <div>(14) 婚配：{ viewDetail.m3 }</div>
-            <div>(15) 承鼎：{ viewDetail.p0 }</div>
-            <div>(16) 屬性：{ viewDetail.q1 } { idTOLabel_q1[viewDetail.q1] }</div>
-            <div>(17) 註記：{ viewDetail.q2 } { idTOLabel_q2[viewDetail.q2] }</div>
-            <div>(18) 婚主：{ viewDetail.m0 }</div>
-            <div>(19) 屬性：{ viewDetail.n1 } { idTOLabel_q1[viewDetail.n1] }</div>
-            <div>(20) 註記：{ viewDetail.n2 } { idTOLabel_q2[viewDetail.n2] }</div>
-            <div>(21) 祿位：{ viewDetail.h1 }</div>
-            <div>(22) 備註：{ viewDetail.note }</div>
+            <div>(1) 索引：{viewDetail.x1}</div>
+            <div>
+              (2) 類別：{viewDetail.x2} {idTOLabel_x2[viewDetail.x2]}
+            </div>
+            <div>
+              (3) 房序：{viewDetail.x3} {idTOLabel_x3[viewDetail.x3]}
+            </div>
+            <div>
+              (4) 世代：{viewDetail.x4} {idTOLabel_x4[viewDetail.x4]}
+            </div>
+            <div>
+              (5) 性別：{viewDetail.x5} {idTOLabel_x5[viewDetail.x5]}
+            </div>
+            <div>(6) 排行：{viewDetail.x6}</div>
+            <div>(7) 名字：{viewDetail.name}</div>
+            <div>(8) 出生：西元 {viewDetail.x8}</div>
+            <div>(9) 享年：{viewDetail.x9}</div>
+            <div>
+              (10) 父親：{viewDetail.p1}{' '}
+              {register.has(viewDetail.p1) && register.get(viewDetail.p1).name}
+            </div>
+            <div>(11) 母親：{viewDetail.p2}</div>
+            <div>(12) 婚配：{viewDetail.m1}</div>
+            <div>(13) 婚配：{viewDetail.m2}</div>
+            <div>(14) 婚配：{viewDetail.m3}</div>
+            <div>(15) 承鼎：{viewDetail.p0}</div>
+            <div>
+              (16) 屬性：{viewDetail.q1} {idTOLabel_q1[viewDetail.q1]}
+            </div>
+            <div>
+              (17) 註記：{viewDetail.q2} {idTOLabel_q2[viewDetail.q2]}
+            </div>
+            <div>(18) 婚主：{viewDetail.m0}</div>
+            <div>
+              (19) 屬性：{viewDetail.n1} {idTOLabel_q1[viewDetail.n1]}
+            </div>
+            <div>
+              (20) 註記：{viewDetail.n2} {idTOLabel_q2[viewDetail.n2]}
+            </div>
+            <div>(21) 祿位：{viewDetail.h1}</div>
+            <div>(22) 備註：{viewDetail.note}</div>
             <button onClick={() => onViewDetail(null)}>( Close )</button>
           </div>
-        )
-      }
+        )}
       </div>
     </div>
   )
