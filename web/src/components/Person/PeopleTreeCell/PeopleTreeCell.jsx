@@ -244,6 +244,7 @@ export const Success = ({ people: _users, rootId }) => {
               overflow: 'auto',
               paddingLeft: 5,
               paddingRight: 20,
+              paddingBottom: 5,
             }}
           >
             {/* <pre>{ JSON.stringify(viewDetail, null, 2) }</pre> */}
@@ -288,7 +289,8 @@ export const Success = ({ people: _users, rootId }) => {
             </div>
             <div>(21) 祿位：{viewDetail.h1}</div>
             <div>(22) 備註：{viewDetail.note}</div>
-            <button onClick={() => onViewDetail(null)}>( Close )</button>
+            <br />
+            <button onClick={() => onViewDetail(null)}>Close</button>
           </div>
         )}
       </div>
