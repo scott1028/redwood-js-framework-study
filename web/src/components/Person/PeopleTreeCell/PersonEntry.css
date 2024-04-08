@@ -42,11 +42,11 @@ li:last-child > .item-wrapper > .line-left {
   left: 0px;
 }
 
-ul:first-child > li > .line {
+ul:first-child > li > .item-wrapper > .line {
   border: none;
 }
 
-ul:first-child > li > .line-left {
+ul:first-child > li > .item-wrapper > .line-left {
   border: none;
 }
 
