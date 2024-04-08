@@ -32,9 +32,7 @@ const PersonEntry = (props) => {
         }}
         role="presentation"
       >
-        {childrenItems?.length > 0 && (
-          <input type="checkbox" checked={isExpanded} />
-        )}
+        <input type="checkbox" checked={isExpanded} disabled={!childrenItems?.length} />
         {name ?? id}
         <>({id})</>
         {maried1 && <>, {maried1.name ?? m1}</>}
