@@ -38,7 +38,7 @@ li:last-child {
   left: -1px;
 }
 
-li:last-child > .line-left {
+li:last-child > .item-wrapper > .line-left {
   left: 0px;
 }
 
@@ -57,4 +57,16 @@ ul:first-child > li > .line-left {
 
 span[role="presentation"] {
   cursor: pointer;
+}
+
+.item-wrapper .detail-button {
+  display: none;
+  margin-left: 10px;
+  height: 18px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
+.item-wrapper:hover .detail-button {
+  display: inline-block;
 }
