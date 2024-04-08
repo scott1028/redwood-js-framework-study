@@ -395,3 +395,9 @@
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
+@media print {
+  .rw-header {
+    display: none;
+  }
+}

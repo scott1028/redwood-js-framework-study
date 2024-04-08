@@ -211,16 +211,7 @@ export const Success = ({ people: _users, rootId }) => {
     return !user.parentId
   })
   return (
-    <div
-      style={{
-        display: 'flex',
-        position: 'absolute',
-        top: 72,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      }}
-    >
+    <div className="people-tree-cell-wrapper">
       <div style={{ flex: 1, overflow: 'auto' }}>
         <ul className="tree tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers tree-buttons">
           {items.map((item) => (
@@ -249,45 +240,69 @@ export const Success = ({ people: _users, rootId }) => {
           >
             {/* <pre>{ JSON.stringify(viewDetail, null, 2) }</pre> */}
             <div>(1) 索引：{viewDetail.x1}</div>
+            <div>(2) 類別：{idTOLabel_x2[viewDetail.x2]}</div>
+            <div>(3) 房脈：{idTOLabel_x3[viewDetail.x3]}</div>
             <div>
-              (2) 類別：{viewDetail.x2} {idTOLabel_x2[viewDetail.x2]}
+              (4) 世代：{idTOLabel_x4[viewDetail.x4]} ({viewDetail.x4})
             </div>
-            <div>
-              (3) 房序：{viewDetail.x3} {idTOLabel_x3[viewDetail.x3]}
-            </div>
-            <div>
-              (4) 世代：{viewDetail.x4} {idTOLabel_x4[viewDetail.x4]}
-            </div>
-            <div>
-              (5) 性別：{viewDetail.x5} {idTOLabel_x5[viewDetail.x5]}
-            </div>
+            <div>(5) 性別：{idTOLabel_x5[viewDetail.x5]}</div>
             <div>(6) 排行：{viewDetail.x6}</div>
-            <div>(7) 名字：{viewDetail.name}</div>
+            <div>
+              (7) 名字：{viewDetail.name} ({viewDetail.x1})
+            </div>
             <div>(8) 出生：西元 {viewDetail.x8}</div>
             <div>(9) 享年：{viewDetail.x9}</div>
             <div>
-              (10) 父親：{viewDetail.p1}{' '}
-              {register.has(viewDetail.p1) && register.get(viewDetail.p1).name}
-            </div>
-            <div>(11) 母親：{viewDetail.p2}</div>
-            <div>(12) 婚配：{viewDetail.m1}</div>
-            <div>(13) 婚配：{viewDetail.m2}</div>
-            <div>(14) 婚配：{viewDetail.m3}</div>
-            <div>(15) 承鼎：{viewDetail.p0}</div>
-            <div>
-              (16) 屬性：{viewDetail.q1} {idTOLabel_q1[viewDetail.q1]}
+              (10) 父親：
+              {register.has(viewDetail.p1) &&
+                register.get(viewDetail.p1).name}{' '}
+              ({viewDetail.p1})
             </div>
             <div>
-              (17) 註記：{viewDetail.q2} {idTOLabel_q2[viewDetail.q2]}
+              (11) 母親：
+              {register.has(viewDetail.p2) &&
+                register.get(viewDetail.p2).name}{' '}
+              ({viewDetail.p2})
             </div>
-            <div>(18) 婚主：{viewDetail.m0}</div>
             <div>
-              (19) 屬性：{viewDetail.n1} {idTOLabel_q1[viewDetail.n1]}
+              (12) 婚配：
+              {register.has(viewDetail.m1) &&
+                register.get(viewDetail.m1).name}{' '}
+              ({viewDetail.m1})
             </div>
             <div>
-              (20) 註記：{viewDetail.n2} {idTOLabel_q2[viewDetail.n2]}
+              (13) 婚配：
+              {register.has(viewDetail.m2) &&
+                register.get(viewDetail.m2).name}{' '}
+              ({viewDetail.m2})
             </div>
-            <div>(21) 祿位：{viewDetail.h1}</div>
+            <div>
+              (14) 婚配：
+              {register.has(viewDetail.m3) &&
+                register.get(viewDetail.m3).name}{' '}
+              ({viewDetail.m3})
+            </div>
+            <div>
+              (15) 繼承：
+              {register.has(viewDetail.p0) &&
+                register.get(viewDetail.p0).name}{' '}
+              ({viewDetail.p0})
+            </div>
+            <div>
+              (16) 屬性：{idTOLabel_q1[viewDetail.q1]} ({viewDetail.q1})
+            </div>
+            <div>
+              (17) 註記：{idTOLabel_q2[viewDetail.q2]} ({viewDetail.q2})
+            </div>
+            <div>
+              (18) 婚主：
+              {register.has(viewDetail.m0) &&
+                register.get(viewDetail.m0).name}{' '}
+              ({viewDetail.m0})
+            </div>
+            <div>(19) 屬性：{idTOLabel_q1[viewDetail.n1]} ()</div>
+            <div>(20) 註記：{idTOLabel_q2[viewDetail.n2]} ()</div>
+            <div>(21) 祿位：{viewDetail.h1} ()</div>
             <div>(22) 備註：{viewDetail.note}</div>
             <br />
             <button onClick={() => onViewDetail(null)}>Close</button>

@@ -42,9 +42,21 @@ const PersonEntry = (props) => {
           />
           {name ?? id}
           <>({id})</>
-          {maried1 && <>, {maried1.name ?? m1}</>}
-          {maried2 && <>, {maried2.name ?? m2}</>}
-          {maried3 && <>, {maried3.name ?? m3}</>}
+          {maried1 && (
+            <>
+              , {maried1.name ?? m1} ({m1})
+            </>
+          )}
+          {maried2 && (
+            <>
+              , {maried2.name ?? m2} ({m2})
+            </>
+          )}
+          {maried3 && (
+            <>
+              , {maried3.name ?? m3} ({m3})
+            </>
+          )}
         </span>
         <button
           className="detail-button"
