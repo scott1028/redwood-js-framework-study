@@ -1,3 +1,5 @@
+import MenuItem from '@mui/material/MenuItem'
+
 import {
   Form,
   FormError,
@@ -8,6 +10,8 @@ import {
   Submit,
   TextAreaField,
 } from '@redwoodjs/forms'
+
+import Select from './components/Select'
 
 const PersonForm = (props) => {
   const onSubmit = (data) => {
@@ -47,19 +51,17 @@ const PersonForm = (props) => {
           X2
         </Label>
 
-        <NumberField
+        {/* This is a example to make select component and option */}
+        <Select
           name="x2"
-          defaultValue={props.person?.x2}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          defaultValue={props.person?.x2 ?? 'null'}
           emptyAs={'null'}
-        />
-
-        {/* <select name="x2" value={props.person?.x2}>
-          <option value="null">null</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select> */}
+        >
+          <MenuItem value={'null'}>-</MenuItem>
+          <MenuItem value={0}>0</MenuItem>
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
+        </Select>
 
         <FieldError name="x2" className="rw-field-error" />
 
