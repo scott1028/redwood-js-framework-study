@@ -1,6 +1,11 @@
 import { render } from '@redwoodjs/testing/web'
 
-import { Loading, Empty, Failure, Success } from './PeopleTreeCell'
+import {
+  Loading,
+  Empty,
+  Failure,
+  Success,
+} from './PeopleTreeCell/PeopleTreeCell'
 import { standard } from './PeopleTreeCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances

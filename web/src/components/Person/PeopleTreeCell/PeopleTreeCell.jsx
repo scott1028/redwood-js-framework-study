@@ -1,5 +1,11 @@
 import { useState } from 'react'
 
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import styled from 'styled-components'
+
+import Detail from '../components/Detail'
+
 import PersonEntry from './PersonEntry'
 
 const READABLE_PROPERTY_KEYS = [
@@ -56,87 +62,6 @@ export const QUERY = gql`
   }
 `
 
-const idTOLabel_x2 = {
-  0: '刪除',
-  1: '宗親',
-  2: '配偶',
-}
-
-const idTOLabel_x3 = {
-  0: null,
-  1: '廣一',
-  2: '廣二',
-  3: '廣三',
-  4: '廣四',
-  5: '廣五',
-  6: '良房',
-}
-
-const idTOLabel_x4 = {
-  0: null,
-  1: '壽字輩',
-  2: '仕字輩',
-  3: '添字輩',
-  4: '江字輩',
-  5: '乾字輩',
-  6: '坤字輩',
-  7: '寬字輩',
-  8: '盛字輩',
-  9: '永字輩',
-  10: '和字輩',
-  11: '發字輩',
-  12: '登字輩',
-  13: '雲字輩',
-  14: '朝字輩',
-  15: '富字輩',
-  16: '貴字輩',
-  17: '創字輩',
-  18: '新字輩',
-  19: '傳字輩',
-  20: '康字輩',
-  21: '祥字輩',
-}
-
-const idTOLabel_x5 = {
-  0: null,
-  1: '男',
-  2: '女',
-}
-
-const idTOLabel_q1 = {
-  0: null,
-  1: '嫡生',
-  2: '入嗣',
-  3: '承鼎',
-  4: '收養',
-  5: '託養',
-}
-
-const idTOLabel_q2 = {
-  0: null,
-  1: '失婚',
-  2: '出嗣',
-  3: '失蹤',
-  4: '幼亡',
-}
-
-const idTOLabel_n1 = {
-  0: null,
-  1: '入嫁',
-  2: '出嫁',
-  3: '入贅',
-  4: '出贅',
-  5: '平婚',
-}
-
-const idTOLabel_n2 = {
-  0: null,
-  1: '離婚',
-  2: '改嫁',
-  3: '失蹤',
-  4: '早逝',
-}
-
 export const Loading = () => <div>Loading...</div>
 
 const idKey = 'x1'
@@ -144,6 +69,26 @@ const parentIdKey = 'p0'
 const mariedId1Key = 'm1'
 const mariedId2Key = 'm2'
 const mariedId3Key = 'm3'
+
+const LeftSection = styled('div')`
+  flex: 1;
+  overflow: auto;
+`
+
+const RightSection = styled(Box)`
+  width: fit-content;
+  overflow: auto;
+
+  @media print {
+    display: none;
+  }
+`
+
+const RightSectionContent = styled('div')`
+  padding-left: 5px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+`
 
 export const Success = ({ people: _users, rootId }) => {
   const [viewDetail, onViewDetail] = useState(null)
@@ -212,7 +157,7 @@ export const Success = ({ people: _users, rootId }) => {
   })
   return (
     <div className="people-tree-cell-wrapper">
-      <div style={{ flex: 1, overflow: 'auto' }}>
+      <LeftSection>
         <ul className="tree tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers tree-buttons">
           {items.map((item) => (
             <PersonEntry
@@ -226,89 +171,22 @@ export const Success = ({ people: _users, rootId }) => {
             />
           ))}
         </ul>
-      </div>
-      <div style={{ width: 'fit-content' }}>
-        {viewDetail && (
-          <div
-            style={{
-              border: '1px solid blue',
-              overflow: 'auto',
-              paddingLeft: 5,
-              paddingRight: 20,
-              paddingBottom: 5,
-            }}
-          >
-            {/* <pre>{ JSON.stringify(viewDetail, null, 2) }</pre> */}
-            <div>(1) 索引：{viewDetail.x1}</div>
-            <div>(2) 類別：{idTOLabel_x2[viewDetail.x2]}</div>
-            <div>(3) 房脈：{idTOLabel_x3[viewDetail.x3]}</div>
-            <div>
-              (4) 世代：{idTOLabel_x4[viewDetail.x4]} ({viewDetail.x4})
-            </div>
-            <div>(5) 性別：{idTOLabel_x5[viewDetail.x5]}</div>
-            <div>(6) 排行：{viewDetail.x6}</div>
-            <div>
-              (7) 名字：{viewDetail.name} ({viewDetail.x1})
-            </div>
-            <div>(8) 出生：西元 {viewDetail.x8}</div>
-            <div>(9) 享年：{viewDetail.x9}</div>
-            <div>
-              (10) 父親：
-              {register.has(viewDetail.p1) &&
-                register.get(viewDetail.p1).name}{' '}
-              ({viewDetail.p1})
-            </div>
-            <div>
-              (11) 母親：
-              {register.has(viewDetail.p2) &&
-                register.get(viewDetail.p2).name}{' '}
-              ({viewDetail.p2})
-            </div>
-            <div>
-              (12) 婚配：
-              {register.has(viewDetail.m1) &&
-                register.get(viewDetail.m1).name}{' '}
-              ({viewDetail.m1})
-            </div>
-            <div>
-              (13) 婚配：
-              {register.has(viewDetail.m2) &&
-                register.get(viewDetail.m2).name}{' '}
-              ({viewDetail.m2})
-            </div>
-            <div>
-              (14) 婚配：
-              {register.has(viewDetail.m3) &&
-                register.get(viewDetail.m3).name}{' '}
-              ({viewDetail.m3})
-            </div>
-            <div>
-              (15) 繼承：
-              {register.has(viewDetail.p0) &&
-                register.get(viewDetail.p0).name}{' '}
-              ({viewDetail.p0})
-            </div>
-            <div>
-              (16) 屬性：{idTOLabel_q1[viewDetail.q1]} ({viewDetail.q1})
-            </div>
-            <div>
-              (17) 註記：{idTOLabel_q2[viewDetail.q2]} ({viewDetail.q2})
-            </div>
-            <div>
-              (18) 婚主：
-              {register.has(viewDetail.m0) &&
-                register.get(viewDetail.m0).name}{' '}
-              ({viewDetail.m0})
-            </div>
-            <div>(19) 屬性：{idTOLabel_q1[viewDetail.n1]} ()</div>
-            <div>(20) 註記：{idTOLabel_q2[viewDetail.n2]} ()</div>
-            <div>(21) 祿位：{viewDetail.h1} ()</div>
-            <div>(22) 備註：{viewDetail.note}</div>
-            <br />
-            <button onClick={() => onViewDetail(null)}>Close</button>
-          </div>
-        )}
-      </div>
+      </LeftSection>
+      {viewDetail && (
+        <RightSection boxShadow={3} borderRadius={2} padding={2}>
+          <RightSectionContent>
+            <Detail person={viewDetail} key={viewDetail.id}>
+              <div />
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button onClick={() => onViewDetail(null)}>Close</Button>
+                <Button color="primary" variant="contained" type="submit">
+                  Save
+                </Button>
+              </div>
+            </Detail>
+          </RightSectionContent>
+        </RightSection>
+      )}
     </div>
   )
 }

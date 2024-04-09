@@ -1,6 +1,37 @@
 import { Fragment, useState } from 'react'
 
+import Button from '@mui/material/Button'
+import styled from 'styled-components'
+
 import './PersonEntry.css'
+
+const StyledLi = styled('li')``
+
+const StyledSpan = styled('span')`
+  display: table;
+`
+
+const StyledButton = styled(Button)`
+  && {
+    display: none;
+    margin-left: 10px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    vertical-align: baseline;
+  }
+
+  ${StyledSpan}:hover && {
+    display: inline-block;
+  }
+
+  @media print {
+    &&&& {
+      display: none;
+    }
+  }
+`
 
 // treeView style, ref: https://iamkate.com/code/tree-views/
 const PersonEntry = (props) => {
@@ -21,8 +52,8 @@ const PersonEntry = (props) => {
   const { maried1, maried2, maried3, childrenItems, ...restProps } = props
   const [isExpanded, setExpand] = useState(false)
   return (
-    <li>
-      <span className="item-wrapper">
+    <StyledLi>
+      <StyledSpan className="item-wrapper">
         <span className="line"></span>
         <span className="line-left"></span>
         <span
@@ -58,16 +89,17 @@ const PersonEntry = (props) => {
             </>
           )}
         </span>
-        <button
-          className="detail-button"
+        <StyledButton
+          variant="outlined"
+          size="small"
           onClick={(e) => {
             e.stopPropagation()
             onViewDetail(restProps)
           }}
         >
           Detail
-        </button>
-      </span>
+        </StyledButton>
+      </StyledSpan>
       {isExpanded && childrenItems?.length > 0 && (
         <ul className="tree">
           {childrenItems?.map((child) => (
@@ -84,7 +116,7 @@ const PersonEntry = (props) => {
           ))}
         </ul>
       )}
-    </li>
+    </StyledLi>
   )
 }
 

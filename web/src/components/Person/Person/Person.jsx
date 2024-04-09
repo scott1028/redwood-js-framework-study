@@ -1,6 +1,5 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
-
 import { toast } from '@redwoodjs/web/toast'
 
 import 'src/lib/formatters'
@@ -16,11 +15,11 @@ const DELETE_PERSON_MUTATION = gql`
 const Person = ({ person }) => {
   const [deletePerson] = useMutation(DELETE_PERSON_MUTATION, {
     onCompleted: () => {
-      toast.success('Person deleted')
+      toast.success('Person deleted', { duration: 750 })
       navigate(routes.people())
     },
     onError: (error) => {
-      toast.error(error.message)
+      toast.error(error.message, { duration: 750 })
     },
   })
 

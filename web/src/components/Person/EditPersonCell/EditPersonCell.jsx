@@ -33,7 +33,7 @@ export const QUERY = gql`
   }
 `
 
-const UPDATE_PERSON_MUTATION = gql`
+export const UPDATE_PERSON_MUTATION = gql`
   mutation UpdatePersonMutation($x1: Int!, $input: UpdatePersonInput!) {
     updatePerson(x1: $x1, input: $input) {
       x1
@@ -73,11 +73,11 @@ export const Success = ({ person }) => {
     UPDATE_PERSON_MUTATION,
     {
       onCompleted: () => {
-        toast.success('Person updated')
+        toast.success('Person updated', { duration: 750 })
         navigate(routes.people())
       },
       onError: (error) => {
-        toast.error(error.message)
+        toast.error(error.message, { duration: 750 })
       },
     }
   )

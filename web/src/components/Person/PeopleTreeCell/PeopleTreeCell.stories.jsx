@@ -1,4 +1,9 @@
-import { Loading, Empty, Failure, Success } from './PeopleTreeCell'
+import {
+  Loading,
+  Empty,
+  Failure,
+  Success,
+} from './PeopleTreeCell/PeopleTreeCell'
 import { standard } from './PeopleTreeCell.mock'
 
 const meta = {
