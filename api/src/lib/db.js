@@ -7,15 +7,22 @@ import { emitLogLevels, handlePrismaLogging } from '@redwoodjs/api/logger'
 
 import { logger } from './logger'
 
+const LOGS = [
+  'info',
+  'warn',
+  'error',
+  ...(process.env.NODE_ENV === 'production' ? [] : ['query']),
+]
+
 /*
  * Instance of the Prisma Client
  */
 export const db = new PrismaClient({
-  log: emitLogLevels(['info', 'warn', 'error']),
+  log: emitLogLevels(LOGS),
 })
 
 handlePrismaLogging({
   db,
   logger,
-  logLevels: ['info', 'warn', 'error'],
+  logLevels: LOGS,
 })
