@@ -34,7 +34,7 @@ const READABLE_PROPERTY_KEYS = [
 ]
 
 export const QUERY = gql`
-  query FindPeople {
+  query FindPeopleTree {
     people {
       x1
       x2
@@ -58,6 +58,10 @@ export const QUERY = gql`
       n2
       h1
       note
+      position {
+        id
+        name
+      }
     }
   }
 `
