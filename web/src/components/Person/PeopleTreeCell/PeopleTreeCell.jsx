@@ -94,7 +94,6 @@ const RightSection = styled(Box)`
 
 const RightSectionContent = styled('div')`
   padding-left: 5px;
-  padding-right: 20px;
   padding-bottom: 5px;
 `
 
@@ -184,13 +183,29 @@ export const Success = ({ people: _users, rootId }) => {
         <RightSection boxShadow={3} borderRadius={2} padding={2}>
           <RightSectionContent>
             <Detail person={viewDetail} key={viewDetail.id}>
-              <div />
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button onClick={() => onViewDetail(null)}>Close</Button>
-                <Button color="primary" variant="contained" type="submit">
-                  Save
-                </Button>
-              </div>
+              {(refForm) => (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    position: 'sticky',
+                    top: -16,
+                    paddingTop: 16,
+                    paddingBottom: 8,
+                    background: '#fff',
+                    zIndex: 1,
+                  }}
+                >
+                  <Button onClick={() => onViewDetail(null)}>Close</Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={() => refForm.current.requestSubmit()}
+                  >
+                    Save
+                  </Button>
+                </div>
+              )}
             </Detail>
           </RightSectionContent>
         </RightSection>

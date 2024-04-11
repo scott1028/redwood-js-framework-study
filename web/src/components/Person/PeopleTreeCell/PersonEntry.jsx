@@ -5,10 +5,26 @@ import styled from 'styled-components'
 
 import './PersonEntry.css'
 
-const StyledLi = styled('li')``
+const StyledLi = styled('li')`
+  position: relative;
+  left: 10px;
+  padding-left: 20px;
+  width: fit-content;
+  border-left: 1px solid #bbb;
+  position: relative;
+  left: 10px;
+
+  &:last-child {
+    border-left: none;
+  }
+`
 
 const StyledSpan = styled('span')`
   display: table;
+
+  ${StyledLi}:last-child > & > .line-left {
+    left: 0px;
+  }
 `
 
 const StyledButton = styled(Button)`

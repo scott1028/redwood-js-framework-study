@@ -1,4 +1,4 @@
-import { Children } from 'react'
+import { useRef } from 'react'
 
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
@@ -98,14 +98,16 @@ const idTOLabel_n2 = {
 }
 
 const PersonForm = (props) => {
+  const refFrom = useRef(null)
+
   const onSubmit = (data) => {
     props.onSave(data, props?.person?.x1)
   }
 
   return (
     <div className={clsx('rw-form-wrapper', props.className)}>
-      <Form onSubmit={onSubmit} error={props.error}>
-        {props.children}
+      {props.children?.(refFrom)}
+      <Form onSubmit={onSubmit} error={props.error} ref={refFrom}>
         <FormError
           error={props.error}
           wrapperClassName="rw-form-error-wrapper"

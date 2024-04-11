@@ -3,23 +3,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  position: relative;
-  left: 10px;
-  padding-left: 20px;
-  width: fit-content;
-}
-
-li {
-  border-left: 1px solid #bbb;
-  position: relative;
-  left: 10px;
-}
-
-li:last-child {
-  border-left: none;
-}
-
 .line {
   position: absolute;
   border-bottom: 1px solid #bbb;
@@ -37,10 +20,6 @@ li:last-child {
   width: 0px;
   height: 11px;
   left: -1px;
-}
-
-li:last-child > .item-wrapper > .line-left {
-  left: 0px;
 }
 
 ul:first-child > li > .item-wrapper > .line {

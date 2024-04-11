@@ -8,14 +8,11 @@ import { QUERY } from 'src/components/Person/PeopleTreeCell'
 import PersonForm from 'src/components/Person/PersonForm'
 
 const StyledPersonForm = styled(PersonForm)`
-  margin-top: 5px;
-
   & form {
     display: grid;
     grid-template-columns: auto 1fr;
 
     & > * {
-      margin: 0px 0px 8px 0px;
       display: flex;
       align-items: center;
     }
