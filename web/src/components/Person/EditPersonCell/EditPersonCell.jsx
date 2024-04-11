@@ -29,6 +29,10 @@ export const QUERY = gql`
       n2
       h1
       note
+      z1
+      z2
+      z3
+      label
     }
   }
 `
@@ -58,6 +62,10 @@ export const UPDATE_PERSON_MUTATION = gql`
       n2
       h1
       note
+      z1
+      z2
+      z3
+      label
     }
   }
 `

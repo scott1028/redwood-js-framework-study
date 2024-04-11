@@ -473,6 +473,67 @@ const PersonForm = (props) => {
           emptyAs={'null'}
         />
         <FieldError name="note" className="rw-field-error" />
+        <Label
+          name="h1"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          (23) Z1：
+        </Label>
+        <NumberField
+          name="z1"
+          defaultValue={props.person?.z1}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="z1" className="rw-field-error" />
+        <Label
+          name="z2"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          (24) Z2：
+        </Label>
+        <NumberField
+          name="z2"
+          defaultValue={props.person?.z2}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="z2" className="rw-field-error" />
+        <Label
+          name="z3"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          (25) Z3：
+        </Label>
+        <NumberField
+          name="z3"
+          defaultValue={props.person?.z3}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="z3" className="rw-field-error" />
+        <Label
+          name="note"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          (26) LABEL：
+        </Label>
+        <TextAreaField
+          name="label"
+          multiple
+          defaultValue={props.person?.label}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="label" className="rw-field-error" />
         {!props.children && (
           <div className="rw-button-group">
             <Button

@@ -22,9 +22,12 @@ export const schema = gql`
     n2: Int
     h1: Int
     note: String
+    z1: Int
+    z2: Int
+    z3: Int
+    label: String
     parent: Person
     children: [Person]!
-    position: Position
   }
 
   type Query {
@@ -54,6 +57,10 @@ export const schema = gql`
     n2: Int
     h1: Int
     note: String
+    z1: Int
+    z2: Int
+    z3: Int
+    label: String
   }
 
   input UpdatePersonInput {
@@ -78,6 +85,10 @@ export const schema = gql`
     n2: Int
     h1: Int
     note: String
+    z1: Int
+    z2: Int
+    z3: Int
+    label: String
   }
 
   type Mutation {

@@ -23,48 +23,33 @@ generator client {
 //   name  String?
 // }
 model Person {
-  x1   Int     @id @default(autoincrement())
-  x2   Int?
-  x3   Int?
-  x4   Int?
-  x5   Int?
-  x6   Int?
-  name String?
-  x8   Int?
-  x9   Int?
-  p1   Int?
-  p2   Int?
-  m1   Int?
-  m2   Int?
-  m3   Int?
-  p0   Int?
-  q1   Int?
-  q2   Int?
-  m0   Int?
-  n1   Int?
-  n2   Int?
-  h1   Int?
-  note String?
+  x1    Int     @id @default(autoincrement())
+  x2    Int?
+  x3    Int?
+  x4    Int?
+  x5    Int?
+  x6    Int?
+  name  String?
+  x8    Int?
+  x9    Int?
+  p1    Int?
+  p2    Int?
+  m1    Int?
+  m2    Int?
+  m3    Int?
+  p0    Int?
+  q1    Int?
+  q2    Int?
+  m0    Int?
+  n1    Int?
+  n2    Int?
+  h1    Int?
+  note  String?
+  z1    Int?
+  z2    Int?
+  z3    Int?
+  label String?
 
   parent   Person?  @relation("PersonToParent", fields: [p0], references: [x1])
   children Person[] @relation("PersonToParent")
-
-  position Position? @relation("PersonToPosition")
-}
-
-model Position {
-  id       Int      @id @default(autoincrement())
-  x10      Int?
-  x11      Int?
-  x12      Int?
-  x3       Int?
-  x4       Int?
-  x5       Int?
-  name     String?
-  personal Int?     @unique
-  checked  Boolean?
-  deleted  Boolean?
-  note     String?
-
-  person Person? @relation("PersonToPosition", fields: [personal], references: [x1])
 }

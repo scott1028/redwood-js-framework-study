@@ -31,6 +31,10 @@ const READABLE_PROPERTY_KEYS = [
   'n2',
   'h1',
   'note',
+  'z1',
+  'z2',
+  'z3',
+  'label',
 ]
 
 export const QUERY = gql`
@@ -58,10 +62,10 @@ export const QUERY = gql`
       n2
       h1
       note
-      position {
-        id
-        name
-      }
+      z1
+      z2
+      z3
+      label
     }
   }
 `
