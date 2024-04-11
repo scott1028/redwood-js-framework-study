@@ -56,7 +56,7 @@ const Select = ({
         defaultValue={defaultValue}
         onChange={onChange}
         onBlur={onBlur}
-        style={{ height: 34, marginTop: 8, width: '100%' }}
+        style={{ height: 32, marginTop: 8, width: '100%' }}
       >
         {children}
       </MuiSelect>
