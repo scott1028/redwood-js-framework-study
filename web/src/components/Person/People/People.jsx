@@ -60,7 +60,11 @@ const PeopleList = ({ people }) => {
             <th>N1</th>
             <th>N2</th>
             <th>H1</th>
-            <th>Note</th>
+            <th>NOTE</th>
+            <th>Z1</th>
+            <th>Z2</th>
+            <th>Z3</th>
+            <th>Label</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -96,6 +100,10 @@ const PeopleList = ({ people }) => {
               <td>{truncate(person.n2)}</td>
               <td>{truncate(person.h1)}</td>
               <td>{truncate(person.note)}</td>
+              <td>{truncate(person.z1)}</td>
+              <td>{truncate(person.z2)}</td>
+              <td>{truncate(person.z3)}</td>
+              <td>{truncate(person.label)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

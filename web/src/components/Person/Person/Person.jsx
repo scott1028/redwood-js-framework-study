@@ -127,6 +127,22 @@ const Person = ({ person }) => {
               <th>Note</th>
               <td>{person.note}</td>
             </tr>
+            <tr>
+              <th>Z1</th>
+              <td>{person.z1}</td>
+            </tr>
+            <tr>
+              <th>Z2</th>
+              <td>{person.z2}</td>
+            </tr>
+            <tr>
+              <th>Z3</th>
+              <td>{person.z3}</td>
+            </tr>
+            <tr>
+              <th>LABEL</th>
+              <td>{person.label}</td>
+            </tr>
           </tbody>
         </table>
       </div>

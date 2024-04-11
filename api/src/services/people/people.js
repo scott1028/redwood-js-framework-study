@@ -36,7 +36,4 @@ export const Person = {
   children: (_obj, { root }) => {
     return db.person.findUnique({ where: { x1: root?.x1 } }).children()
   },
-  position: (_obj, { root }) => {
-    return db.person.findUnique({ where: { x1: root?.x1 } }).position()
-  },
 }
