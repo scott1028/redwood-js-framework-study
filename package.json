@@ -27,6 +27,7 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
     "clsx": "^2.1.0",
+    "csv": "^6.3.8",
     "styled-components": "^6.1.8"
   },
   "scripts": {
