@@ -120,10 +120,6 @@ const Person = ({ person }) => {
               <td>{person.n2}</td>
             </tr>
             <tr>
-              <th>H1</th>
-              <td>{person.h1}</td>
-            </tr>
-            <tr>
               <th>Note</th>
               <td>{person.note}</td>
             </tr>

@@ -10,7 +10,8 @@ import PersonForm from 'src/components/Person/PersonForm'
 const StyledPersonForm = styled(PersonForm)`
   & form {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr;
+    grid-column-gap: 10px;
 
     & > * {
       display: flex;

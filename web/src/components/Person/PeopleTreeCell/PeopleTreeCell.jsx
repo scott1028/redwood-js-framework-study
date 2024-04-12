@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
 
+import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
 import Detail from '../components/Detail'
 
 import PersonEntry from './PersonEntry'
@@ -60,7 +61,6 @@ export const QUERY = gql`
       m0
       n1
       n2
-      h1
       note
       z1
       z2
@@ -78,13 +78,13 @@ const mariedId1Key = 'm1'
 const mariedId2Key = 'm2'
 const mariedId3Key = 'm3'
 
-const LeftSection = styled('div')`
+const TopSection = styled('div')`
   flex: 1;
   overflow: auto;
 `
 
-const RightSection = styled(Box)`
-  width: fit-content;
+const BottomSection = styled(Box)`
+  height: 400px;
   overflow: auto;
 
   @media print {
@@ -98,7 +98,12 @@ const RightSectionContent = styled('div')`
 `
 
 export const Success = ({ people: _users, rootId }) => {
-  const [viewDetail, onViewDetail] = useState(null)
+  const [_options, _dispatch, getOnChange] = useScaffoldContext()
+  const [viewDetail, _onViewDetail] = useState(null)
+  const onViewDetail = (value) => {
+    getOnChange('register1')(null, value?.x1)
+    _onViewDetail(value)
+  }
   const register = new Map()
   const users = [..._users].sort((nextUser, currUser) => {
     if (nextUser[parentIdKey] && currUser[parentIdKey]) {
@@ -164,7 +169,7 @@ export const Success = ({ people: _users, rootId }) => {
   })
   return (
     <div className="people-tree-cell-wrapper">
-      <LeftSection>
+      <TopSection>
         <ul className="tree tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers tree-buttons">
           {items.map((item) => (
             <PersonEntry
@@ -178,9 +183,9 @@ export const Success = ({ people: _users, rootId }) => {
             />
           ))}
         </ul>
-      </LeftSection>
+      </TopSection>
       {viewDetail && (
-        <RightSection boxShadow={3} borderRadius={2} padding={2}>
+        <BottomSection boxShadow={3} borderRadius={2} padding={2}>
           <RightSectionContent>
             <Detail person={viewDetail} key={viewDetail.id}>
               {(refForm) => (
@@ -208,7 +213,7 @@ export const Success = ({ people: _users, rootId }) => {
               )}
             </Detail>
           </RightSectionContent>
-        </RightSection>
+        </BottomSection>
       )}
     </div>
   )

@@ -20,7 +20,6 @@ export const schema = gql`
     m0: Int
     n1: Int
     n2: Int
-    h1: Int
     note: String
     z1: Int
     z2: Int
@@ -55,7 +54,6 @@ export const schema = gql`
     m0: Int
     n1: Int
     n2: Int
-    h1: Int
     note: String
     z1: Int
     z2: Int
@@ -83,7 +81,6 @@ export const schema = gql`
     m0: Int
     n1: Int
     n2: Int
-    h1: Int
     note: String
     z1: Int
     z2: Int

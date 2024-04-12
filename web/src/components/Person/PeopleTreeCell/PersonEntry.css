@@ -40,6 +40,7 @@ span[role="presentation"] {
 }
 
 .people-tree-cell-wrapper {
+  flex-direction: column;
   display: flex;
   position: absolute;
   top: 72px;

@@ -37,6 +37,15 @@ export const OPTIONS = [
   },
 ]
 
+export const REGISTERS = [
+  {
+    key: 'register1',
+    label: '節點索引',
+  },
+]
+
+const REGISTERS_KEYS = REGISTERS.map((register) => register.key)
+
 export const ScaffoldContextProvider = ScaffoldContext.Provider
 
 export const useScaffoldContext = () => {
@@ -54,7 +63,11 @@ export const useScaffoldContext = () => {
     }
   }, [dispatch])
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
+    const storableState = { ...state }
+    REGISTERS_KEYS.forEach((key) => {
+      delete storableState[key]
+    })
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(storableState))
   }, [state])
   if (!context) {
     throw new Error('Use useScaffoldContext in ScaffoldContextProvider')
@@ -68,13 +81,15 @@ const scaffoldReducer = (state, action) => {
 
 export const useScaffoldReducer = () => {
   const initState = {
-    ...OPTIONS.map((option) => option.key).reduce(
-      (acc, curr) => ({
-        ...acc,
-        [curr]: false,
-      }),
-      {}
-    ),
+    ...[...OPTIONS, ...REGISTERS]
+      .map((option) => option.key)
+      .reduce(
+        (acc, curr) => ({
+          ...acc,
+          [curr]: false,
+        }),
+        {}
+      ),
     ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}'),
   }
   return useReducer(scaffoldReducer, initState)
