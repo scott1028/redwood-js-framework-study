@@ -445,21 +445,6 @@ const PersonForm = (props) => {
           ))}
         </Select>
         <Label
-          name="h1"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          (21) 祿位：
-        </Label>
-        <NumberField
-          name="h1"
-          defaultValue={props.person?.h1}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          emptyAs={'null'}
-        />
-        <FieldError name="h1" className="rw-field-error" />
-        <Label
           name="note"
           className="rw-label"
           errorClassName="rw-label rw-label-error"

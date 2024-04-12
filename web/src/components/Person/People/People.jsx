@@ -98,7 +98,6 @@ const PeopleList = ({ people }) => {
               <td>{truncate(person.m0)}</td>
               <td>{truncate(person.n1)}</td>
               <td>{truncate(person.n2)}</td>
-              <td>{truncate(person.h1)}</td>
               <td>{truncate(person.note)}</td>
               <td>{truncate(person.z1)}</td>
               <td>{truncate(person.z2)}</td>

@@ -401,6 +401,10 @@
   .rw-header {
     opacity: 0;
   }
+
+  span.is-viewed {
+    color: unset;
+  }
 }
 
 textarea {

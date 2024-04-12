@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import { Link, routes } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
 
 import { ScaffoldContextProvider, useScaffoldReducer } from './contexts'
+import Headline from './Headline'
 import SystemOptions from './SystemOptions'
 
 const Header = styled('div')`
@@ -40,26 +40,12 @@ const ScaffoldLayout = ({
         />
         <Header className="rw-header">
           <div>
-            {titleTo && (
-              <h1 className="rw-heading rw-heading-primary">
-                <Link to={routes[titleTo]()} className="rw-link">
-                  {title}
-                </Link>
-              </h1>
-            )}
-            {homeButtonTo && (
-              <h1 className="rw-heading rw-heading-primary">
-                <Link to={routes[homeButtonTo]()} className="rw-link">
-                  {homeButtonLabel}
-                </Link>
-              </h1>
-            )}
-            {/* {buttonTo && (
-              <Link to={routes[buttonTo]()} className="rw-button rw-button-green">
-                <div className="rw-button-icon">+</div> {buttonLabel}
-              </Link>
-            )} */}
-            <div></div>
+            <Headline
+              title={title}
+              titleTo={titleTo}
+              homeButtonTo={homeButtonTo}
+              homeButtonLabel={homeButtonLabel}
+            />
           </div>
           <div>
             <SystemOptions />

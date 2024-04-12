@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import styled from 'styled-components'
 
 import './PersonEntry.css'
+import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
 
 const StyledLi = styled('li')`
   position: relative;
@@ -65,6 +66,7 @@ const PersonEntry = (props) => {
     viewDetail,
     onViewDetail,
   } = props
+  const [options] = useScaffoldContext()
   const { maried1, maried2, maried3, childrenItems, ...restProps } = props
   const [isExpanded, setExpand] = useState(false)
   return (
@@ -104,6 +106,9 @@ const PersonEntry = (props) => {
               , {maried3.name ?? m3} ({m3})
             </>
           )}
+          {/* TODO: search "option1" in source code your find where it defined */}
+          {options.option1 && '上方 option1 已經打勾'}
+          {options.option2 && '上方 option2 已經打勾'}
         </span>
         <StyledButton
           variant="outlined"
