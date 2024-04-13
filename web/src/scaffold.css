@@ -140,7 +140,6 @@
 }
 .rw-cell-error,
 .rw-form-error-wrapper {
-  grid-column: 1 / -1;
   padding: 1rem;
   background-color: #fff5f5;
   color: #c53030;
@@ -409,5 +408,5 @@
 }
 
 textarea {
-  resize:vertical;
+  resize: vertical;
 }

@@ -6,13 +6,6 @@ const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
   const [options] = useScaffoldContext()
   return (
     <>
-      {titleTo && (
-        <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes[titleTo]()} className="rw-link">
-            {title}
-          </Link>
-        </h1>
-      )}
       {homeButtonTo && (
         <h1 className="rw-heading rw-heading-primary">
           <Link to={routes[homeButtonTo]()} className="rw-link">
@@ -20,8 +13,15 @@ const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
           </Link>
         </h1>
       )}
+      {titleTo && (
+        <h1 className="rw-heading rw-heading-primary">
+          <Link to={routes[titleTo]()} className="rw-link">
+            {title}
+          </Link>
+        </h1>
+      )}
       <div>
-        索引節點:
+        節點索引:
         {options.register1 && (
           <Link
             to={routes.peopleTree({ x1: options.register1 })}

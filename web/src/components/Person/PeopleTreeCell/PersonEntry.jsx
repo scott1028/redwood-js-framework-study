@@ -5,6 +5,16 @@ import styled from 'styled-components'
 
 import './PersonEntry.css'
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
+import {
+  idTOLabel_x2,
+  idTOLabel_x3,
+  idTOLabel_x4,
+  idTOLabel_x5,
+  idTOLabel_q1,
+  idTOLabel_q2,
+  idTOLabel_n1,
+  idTOLabel_n2,
+} from '../PersonForm/PersonForm'
 
 const StyledLi = styled('li')`
   position: relative;
@@ -63,6 +73,10 @@ const PersonEntry = (props) => {
     m1,
     m2,
     m3,
+    x5,
+    x6,
+    x9,
+    note,
     viewDetail,
     onViewDetail,
   } = props
@@ -89,33 +103,53 @@ const PersonEntry = (props) => {
             checked={isExpanded}
             disabled={!childrenItems?.length}
           />
+          {options.option1 && x6}
+          {options.option2 && <>{idTOLabel_x5[x5]} </>}
           {name ?? id}
-          <>({id})</>
+          <>({id})</>({options.option4 && x9})
           {maried1 && (
             <>
-              , {maried1.name ?? m1} ({m1})
+              {', '}
+              {maried1.name ?? m1}
+              {options.option3 && <>({m1})</>}
             </>
           )}
           {maried2 && (
             <>
-              , {maried2.name ?? m2} ({m2})
+              {', '}
+              {maried2.name ?? m2}
+              {options.option3 && <>({m2})</>}
             </>
           )}
           {maried3 && (
             <>
-              , {maried3.name ?? m3} ({m3})
+              {', '}
+              {maried2.name ?? m2}
+              {options.option3 && <>({m3})</>}
+            </>
+          )}
+          {options.option5 && (
+            <>
+              {' -- '}
+              {note}{' '}
             </>
           )}
           {/* TODO: search "option1" in source code your find where it defined */}
-          {options.option1 && '上方 option1 已經打勾'}
-          {options.option2 && '上方 option2 已經打勾'}
+          {/*options.option1 && '上方 option1 已經打勾'*/}
+          {/*options.option2 && '上方 option2 已經打勾'*/}
         </span>
         <StyledButton
           variant="outlined"
           size="small"
           onClick={(e) => {
             e.stopPropagation()
-            onViewDetail(restProps)
+            onViewDetail({
+              ...restProps,
+              maried1,
+              maried2,
+              maried3,
+              childrenItems,
+            })
           }}
         >
           Detail

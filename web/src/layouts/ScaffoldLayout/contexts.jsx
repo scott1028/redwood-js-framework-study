@@ -13,34 +13,44 @@ const ScaffoldContext = createContext()
 export const OPTIONS = [
   {
     key: 'option1',
-    label: '細目',
-  },
-  {
-    key: 'option2',
-    label: '索引',
-  },
-  {
-    key: 'option3',
     label: '排行',
   },
   {
-    key: 'option4',
+    key: 'option2',
     label: '性別',
   },
   {
-    key: 'option5',
+    key: 'option3',
+    label: '索引',
+  },
+  {
+    key: 'option4',
     label: '享年',
+  },
+  {
+    key: 'option5',
+    label: '備註',
   },
   {
     key: 'option6',
     label: '祿位',
+  },
+  {
+    key: 'option7',
+    label: 'more',
+  },
+  {
+    key: 'option8',
+    label: '細目',
   },
 ]
 
 export const REGISTERS = [
   {
     key: 'register1',
+    /*
     label: '節點索引',
+    */
   },
 ]
 
