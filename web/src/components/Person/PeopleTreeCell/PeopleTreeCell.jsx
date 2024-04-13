@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import styled from 'styled-components'
 
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
-import Detail from '../components/Detail'
+import SimpleDetail from '../components/SimpleDetail'
 
 import PersonEntry from './PersonEntry'
 
@@ -30,7 +30,6 @@ const READABLE_PROPERTY_KEYS = [
   'm0',
   'n1',
   'n2',
-  'h1',
   'note',
   'z1',
   'z2',
@@ -187,31 +186,7 @@ export const Success = ({ people: _users, rootId }) => {
       {viewDetail && (
         <BottomSection boxShadow={3} borderRadius={2} padding={2}>
           <RightSectionContent>
-            <Detail person={viewDetail} key={viewDetail.id}>
-              {(refForm) => (
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    position: 'sticky',
-                    top: -16,
-                    paddingTop: 16,
-                    paddingBottom: 8,
-                    background: '#fff',
-                    zIndex: 1,
-                  }}
-                >
-                  <Button onClick={() => onViewDetail(null)}>Close</Button>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    onClick={() => refForm.current.requestSubmit()}
-                  >
-                    Save
-                  </Button>
-                </div>
-              )}
-            </Detail>
+            <SimpleDetail person={viewDetail} key={viewDetail.id} />
           </RightSectionContent>
         </BottomSection>
       )}

@@ -16,14 +16,13 @@ import {
 
 import Select from './components/Select'
 
-const idTOLabel_x2 = {
+export const idTOLabel_x2 = {
   0: '刪除',
   1: '宗親',
   2: '配偶',
 }
 
-const idTOLabel_x3 = {
-  0: null,
+export const idTOLabel_x3 = {
   1: '廣一',
   2: '廣二',
   3: '廣三',
@@ -32,8 +31,7 @@ const idTOLabel_x3 = {
   6: '良房',
 }
 
-const idTOLabel_x4 = {
-  0: null,
+export const idTOLabel_x4 = {
   1: '壽字輩',
   2: '仕字輩',
   3: '添字輩',
@@ -57,14 +55,12 @@ const idTOLabel_x4 = {
   21: '祥字輩',
 }
 
-const idTOLabel_x5 = {
-  0: null,
+export const idTOLabel_x5 = {
   1: '男',
   2: '女',
 }
 
-const idTOLabel_q1 = {
-  0: null,
+export const idTOLabel_q1 = {
   1: '嫡生',
   2: '入嗣',
   3: '承鼎',
@@ -72,16 +68,14 @@ const idTOLabel_q1 = {
   5: '託養',
 }
 
-const idTOLabel_q2 = {
-  0: null,
+export const idTOLabel_q2 = {
   1: '失婚',
   2: '出嗣',
   3: '失蹤',
   4: '幼亡',
 }
 
-const idTOLabel_n1 = {
-  0: null,
+export const idTOLabel_n1 = {
   1: '入嫁',
   2: '出嫁',
   3: '入贅',
@@ -89,8 +83,7 @@ const idTOLabel_n1 = {
   5: '平婚',
 }
 
-const idTOLabel_n2 = {
-  0: null,
+export const idTOLabel_n2 = {
   1: '離婚',
   2: '改嫁',
   3: '失蹤',

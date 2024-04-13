@@ -35,7 +35,7 @@ ul:first-child > li > .item-wrapper > .line-left {
   color: white;
 }
 
-span[role="presentation"] {
+span[role='presentation'] {
   cursor: pointer;
 }
 
