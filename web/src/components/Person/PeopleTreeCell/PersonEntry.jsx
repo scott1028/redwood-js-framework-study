@@ -2,9 +2,9 @@ import { Fragment, useState } from 'react'
 
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
-import SquareOutlinedIcon from '@mui/icons-material/SquareOutlined';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined'
+import SquareOutlinedIcon from '@mui/icons-material/SquareOutlined'
 
 import './PersonEntry.css'
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
