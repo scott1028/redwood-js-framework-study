@@ -1,10 +1,10 @@
 import { Fragment, useState } from 'react'
 
-import Button from '@mui/material/Button'
-import styled from 'styled-components'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined'
 import SquareOutlinedIcon from '@mui/icons-material/SquareOutlined'
+import Button from '@mui/material/Button'
+import styled from 'styled-components'
 
 import './PersonEntry.css'
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
@@ -34,15 +34,29 @@ const StyledLi = styled('li')`
 `
 
 const StyledSpan = styled('span')`
-  display: table;
+  --size: 24px;
+  height: var(--size);
+  line-height: var(--size);
+  display: flex;
+  align-items: center;
 
-  ${StyledLi}:last-child > & > .line-left {
-    left: 0px;
+  ${StyledLi}:last-child > & {
+    align-items: flex-start;
 
-    & + span {
-      position: relative;
-      left: 1px;
+    & > .line-left {
+      left: 0px;
+
+      & + span {
+        position: relative;
+        left: 1px;
+      }
     }
+  }
+
+  & > span:not(.line):not(.line-left) {
+    height: var(--size);
+    line-height: var(--size);
+    display: inline-block;
   }
 `
 
@@ -50,8 +64,8 @@ const StyledButton = styled(Button)`
   && {
     display: none;
     margin-left: 10px;
-    height: 18px;
-    line-height: 18px;
+    height: var(--size);
+    line-height: var(--size);
     padding: 0px 10px;
     box-sizing: border-box;
     vertical-align: baseline;
@@ -66,6 +80,11 @@ const StyledButton = styled(Button)`
       display: none;
     }
   }
+`
+
+const StyledExpandableWrapper = styled('span')`
+  display: inline-block;
+  vertical-align: bottom;
 `
 
 // treeView style, ref: https://iamkate.com/code/tree-views/
@@ -105,15 +124,12 @@ const PersonEntry = (props) => {
           }}
           role="presentation"
         >
-          <span style={{ display: 'inline-block' }}>
+          <StyledExpandableWrapper>
             <span
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                zoom: 0.75,
-                height: 18,
-                width: 18,
                 overflow: 'hidden',
                 marginRight: 8,
               }}
@@ -126,7 +142,7 @@ const PersonEntry = (props) => {
                 <AddBoxOutlinedIcon />
               )}
             </span>
-          </span>
+          </StyledExpandableWrapper>
           {options.option5 && x5}
           {options.option6 && <>{idTOLabel_x6[x6]} </>}
           {name ?? id}
@@ -205,8 +221,13 @@ const PersonEntry = (props) => {
           Detail
         </StyledButton>
       </StyledSpan>
-      {isExpanded && childrenItems?.length > 0 && (
-        <ul className="tree">
+      {childrenItems?.length > 0 && (
+        <ul
+          className="tree"
+          style={
+            !isExpanded ? { visibility: 'hidden', height: 0, widht: 0 } : {}
+          }
+        >
           {childrenItems?.map((child) => (
             <PersonEntry
               {...child}
