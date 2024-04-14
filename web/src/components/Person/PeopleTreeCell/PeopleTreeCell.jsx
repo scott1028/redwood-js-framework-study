@@ -83,7 +83,7 @@ const TopSection = styled('div')`
 `
 
 const BottomSection = styled(Box)`
-  height: 400px;
+  height: 220px;
   overflow: auto;
 
   @media print {

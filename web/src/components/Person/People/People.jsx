@@ -45,7 +45,7 @@ const PeopleList = ({ people }) => {
             <th>X4</th>
             <th>X5</th>
             <th>X6</th>
-            <th>Name</th>
+            <th>NAME</th>
             <th>X8</th>
             <th>X9</th>
             <th>P1</th>
@@ -59,12 +59,11 @@ const PeopleList = ({ people }) => {
             <th>M0</th>
             <th>N1</th>
             <th>N2</th>
-            <th>H1</th>
             <th>NOTE</th>
             <th>Z1</th>
             <th>Z2</th>
             <th>Z3</th>
-            <th>Label</th>
+            <th>LABEL</th>
             <th>&nbsp;</th>
           </tr>
         </thead>

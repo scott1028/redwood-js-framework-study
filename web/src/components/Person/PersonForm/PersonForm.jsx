@@ -17,45 +17,70 @@ import {
 import Select from './components/Select'
 
 export const idTOLabel_x2 = {
-  0: '刪除',
-  1: '宗親',
-  2: '配偶',
+  0: '0刪除',
+  1: '1宗親',
+  2: '2配偶',
 }
 
 export const idTOLabel_x3 = {
-  1: '廣一',
-  2: '廣二',
-  3: '廣三',
-  4: '廣四',
-  5: '廣五',
-  6: '良房',
+  /*
+  1: ' 1壽字輩',
+  2: ' 2仕字輩',
+  3: ' 3添字輩',
+  4: ' 4江字輩',
+  5: ' 5乾字輩',
+  6: ' 6坤字輩',
+  7: ' 7寬字輩',
+  8: ' 8盛字輩',
+  9: ' 9永字輩',
+  10: '10和字輩',
+  11: '11發字輩',
+  12: '12登字輩',
+  13: '13雲字輩',
+  14: '14朝字輩',
+  15: '15富字輩',
+  16: '16貴字輩',
+  17: '17創字輩',
+  18: '18新字輩',
+  19: '19傳字輩',
+  20: '20康字輩',
+  21: '21祥字輩',
+*/
+  1: ' 1壽字',
+  2: ' 2仕字',
+  3: ' 3添字',
+  4: ' 4江字',
+  5: ' 5乾字',
+  6: ' 6坤字',
+  7: ' 7寬字',
+  8: ' 8盛字',
+  9: ' 9永字',
+  10: '10和字',
+  11: '11發字',
+  12: '12登字',
+  13: '13雲字',
+  14: '14朝字',
+  15: '15富字',
+  16: '16貴字',
+  17: '17創字',
+  18: '18新字',
+  19: '19傳字',
+  20: '20康字',
+  21: '21祥字',
 }
 
 export const idTOLabel_x4 = {
-  1: '壽字輩',
-  2: '仕字輩',
-  3: '添字輩',
-  4: '江字輩',
-  5: '乾字輩',
-  6: '坤字輩',
-  7: '寬字輩',
-  8: '盛字輩',
-  9: '永字輩',
-  10: '和字輩',
-  11: '發字輩',
-  12: '登字輩',
-  13: '雲字輩',
-  14: '朝字輩',
-  15: '富字輩',
-  16: '貴字輩',
-  17: '創字輩',
-  18: '新字輩',
-  19: '傳字輩',
-  20: '康字輩',
-  21: '祥字輩',
+  1: '1廣大',
+  2: '2廣二',
+  3: '3廣三',
+  4: '4廣四',
+  5: '5廣五',
+  6: '6良房',
 }
 
-export const idTOLabel_x5 = {
+/* - '排行' --- x5 */
+
+export const idTOLabel_x6 = {
   1: '男',
   2: '女',
 }
@@ -144,7 +169,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (3) 房脈：
+          (3) 世代：
         </Label>
         <Select
           name="x3"
@@ -152,7 +177,7 @@ const PersonForm = (props) => {
           emptyAs={'null'}
         >
           <MenuItem value={'null'}>-</MenuItem>
-          {Array.from({ length: 7 }, (_, idx) => (
+          {Array.from({ length: 22 }, (_, idx) => (
             <MenuItem key={idx} value={idx}>
               {idTOLabel_x3[idx]}
             </MenuItem>
@@ -163,7 +188,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (4) 世代：
+          (4) 房脈：
         </Label>
         <Select
           name="x4"
@@ -171,7 +196,7 @@ const PersonForm = (props) => {
           emptyAs={'null'}
         >
           <MenuItem value={'null'}>-</MenuItem>
-          {Array.from({ length: 22 }, (_, idx) => (
+          {Array.from({ length: 7 }, (_, idx) => (
             <MenuItem key={idx} value={idx}>
               {idTOLabel_x4[idx]}
             </MenuItem>
@@ -182,35 +207,35 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (5) 性別：
+          (5) 排行：
         </Label>
-        <Select
+        <NumberField
           name="x5"
-          defaultValue={props.person?.x5 ?? 'null'}
+          defaultValue={props.person?.x5}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
           emptyAs={'null'}
-        >
-          <MenuItem value={'null'}>-</MenuItem>
-          {Array.from({ length: 3 }, (_, idx) => (
-            <MenuItem key={idx} value={idx}>
-              {idTOLabel_x5[idx]}
-            </MenuItem>
-          ))}
-        </Select>
+        />
+        <FieldError name="x5" className="rw-field-error" />
         <Label
           name="x6"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (6) 排行：
+          (6) 性別：
         </Label>
-        <NumberField
+        <Select
           name="x6"
-          defaultValue={props.person?.x6}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          defaultValue={props.person?.x6 ?? 'null'}
           emptyAs={'null'}
-        />
-        <FieldError name="x6" className="rw-field-error" />
+        >
+          <MenuItem value={'null'}>-</MenuItem>
+          {Array.from({ length: 3 }, (_, idx) => (
+            <MenuItem key={idx} value={idx}>
+              {idTOLabel_x6[idx]}
+            </MenuItem>
+          ))}
+        </Select>
         <Label
           name="name"
           className="rw-label"
@@ -442,7 +467,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (22) 備註：
+          (21) 備註：
         </Label>
         <TextAreaField
           name="note"
@@ -454,11 +479,11 @@ const PersonForm = (props) => {
         />
         <FieldError name="note" className="rw-field-error" />
         <Label
-          name="h1"
+          name="z1"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (23) Z1：
+          (22) 塔號：
         </Label>
         <NumberField
           name="z1"
@@ -473,7 +498,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (24) Z2：
+          (23) 列號：
         </Label>
         <NumberField
           name="z2"
@@ -488,7 +513,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (25) Z3：
+          (24) 座號：
         </Label>
         <NumberField
           name="z3"
@@ -503,7 +528,7 @@ const PersonForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          (26) LABEL：
+          (25) 稱謂：
         </Label>
         <TextAreaField
           name="label"
