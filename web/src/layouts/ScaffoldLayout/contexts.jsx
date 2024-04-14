@@ -12,35 +12,35 @@ const ScaffoldContext = createContext()
 
 export const OPTIONS = [
   {
-    key: 'option1',
+    key: 'option5',
     label: '排行',
   },
   {
-    key: 'option2',
+    key: 'option6',
     label: '性別',
   },
   {
-    key: 'option3',
+    key: 'option1',
     label: '索引',
   },
   {
-    key: 'option4',
+    key: 'option8',
+    label: '年次',
+  },
+  {
+    key: 'option9',
     label: '享年',
   },
   {
-    key: 'option5',
+    key: 'option21',
     label: '備註',
   },
   {
-    key: 'option6',
+    key: 'option22',
     label: '祿位',
   },
   {
-    key: 'option7',
-    label: 'more',
-  },
-  {
-    key: 'option8',
+    key: 'option00',
     label: '細目',
   },
 ]
