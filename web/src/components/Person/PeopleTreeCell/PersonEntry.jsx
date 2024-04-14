@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react'
 
 import Button from '@mui/material/Button'
 import styled from 'styled-components'
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
 
 import './PersonEntry.css'
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
@@ -98,11 +100,11 @@ const PersonEntry = (props) => {
           }}
           role="presentation"
         >
-          <input
-            type="checkbox"
-            checked={isExpanded}
-            disabled={!childrenItems?.length}
-          />
+          <span style={{ display: childrenItems.length > 0 ? 'inline-block' : 'none' }}>
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zoom: 0.75, height: 18, width: 18, overflow: 'hidden', marginRight: 8 }}>
+              {isExpanded ? <IndeterminateCheckBoxOutlinedIcon /> : <AddBoxOutlinedIcon />}
+            </span>
+          </span>
           {options.option1 && x6}
           {options.option2 && <>{idTOLabel_x5[x5]} </>}
           {name ?? id}
