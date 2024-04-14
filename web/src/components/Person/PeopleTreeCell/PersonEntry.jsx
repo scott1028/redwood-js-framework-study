@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import styled from 'styled-components'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
+import SquareOutlinedIcon from '@mui/icons-material/SquareOutlined';
 
 import './PersonEntry.css'
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
@@ -100,9 +101,9 @@ const PersonEntry = (props) => {
           }}
           role="presentation"
         >
-          <span style={{ display: childrenItems.length > 0 ? 'inline-block' : 'none' }}>
+          <span style={{ display: 'inline-block' }}>
             <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zoom: 0.75, height: 18, width: 18, overflow: 'hidden', marginRight: 8 }}>
-              {isExpanded ? <IndeterminateCheckBoxOutlinedIcon /> : <AddBoxOutlinedIcon />}
+              {childrenItems.length === 0 ? <SquareOutlinedIcon /> : isExpanded ? <IndeterminateCheckBoxOutlinedIcon /> : <AddBoxOutlinedIcon />}
             </span>
           </span>
           {options.option1 && x6}
