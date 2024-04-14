@@ -28,5 +28,8 @@
     "@mui/material": "^5.15.15",
     "clsx": "^2.1.0",
     "styled-components": "^6.1.8"
+  },
+  "scripts": {
+    "format": "bash -c 'npx prettier --write ./'"
   }
 }

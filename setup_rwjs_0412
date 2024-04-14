@@ -1,0 +1,9 @@
+cd ~/redwood-js-0412
+yarn --version
+yarn set version 1.22.19
+yarn
+yarn set version stable
+yarn --version
+yarn
+echo /* yarn rw dev to run app */
+
