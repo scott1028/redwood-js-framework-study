@@ -38,6 +38,11 @@ const StyledSpan = styled('span')`
 
   ${StyledLi}:last-child > & > .line-left {
     left: 0px;
+
+    & + span {
+      position: relative;
+      left: 1px;
+    }
   }
 `
 
