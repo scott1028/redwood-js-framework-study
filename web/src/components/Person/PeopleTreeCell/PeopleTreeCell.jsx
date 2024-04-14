@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 import styled from 'styled-components'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 
 import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
 import SimpleDetail from '../components/SimpleDetail'
@@ -83,6 +84,7 @@ const TopSection = styled('div')`
 `
 
 const BottomSection = styled(Box)`
+  position: relative;
   height: 220px;
   overflow: auto;
 
@@ -94,6 +96,15 @@ const BottomSection = styled(Box)`
 const RightSectionContent = styled('div')`
   padding-left: 5px;
   padding-bottom: 5px;
+`
+
+const StyledIconButton = styled(IconButton)`
+  && {
+    position: absolute;
+    top: 0;
+    right: -18px;
+    transform: translateX(-50%);
+  }
 `
 
 export const Success = ({ people: _users, rootId }) => {
@@ -185,6 +196,9 @@ export const Success = ({ people: _users, rootId }) => {
       </TopSection>
       {viewDetail && (
         <BottomSection boxShadow={3} borderRadius={2} padding={2}>
+          <StyledIconButton onClick={() => onViewDetail(null)}>
+            <HighlightOffIcon />
+          </StyledIconButton>
           <RightSectionContent>
             <SimpleDetail person={viewDetail} key={viewDetail.id} />
           </RightSectionContent>
