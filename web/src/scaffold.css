@@ -398,10 +398,6 @@
 }
 
 @media print {
-  * {
-    overflow: hidden;
-  }
-
   .rw-header {
     opacity: 0;
   }
