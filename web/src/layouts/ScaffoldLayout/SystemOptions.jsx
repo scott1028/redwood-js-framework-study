@@ -45,7 +45,9 @@ const uploadFile = (file, contentType, target, refetch) => {
     const content = fr.result
     target.value = ''
     return fetch(
-      `${location.protocol}//${location.host.split(':')[0]}:8911/api/upload`,
+      // ref: https://redwoodjs.com/docs/how-to/custom-function#creating-a-function
+      // `${location.protocol}//${location.host.split(':')[0]}:8911/api/upload`,
+      `/.redwood/functions/api/upload`,
       {
         method: 'POST',
         body: content,
