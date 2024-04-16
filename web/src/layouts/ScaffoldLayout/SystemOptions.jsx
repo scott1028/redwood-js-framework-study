@@ -44,13 +44,16 @@ const uploadFile = (file, contentType, target, refetch) => {
   fr.onload = async () => {
     const content = fr.result
     target.value = ''
-    return fetch('http://localhost:8911/api/upload', {
-      method: 'POST',
-      body: content,
-      headers: {
-        'Content-Type': contentType,
-      },
-    })
+    return fetch(
+      `${location.protocol}//${location.host.split(':')[0]}:8911/api/upload`,
+      {
+        method: 'POST',
+        body: content,
+        headers: {
+          'Content-Type': contentType,
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok')
