@@ -25,6 +25,7 @@ import { getSchema } from '../../services/schema'
  */
 export const handler = async (event, _context) => {
   logger.info(`${event.httpMethod} ${event.path}: api function`)
+  logger.info('event:', event)
   const columnSettingMap = await getSchema('person')
 
   const items = await readCsvFromBuffer(event.body)
@@ -61,6 +62,7 @@ export const handler = async (event, _context) => {
     statusCode: 201,
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
     // body: JSON.stringify(resp, null, 2),
   }
