@@ -29,7 +29,7 @@ export const handler = async (event, _context) => {
   const columnSettingMap = await getSchema('person')
 
   const items = await readCsvFromBuffer(event.body)
-  const [headers, ...rows] = items
+  const [headers, _headerComments, ...rows] = items
 
   // avoid from foreign key constraint restriction by database
   await db.$transaction(
