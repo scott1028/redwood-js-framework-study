@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 import { Toaster } from '@redwoodjs/web/toast'
 
-import { ScaffoldContextProvider, useScaffoldReducer } from './contexts'
+import {
+  ScaffoldContextProvider,
+  useScaffoldReducer,
+} from './contexts/optionContext'
 import Headline from './Headline'
+import Main from './Main'
 import SystemOptions from './SystemOptions'
 
 const Header = styled('div')`
@@ -12,11 +16,12 @@ const Header = styled('div')`
 
   & > div {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 8px;
 
     &:first-child {
-      flex-grow: 1;
+      flex-grow: 0;
     }
   }
 `
@@ -24,8 +29,6 @@ const Header = styled('div')`
 const ScaffoldLayout = ({
   title,
   titleTo,
-  // buttonLabel,
-  // buttonTo,
   homeButtonLabel,
   homeButtonTo,
   children,
@@ -51,7 +54,7 @@ const ScaffoldLayout = ({
             <SystemOptions />
           </div>
         </Header>
-        <main className="rw-main">{children}</main>
+        <Main>{children}</Main>
       </div>
     </ScaffoldContextProvider>
   )
