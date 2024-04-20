@@ -5,6 +5,8 @@ import { toast } from '@redwoodjs/web/toast'
 import { QUERY } from 'src/components/Person/PeopleCell'
 import { truncate } from 'src/lib/formatters'
 
+import TableHeaders from './TableHeaders'
+
 const DELETE_PERSON_MUTATION = gql`
   mutation DeletePersonMutation($x1: Int!) {
     deletePerson(x1: $x1) {
@@ -39,31 +41,7 @@ const PeopleList = ({ people }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>X1</th>
-            <th>X2</th>
-            <th>X3</th>
-            <th>X4</th>
-            <th>X5</th>
-            <th>X6</th>
-            <th>NAME</th>
-            <th>X8</th>
-            <th>X9</th>
-            <th>P1</th>
-            <th>P2</th>
-            <th>M1</th>
-            <th>M2</th>
-            <th>M3</th>
-            <th>P0</th>
-            <th>Q1</th>
-            <th>Q2</th>
-            <th>M0</th>
-            <th>N1</th>
-            <th>N2</th>
-            <th>NOTE</th>
-            <th>Z1</th>
-            <th>Z2</th>
-            <th>Z3</th>
-            <th>LABEL</th>
+            <TableHeaders />
             <th>&nbsp;</th>
           </tr>
         </thead>
