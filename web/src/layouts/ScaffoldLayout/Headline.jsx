@@ -1,3 +1,5 @@
+import Button from '@mui/material/Button'
+
 import { Link, routes } from '@redwoodjs/router'
 
 import { useScaffoldContext } from './contexts/optionContext'
@@ -7,31 +9,27 @@ const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
   return (
     <>
       {homeButtonTo && (
-        <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes[homeButtonTo]()} className="rw-link">
-            {homeButtonLabel}
-          </Link>
-        </h1>
+        <Link to={routes[homeButtonTo]()}>
+          <Button>{homeButtonLabel}</Button>
+        </Link>
       )}
       {titleTo && (
-        <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes[titleTo]()} className="rw-link">
-            {title}
-          </Link>
-        </h1>
+        <Link to={routes[titleTo]()}>
+          <Button>{title}</Button>
+        </Link>
       )}
-      <div>
-        節點索引:
-        {options.register1 && (
-          <Link
-            to={routes.peopleTree({ x1: options.register1 })}
-            title={'Show person ' + options.register1 + ' detail'}
-            style={{ marginLeft: 8 }}
-          >
+      {options.register1 && (
+        <Link
+          to={routes.peopleTree({ x1: options.register1 })}
+          title={'Show person ' + options.register1 + ' detail'}
+          style={{ marginLeft: 8 }}
+        >
+          <Button>
+            節點索引:
             {options.register1}
-          </Link>
-        )}
-      </div>
+          </Button>
+        </Link>
+      )}
       <div></div>
     </>
   )
