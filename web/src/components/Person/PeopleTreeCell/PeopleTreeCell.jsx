@@ -1,12 +1,7 @@
-import { useState } from 'react'
-
-import Box from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
 import styled from 'styled-components'
-import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 
-import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
-import SimpleDetail from '../components/SimpleDetail'
+import { useMainContext } from '../../../layouts/ScaffoldLayout/contexts/mainContext'
+import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts/optionContext'
 
 import PersonEntry from './PersonEntry'
 
@@ -80,40 +75,18 @@ const mariedId3Key = 'm3'
 
 const TopSection = styled('div')`
   flex: 1;
-  overflow: auto;
 `
 
-const BottomSection = styled(Box)`
-  position: relative;
-  height: 220px;
-  overflow: auto;
-
-  @media print {
-    display: none;
-  }
-`
-
-const RightSectionContent = styled('div')`
-  padding-left: 5px;
-  padding-bottom: 5px;
-`
-
-const StyledIconButton = styled(IconButton)`
-  && {
-    position: absolute;
-    top: 0;
-    right: -18px;
-    transform: translateX(-50%);
+const StyledRootUl = styled('ul')`
+  & > li {
+    left: 0px;
+    padding-left: 0px;
   }
 `
 
 export const Success = ({ people: _users, rootId }) => {
-  const [_options, _dispatch, getOnChange] = useScaffoldContext()
-  const [viewDetail, _onViewDetail] = useState(null)
-  const onViewDetail = (value) => {
-    getOnChange('register1')(null, value?.x1)
-    _onViewDetail(value)
-  }
+  const [viewDetail, onViewDetail] = useMainContext()
+  const [_options, _dispatch] = useScaffoldContext()
   const register = new Map()
   const users = [..._users].sort((nextUser, currUser) => {
     if (nextUser[parentIdKey] && currUser[parentIdKey]) {
@@ -178,32 +151,24 @@ export const Success = ({ people: _users, rootId }) => {
     return !user.parentId
   })
   return (
-    <div className="people-tree-cell-wrapper">
-      <TopSection>
-        <ul className="tree tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers tree-buttons">
-          {items.map((item) => (
-            <PersonEntry
-              {...item}
-              key={item.id}
-              id={item.id}
-              parentId={item.parentId}
-              childrenItems={item.childrenItems}
-              viewDetail={viewDetail}
-              onViewDetail={onViewDetail}
-            />
-          ))}
-        </ul>
-      </TopSection>
-      {viewDetail && (
-        <BottomSection boxShadow={3} borderRadius={2} padding={2}>
-          <StyledIconButton onClick={() => onViewDetail(null)}>
-            <HighlightOffIcon />
-          </StyledIconButton>
-          <RightSectionContent>
-            <SimpleDetail person={viewDetail} key={viewDetail.id} />
-          </RightSectionContent>
-        </BottomSection>
-      )}
-    </div>
+    <>
+      <div className="people-tree-cell-wrapper">
+        <TopSection>
+          <StyledRootUl>
+            {items.map((item) => (
+              <PersonEntry
+                {...item}
+                key={item.id}
+                id={item.id}
+                parentId={item.parentId}
+                childrenItems={item.childrenItems}
+                viewDetail={viewDetail}
+                onViewDetail={onViewDetail}
+              />
+            ))}
+          </StyledRootUl>
+        </TopSection>
+      </div>
+    </>
   )
 }

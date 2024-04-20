@@ -7,16 +7,16 @@ import Button from '@mui/material/Button'
 import styled from 'styled-components'
 
 import './PersonEntry.css'
-import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts'
+import { useScaffoldContext } from '../../../layouts/ScaffoldLayout/contexts/optionContext'
 import {
-  idTOLabel_x2,
-  idTOLabel_x3,
-  idTOLabel_x4,
+  // idTOLabel_x2,
+  // idTOLabel_x3,
+  // idTOLabel_x4,
   idTOLabel_x6,
-  idTOLabel_q1,
-  idTOLabel_q2,
-  idTOLabel_n1,
-  idTOLabel_n2,
+  // idTOLabel_q1,
+  // idTOLabel_q2,
+  // idTOLabel_n1,
+  // idTOLabel_n2,
 } from '../PersonForm/PersonForm'
 
 const StyledLi = styled('li')`
@@ -108,7 +108,7 @@ const PersonEntry = (props) => {
   } = props
   const [options] = useScaffoldContext()
   const { maried1, maried2, maried3, childrenItems, ...restProps } = props
-  const [isExpanded, setExpand] = useState(false)
+  const [isExpanded, setExpand] = useState(true)
   return (
     <StyledLi>
       <StyledSpan className="item-wrapper">

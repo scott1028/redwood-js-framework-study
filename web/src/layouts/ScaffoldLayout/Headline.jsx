@@ -1,6 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 
-import { useScaffoldContext } from './contexts'
+import { useScaffoldContext } from './contexts/optionContext'
 
 const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
   const [options] = useScaffoldContext()

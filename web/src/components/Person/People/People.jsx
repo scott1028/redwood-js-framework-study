@@ -104,13 +104,14 @@ const PeopleList = ({ people }) => {
               <td>{truncate(person.label)}</td>
               <td>
                 <nav className="rw-table-actions">
-                  <Link
+                  {/* built-in but no-used page */}
+                  {/* <Link
                     to={routes.person({ x1: person.x1 })}
                     title={'Show person ' + person.x1 + ' detail'}
                     className="rw-button rw-button-small"
                   >
                     Show
-                  </Link>
+                  </Link> */}
                   <Link
                     to={routes.editPerson({ x1: person.x1 })}
                     title={'Edit person ' + person.x1}

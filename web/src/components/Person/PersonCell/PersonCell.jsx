@@ -23,7 +23,6 @@ export const QUERY = gql`
       m0
       n1
       n2
-      h1
       note
       z1
       z2

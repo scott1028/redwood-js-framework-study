@@ -42,19 +42,4 @@ span[role='presentation'] {
 .people-tree-cell-wrapper {
   flex-direction: column;
   display: flex;
-  position: absolute;
-  top: 72px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-@media print {
-  .rw-header {
-    display: 0px;
-  }
-
-  .people-tree-cell-wrapper {
-    top: 32px;
-  }
 }

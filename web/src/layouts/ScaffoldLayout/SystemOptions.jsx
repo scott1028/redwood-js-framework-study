@@ -7,12 +7,12 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
 import { styled } from '@mui/material/styles'
 
-import { useMutation, useQuery } from '@redwoodjs/web'
+import { useQuery } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Person/PeopleTreeCell'
 
-import { useScaffoldContext, OPTIONS } from './contexts'
+import { useScaffoldContext, OPTIONS } from './contexts/optionContext'
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -26,6 +26,10 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 })
 
+const StyledMuiFormGroup = styled(FormGroup)`
+  flex-wrap: nowrap;
+`
+
 const ButtonWrapper = styled('div')({
   display: 'flex',
 })
@@ -35,11 +39,6 @@ const StyledButton = styled(Button)({
 })
 
 const uploadFile = (file, contentType, target, refetch) => {
-  // const formData = new FormData()
-  // formData.append('file', file, file.name)
-
-  // target.addEventListener('change', function () {
-  // debugger
   let fr = new FileReader()
   fr.onload = async () => {
     const content = fr.result
@@ -77,7 +76,6 @@ const uploadFile = (file, contentType, target, refetch) => {
       })
   }
   fr.readAsText(file)
-  // })
 }
 
 const SystemOptions = () => {
@@ -90,7 +88,7 @@ const SystemOptions = () => {
     uploadFile(file, 'text/plain', event.target, refetch)
   }, [refetch])
   return (
-    <FormGroup row>
+    <StyledMuiFormGroup row>
       {OPTIONS.map((option) => (
         <FormControlLabel
           key={option.key}
@@ -117,7 +115,7 @@ const SystemOptions = () => {
           <VisuallyHiddenInput type="file" onChange={handleFileChange} />
         </StyledButton>
       </ButtonWrapper>
-    </FormGroup>
+    </StyledMuiFormGroup>
   )
 }
 
