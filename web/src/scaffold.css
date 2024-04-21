@@ -448,6 +448,19 @@ body {
   span.is-viewed {
     color: unset;
   }
+
+  /**
+   * lock page style while printing
+   * ref: https://stackoverflow.com/questions/57886550/hide-vertical-scrollbar-in-chrome-while-printing
+   */
+  /* @page {
+    size: A4 portrait;
+    margin:1cm;
+  } */
+
+  ::-webkit-scrollbar {
+      display: none;
+  }
 }
 
 textarea {

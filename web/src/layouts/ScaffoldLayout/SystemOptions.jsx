@@ -41,6 +41,10 @@ const StyledButton = styled(Button)({
   alignSelf: 'center',
 })
 
+const StyledFormControlLabel = styled(FormControlLabel)({
+  pointerEvents: 'none',
+})
+
 const uploadFile = (file, contentType, target, refetch) => {
   let fr = new FileReader()
   fr.onload = async () => {
@@ -131,7 +135,7 @@ const SystemOptions = () => {
       >
         {OPTIONS.map((option) => (
           <MenuItem key={option.key} onClick={getOnMenuItemClicked(option.key)}>
-            <FormControlLabel
+            <StyledFormControlLabel
               control={
                 <Checkbox checked={state[option.key]} name={option.key} />
               }
