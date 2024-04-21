@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -e "`which git`" ] && git update-index --skip-worktree .yarnrc.yml
+
