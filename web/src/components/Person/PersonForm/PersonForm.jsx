@@ -17,9 +17,10 @@ import {
 import Select from './components/Select'
 
 export const idTOLabel_x2 = {
-  0: '0刪除',
+  0: '0留白',
   1: '1宗親',
   2: '2配偶',
+  3: '3姻親',
 }
 
 export const idTOLabel_x3 = {
@@ -81,8 +82,53 @@ export const idTOLabel_x4 = {
 /* - '排行' --- x5 */
 
 export const idTOLabel_x6 = {
-  1: '男',
+  1: '子',
   2: '女',
+  3: '♂',
+  4: '♀',
+}
+
+export const idTOLabel_x81 = {
+  1: '甲',
+  2: '乙',
+  3: '丙',
+  4: '丁',
+  5: '戊',
+  6: '己',
+  7: '庚',
+  8: '辛',
+  9: '壬',
+  10: '癸',
+}
+
+export const idTOLabel_x82 = {
+  1: '子',
+  2: '丑',
+  3: '寅',
+  4: '卯',
+  5: '辰',
+  6: '巳',
+  7: '午',
+  8: '未',
+  9: '申',
+  10: '酉',
+  11: '戌',
+  12: '亥',
+}
+
+export const idTOLabel_x83 = {
+  1: '鼠',
+  2: '牛',
+  3: '虎',
+  4: '兔',
+  5: '龍',
+  6: '蛇',
+  7: '馬',
+  8: '羊',
+  9: '猴',
+  10: '雞',
+  11: '狗',
+  12: '豬',
 }
 
 export const idTOLabel_q1 = {
