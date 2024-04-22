@@ -8,6 +8,7 @@ import {
 } from './contexts/optionContext'
 import Headline from './Headline'
 import Main from './Main'
+import Statistics from './Statistics'
 import SystemOptions from './SystemOptions'
 
 const Header = styled('div')`
@@ -52,6 +53,9 @@ const ScaffoldLayout = ({
           </div>
           <div>
             <SystemOptions />
+          </div>
+          <div>
+            <Statistics />
           </div>
         </Header>
         <Main>{children}</Main>
