@@ -47,6 +47,10 @@ export const OPTIONS = [
     key: 'option21',
     label: '備註',
   },
+  {
+    key: 'isExpandedByDefault',
+    label: '預設展開',
+  },
 ]
 
 export const REGISTERS = [
