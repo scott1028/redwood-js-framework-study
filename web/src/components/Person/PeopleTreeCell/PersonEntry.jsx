@@ -13,6 +13,9 @@ import {
   // idTOLabel_x3,
   // idTOLabel_x4,
   idTOLabel_x6,
+  idTOLabel_x81,
+  idTOLabel_x82,
+  idTOLabel_x83,
   // idTOLabel_q1,
   // idTOLabel_q2,
   // idTOLabel_n1,
@@ -87,6 +90,22 @@ const StyledExpandableWrapper = styled('span')`
   vertical-align: bottom;
 `
 
+function year_x81(x8) {
+  if (x8 > 999) {
+    return ((x8 + 6) % 10) + 1
+  } else {
+    return ((x8 + 7) % 10) + 1
+  }
+}
+
+function year_x82(x8) {
+  if (x8 > 999) {
+    return ((x8 + 8) % 12) + 1
+  } else {
+    return ((x8 + 11) % 12) + 1
+  }
+}
+
 // treeView style, ref: https://iamkate.com/code/tree-views/
 const PersonEntry = (props) => {
   const {
@@ -95,7 +114,7 @@ const PersonEntry = (props) => {
     x6,
     name,
     x8,
-    x9,
+    // x9,
     m1,
     m2,
     m3,
@@ -108,7 +127,7 @@ const PersonEntry = (props) => {
   } = props
   const [options] = useScaffoldContext()
   const { maried1, maried2, maried3, childrenItems, ...restProps } = props
-  const [isExpanded, setExpand] = useState(true)
+  const [isExpanded, setExpand] = useState(false)
   return (
     <StyledLi>
       <StyledSpan className="item-wrapper">
@@ -144,21 +163,43 @@ const PersonEntry = (props) => {
             </span>
           </StyledExpandableWrapper>
           {options.option5 && x5}
-          {options.option6 && <>{idTOLabel_x6[x6]} </>}
-          {name ?? id}
-          {options.option1 && <>({id})</>}
-          {options.option8 && <>({x8})</>}
-          {options.option9 && <>({x9})</>}
+          {options.option6 && x6 && <>{idTOLabel_x6[x6]} </>}
+          {name ?? id} {options.option1 && <>({id})</>}
+          {(options.option8 || options.option81 || options.option82) && x8 && (
+            <>
+              {'('}
+              {options.option8 && <>{x8}</>}
+              {options.option81 && <>{idTOLabel_x81[year_x81(x8)]}</>}
+              {options.option81 && <>{idTOLabel_x82[year_x82(x8)]}</>}
+              {options.option82 && <>{idTOLabel_x83[year_x82(x8)]}</>}
+              {')'}
+            </>
+          )}
           {options.option22 && (
             <>{[z1, z2, z3].join('') ? `(${[z1, z2, z3].join('-')})` : ''}</>
           )}
           {maried1 && (
             <>
               {', '}
-              {maried1.name ?? m1}
-              {options.option1 && <>({m1})</>}
-              {options.option8 && <>({maried1.x8})</>}
-              {options.option9 && <>({maried1.x9})</>}
+              {maried1.name ?? m1} {options.option1 && <>({m1})</>}
+              {(options.option8 || options.option81 || options.option82) &&
+                maried1.x8 && (
+                  <>
+                    {'('}
+                    {options.option8 && <>{maried1.x8}</>}
+                    {options.option81 && (
+                      <>{idTOLabel_x81[year_x81(maried1.x8)]}</>
+                    )}
+                    {options.option81 && (
+                      <>{idTOLabel_x82[year_x82(maried1.x8)]}</>
+                    )}
+                    {options.option82 && (
+                      <>{idTOLabel_x83[year_x82(maried1.x8)]}</>
+                    )}
+                    {')'}
+                  </>
+                )}
+              {options.option9 && maried1.x9 && <>({maried1.x9})</>}
               {options.option22 && (
                 <>
                   {[maried1.z1, maried1.z2, maried1.z3].join('')
@@ -171,10 +212,25 @@ const PersonEntry = (props) => {
           {maried2 && (
             <>
               {', '}
-              {maried2.name ?? m2}
-              {options.option1 && <>({m2})</>}
-              {options.option8 && <>({maried2.x8})</>}
-              {options.option9 && <>({maried2.x9})</>}
+              {maried2.name ?? m2} {options.option1 && <>({m2})</>}
+              {(options.option8 || options.option81 || options.option82) &&
+                maried2.x8 && (
+                  <>
+                    {'('}
+                    {options.option8 && <>{maried1.x8}</>}
+                    {options.option81 && (
+                      <>{idTOLabel_x81[year_x81(maried2.x8)]}</>
+                    )}
+                    {options.option81 && (
+                      <>{idTOLabel_x82[year_x82(maried2.x8)]}</>
+                    )}
+                    {options.option82 && (
+                      <>{idTOLabel_x83[year_x82(maried2.x8)]}</>
+                    )}
+                    {')'}
+                  </>
+                )}
+              {options.option9 && maried2.x9 && <>({maried2.x9})</>}
               {options.option22 && (
                 <>
                   {[maried2.z1, maried2.z2, maried2.z3].join('')
@@ -187,10 +243,25 @@ const PersonEntry = (props) => {
           {maried3 && (
             <>
               {', '}
-              {maried3.name ?? m3}
-              {options.option1 && <>({m3})</>}
-              {options.option8 && <>({maried3.x8})</>}
-              {options.option9 && <>({maried3.x9})</>}
+              {maried3.name ?? m3} {options.option1 && <>({m3})</>}
+              {(options.option8 || options.option81 || options.option82) &&
+                maried3.x8 && (
+                  <>
+                    {'('}
+                    {options.option8 && <>{maried1.x8}</>}
+                    {options.option81 && (
+                      <>{idTOLabel_x81[year_x81(maried3.x8)]}</>
+                    )}
+                    {options.option81 && (
+                      <>{idTOLabel_x82[year_x82(maried3.x8)]}</>
+                    )}
+                    {options.option82 && (
+                      <>{idTOLabel_x83[year_x82(maried3.x8)]}</>
+                    )}
+                    {')'}
+                  </>
+                )}
+              {options.option9 && maried3.x9 && <>({maried3.x9})</>}
               {options.option22 && (
                 <>
                   {[maried3.z1, maried3.z2, maried3.z3].join('')

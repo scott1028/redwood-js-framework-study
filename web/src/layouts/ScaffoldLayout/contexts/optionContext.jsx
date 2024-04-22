@@ -25,23 +25,27 @@ export const OPTIONS = [
   },
   {
     key: 'option8',
-    label: '年次',
+    label: '出生',
+  },
+  {
+    key: 'option81',
+    label: '歲次',
+  },
+  {
+    key: 'option82',
+    label: '生肖',
   },
   {
     key: 'option9',
     label: '享年',
   },
   {
-    key: 'option21',
-    label: '備註',
-  },
-  {
     key: 'option22',
     label: '祿位',
   },
   {
-    key: 'option00',
-    label: '細目',
+    key: 'option21',
+    label: '備註',
   },
 ]
 
