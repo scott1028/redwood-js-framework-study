@@ -127,7 +127,7 @@ const PersonEntry = (props) => {
   } = props
   const [options] = useScaffoldContext()
   const { maried1, maried2, maried3, childrenItems, ...restProps } = props
-  const [isExpanded, setExpand] = useState(false)
+  const [isExpanded, setExpand] = useState(options.isExpandedByDefault)
   return (
     <StyledLi>
       <StyledSpan className="item-wrapper">
