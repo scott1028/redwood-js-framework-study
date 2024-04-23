@@ -114,7 +114,7 @@ const PersonEntry = (props) => {
     x6,
     name,
     x8,
-    // x9,
+    x9,
     m1,
     m2,
     m3,
@@ -175,6 +175,7 @@ const PersonEntry = (props) => {
               {')'}
             </>
           )}
+          {options.option9 && x9 && <>({x9})</>}
           {options.option22 && (
             <>{[z1, z2, z3].join('') ? `(${[z1, z2, z3].join('-')})` : ''}</>
           )}
