@@ -16,6 +16,7 @@ const BottomSection = styled(Box)`
   position: relative;
   height: 220px;
   overflow: auto;
+  flex-shrink: 0;
 
   @media print {
     display: none;
