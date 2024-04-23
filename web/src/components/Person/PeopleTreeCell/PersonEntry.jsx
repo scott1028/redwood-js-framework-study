@@ -90,6 +90,10 @@ const StyledExpandableWrapper = styled('span')`
   vertical-align: bottom;
 `
 
+const StyledPresentationSpan = styled('span')`
+  white-space: ${(props) => (props.isNotAutoWrap ? 'nowrap' : 'normal')};
+`
+
 function year_x81(x8) {
   if (x8 > 999) {
     return ((x8 + 6) % 10) + 1
@@ -133,7 +137,8 @@ const PersonEntry = (props) => {
       <StyledSpan className="item-wrapper">
         <span className="line"></span>
         <span className="line-left"></span>
-        <span
+        <StyledPresentationSpan
+          isNotAutoWrap={options.isNotAutoWrap}
           className={`${viewDetail && viewDetail.id === id ? 'is-viewed' : ''}`}
           onClick={() => {
             if (!childrenItems?.length) {
@@ -275,7 +280,7 @@ const PersonEntry = (props) => {
           {options.option21 && <>{note ? ` -- ${note} ` : ''}</>}
           {/* TODO: search "option1" in source code your find where it defined */}
           {/*options.option1 && '上方 option1 已經打勾'*/}
-        </span>
+        </StyledPresentationSpan>
         <StyledButton
           variant="outlined"
           size="small"

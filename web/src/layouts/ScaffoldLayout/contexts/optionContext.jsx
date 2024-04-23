@@ -48,6 +48,10 @@ export const OPTIONS = [
     label: '備註',
   },
   {
+    key: 'isNotAutoWrap',
+    label: '不自動換行',
+  },
+  {
     key: 'isExpandedByDefault',
     label: '預設展開',
   },
