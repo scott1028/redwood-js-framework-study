@@ -55,6 +55,10 @@ export const OPTIONS = [
     key: 'isExpandedByDefault',
     label: '預設展開',
   },
+  {
+    key: 'noHintInMemorialTablet',
+    label: 'Tablet不顯示X1',
+  },
 ]
 
 export const REGISTERS = [

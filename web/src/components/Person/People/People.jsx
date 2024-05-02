@@ -36,6 +36,8 @@ const PeopleList = ({ people }) => {
     }
   }
 
+  console.debug('routes:', routes)
+
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
       <table className="rw-table">
@@ -50,8 +52,8 @@ const PeopleList = ({ people }) => {
             <tr key={person.x1}>
               <td>
                 <Link
-                  to={routes.peopleTree({ x1: person.x1 })}
-                  title={'Show person ' + person.x1 + ' detail'}
+                  to={routes.personTree({ x1: person.x1 })}
+                  title={`Show person ${person.x1} detail`}
                 >
                   {truncate(person.x1)}
                 </Link>
