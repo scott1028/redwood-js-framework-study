@@ -90,7 +90,9 @@ const StyledExpandableWrapper = styled('span')`
   vertical-align: bottom;
 `
 
-const StyledPresentationSpan = styled('span')`
+const StyledPresentationSpan = styled(({ isNotAutoWrap: _, ...props }) => (
+  <span {...props} />
+))`
   white-space: ${(props) => (props.isNotAutoWrap ? 'nowrap' : 'normal')};
 `
 
