@@ -27,13 +27,7 @@ const Header = styled('div')`
   }
 `
 
-const ScaffoldLayout = ({
-  title,
-  titleTo,
-  homeButtonLabel,
-  homeButtonTo,
-  children,
-}) => {
+const ScaffoldLayout = ({ children }) => {
   const stateControl = useScaffoldReducer()
   return (
     <ScaffoldContextProvider value={stateControl}>
@@ -44,12 +38,7 @@ const ScaffoldLayout = ({
         />
         <Header className="rw-header">
           <div>
-            <Headline
-              title={title}
-              titleTo={titleTo}
-              homeButtonTo={homeButtonTo}
-              homeButtonLabel={homeButtonLabel}
-            />
+            <Headline />
           </div>
           <div>
             <SystemOptions />

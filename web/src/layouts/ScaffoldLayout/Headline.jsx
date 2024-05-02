@@ -1,33 +1,34 @@
 import Button from '@mui/material/Button'
 
-import { useLocation } from '@redwoodjs/router'
-import { Link, routes } from '@redwoodjs/router'
+import { useLocation, Link, routes } from '@redwoodjs/router'
 
 import { useScaffoldContext } from './contexts/optionContext'
 
-const dataKey = 'x1'
+const DATA_KEY = 'x1'
+const TITLE = 'People'
+const TITLE_TO = 'people'
+const HOME_BUTTON_LABEL = 'TreeView'
+const HOME_BUTTON_TO = 'root'
+const PEOPLE_MEMORIAL_TABLET_LABEL = 'Memorial Tablet'
+const PEOPLE_MEMORIAL_TABLET_LABEL_TO = 'peopleMemorialTablet'
 
-const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
+const Headline = () => {
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
   const [options] = useScaffoldContext()
-  const dataKeyValue = queryParams.get(dataKey) || options.register1
+  const dataKeyValue = queryParams.get(DATA_KEY) || options.register1
   return (
     <>
-      {homeButtonTo && (
-        <Link to={routes[homeButtonTo]()}>
-          <Button>{homeButtonLabel}</Button>
-        </Link>
-      )}
-      {titleTo && (
-        <Link to={routes[titleTo]()}>
-          <Button>{title}</Button>
-        </Link>
-      )}
+      <Link to={routes[HOME_BUTTON_TO]()}>
+        <Button>{HOME_BUTTON_LABEL}</Button>
+      </Link>
+      <Link to={routes[TITLE_TO]()}>
+        <Button>{TITLE}</Button>
+      </Link>
       {dataKeyValue && (
         <Link
-          to={routes.peopleTree({ x1: dataKeyValue })}
-          title={'Show person ' + dataKeyValue + ' detail'}
+          to={routes.personTree({ x1: dataKeyValue })}
+          title={`Show person ${dataKeyValue} detail`}
           style={{ marginLeft: 8 }}
         >
           <Button>
@@ -36,7 +37,9 @@ const Headline = ({ title, titleTo, homeButtonTo, homeButtonLabel }) => {
           </Button>
         </Link>
       )}
-      <div></div>
+      <Link to={routes[PEOPLE_MEMORIAL_TABLET_LABEL_TO]()}>
+        <Button>{PEOPLE_MEMORIAL_TABLET_LABEL}</Button>
+      </Link>
     </>
   )
 }
