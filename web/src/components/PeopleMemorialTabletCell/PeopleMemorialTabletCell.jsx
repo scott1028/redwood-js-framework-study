@@ -102,7 +102,7 @@ const TableCell = styled(
   minWidth: '15px',
   minHeight: '25px',
   outline: `${theme.palette.common.black} solid 1px`,
-  textAlign: 'center',
+  textAlign: isEmpty ? 'center' : 'start',
   writingMode: isEmpty ? 'horizontal-tb' : 'vertical-rl',
   verticalAlign: 'middle',
   color: isEmpty
@@ -113,6 +113,7 @@ const TableCell = styled(
     ? theme.palette.error.main
     : theme.palette.info.main,
   '@media print': {
+    ...theme.typography.body2,
     color: 'var(--basic-color)',
   },
 }))
