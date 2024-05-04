@@ -110,11 +110,12 @@ const TableCell = styled(
       ? 'var(--basic-color)'
       : theme.palette.grey[500]
     : isMulti
-    ? theme.palette.error.main
-    : theme.palette.info.main,
+      ? theme.palette.error.main
+      : theme.palette.info.main,
   '@media print': {
     ...theme.typography.body2,
     color: 'var(--basic-color)',
+    writingMode: isHeader ? 'vertical-rl' : 'horizontal-tb',
   },
 }))
 
@@ -142,6 +143,17 @@ export const Success = ({ people, z1 = 1 }) => {
     })
   return (
     <Table>
+      <TableRow>
+        <TableCell isEmpty isHeader />
+        {Array.from({ length: MAX_COLUMN }, (_, colIdx) => (
+          <TableCell
+            key={colIdx}
+            isEmpty
+          >
+            {INDEX_TO_COLUMN_MAP_ROOT[colIdx]}
+          </TableCell>
+        ))}
+      </TableRow>
       {Array.from({ length: MAX_ROWS }, (_, rowIdx) => {
         const rowNum = rowIdx + 1
         const positionMap =
@@ -163,15 +175,14 @@ export const Success = ({ people, z1 = 1 }) => {
                   {isEmpty
                     ? positionMap[colIdx]
                     : people
-                        .map(
-                          (item) =>
-                            `${item.label}${
-                              options.noHintInMemorialTablet
-                                ? ''
-                                : `(${item.x1})`
-                            }`
-                        )
-                        .join(', ')}
+                      .map(
+                        (item) =>
+                          `${item.label}${options.noHintInMemorialTablet
+                            ? ''
+                            : `(${item.x1})`
+                          }`
+                      )
+                      .join(', ')}
                 </TableCell>
               )
             })}
