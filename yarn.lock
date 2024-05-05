@@ -2702,6 +2702,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/noto-sans-tc@npm:^5.0.19":
+  version: 5.0.19
+  resolution: "@fontsource/noto-sans-tc@npm:5.0.19"
+  checksum: 10c0/2decca022f063092a9085b4ced533af797c3c222a4d4f739f4d62a3e4678c2e5de24fc1d6f5f46458a898d5afc7d605c4de0e6204e8a4ed327a552244442652e
+  languageName: node
+  linkType: hard
+
 "@fontsource/roboto@npm:^5.0.13":
   version: 5.0.13
   resolution: "@fontsource/roboto@npm:5.0.13"
@@ -18446,6 +18453,7 @@ __metadata:
   dependencies:
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
+    "@fontsource/noto-sans-tc": "npm:^5.0.19"
     "@fontsource/roboto": "npm:^5.0.13"
     "@mui/icons-material": "npm:^5.15.15"
     "@mui/material": "npm:^5.15.15"

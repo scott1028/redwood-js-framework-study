@@ -97,7 +97,9 @@ const TableRow = styled(({ pageBreakAfter: _, ...props }) => (
   pageBreakAfter,
 }))
 
-const TableCell = styled(({ isEmpty: _, ...props }) => <div {...props} />)(
+const TableCell = styled(({ isEmpty: _, writingModes: _$, ...props }) => (
+  <div {...props} />
+))(
   ({
     theme,
     writingModes = ['vertical-rl', 'horizontal-tb'],
