@@ -25,7 +25,7 @@ export default DevFatalErrorPage ||
               main {
                 display: flex;
                 align-items: center;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Noto Sans TC", sans-serif;
+                font-family: "Han Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
                 text-align: center;
                 background-color: #E2E8F0;
                 height: 100vh;
