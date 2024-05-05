@@ -89,35 +89,44 @@ const Table = styled('div')(({ theme }) => ({
   },
 }))
 
-const TableRow = styled('div')({
+const TableRow = styled(({ pageBreakAfter: _, ...props }) => (
+  <div {...props} />
+))(({ pageBreakAfter }) => ({
   display: 'table-row',
-})
-
-const TableCell = styled(
-  ({ isEmpty: _, isMulti: _$, isHeader: _$$, ...props }) => <div {...props} />
-)(({ theme, isEmpty, isMulti, isHeader }) => ({
-  '--basic-color': theme.palette.common.dark,
-  display: 'table-cell',
-  padding: theme.spacing(0.5),
-  minWidth: '15px',
-  minHeight: '25px',
-  outline: `${theme.palette.common.black} solid 1px`,
-  textAlign: isEmpty ? 'center' : 'start',
-  writingMode: isEmpty ? 'horizontal-tb' : 'vertical-rl',
-  verticalAlign: 'middle',
-  color: isEmpty
-    ? isHeader
-      ? 'var(--basic-color)'
-      : theme.palette.grey[500]
-    : isMulti
-      ? theme.palette.error.main
-      : theme.palette.info.main,
-  '@media print': {
-    ...theme.typography.body2,
-    color: 'var(--basic-color)',
-    writingMode: isHeader ? 'vertical-rl' : 'horizontal-tb',
-  },
+  // NOTE: keep but no use now
+  pageBreakAfter,
 }))
+
+const TableCell = styled(({ isEmpty: _, ...props }) => <div {...props} />)(
+  ({
+    theme,
+    writingModes = ['vertical-rl', 'horizontal-tb'],
+    color = 'var(--basic-color)',
+    isEmpty,
+  }) => ({
+    '--basic-color': theme.palette.common.black,
+    '--occupied-color': theme.palette.info.main,
+    '--conflict-color': theme.palette.error.main,
+    '--empty-color': theme.palette.grey[500],
+    display: 'table-cell',
+    padding: theme.spacing(0.5),
+    minWidth: '15px',
+    minHeight: '25px',
+    outline: `${theme.palette.common.black} solid 1px`,
+    textAlign: isEmpty ? 'center' : 'start',
+    writingMode: writingModes[0],
+    verticalAlign: 'middle',
+    color,
+    '@media print': {
+      ...theme.typography.body2,
+      color: 'var(--basic-color)',
+      writingMode: writingModes[1] ?? writingModes[0],
+      '@page': {
+        size: 'landscape',
+      },
+    },
+  })
+)
 
 export const Success = ({ people, z1 = 1 }) => {
   const [options] = useScaffoldContext()
@@ -144,12 +153,9 @@ export const Success = ({ people, z1 = 1 }) => {
   return (
     <Table>
       <TableRow>
-        <TableCell isEmpty isHeader />
+        <TableCell />
         {Array.from({ length: MAX_COLUMN }, (_, colIdx) => (
-          <TableCell
-            key={colIdx}
-            isEmpty
-          >
+          <TableCell key={colIdx} isEmpty writingModes={['horizontal-tb']}>
             {INDEX_TO_COLUMN_MAP_ROOT[colIdx]}
           </TableCell>
         ))}
@@ -160,29 +166,38 @@ export const Success = ({ people, z1 = 1 }) => {
           rowNum === 1 ? INDEX_TO_COLUMN_MAP_ROOT : INDEX_TO_COLUMN_MAP
         return (
           <TableRow key={rowIdx}>
-            <TableCell isEmpty isHeader>
+            <TableCell isEmpty writingModes={['horizontal-tb', 'vertical-rl']}>
               第 {rowNum} 列
             </TableCell>
             {Array.from({ length: MAX_COLUMN }, (_, colIdx) => {
               const people = positionCandidateMap[rowNum]?.[colIdx] ?? []
               const isEmpty = people.length === 0
+              const isMulti = people.length > 1
               return (
                 <TableCell
                   key={colIdx}
                   isEmpty={isEmpty}
-                  isMulti={positionCandidateMap[rowNum]?.[colIdx]?.length > 1}
+                  writingModes={isEmpty ? ['horizontal-tb'] : ['vertical-rl']}
+                  color={
+                    isEmpty
+                      ? 'var(--empty-color)'
+                      : isMulti
+                      ? 'var(--conflict-color)'
+                      : 'var(--occupied-color)'
+                  }
                 >
                   {isEmpty
                     ? positionMap[colIdx]
                     : people
-                      .map(
-                        (item) =>
-                          `${item.label}${options.noHintInMemorialTablet
-                            ? ''
-                            : `(${item.x1})`
-                          }`
-                      )
-                      .join(', ')}
+                        .map(
+                          (item) =>
+                            `${item.label}${
+                              options.noHintInMemorialTablet
+                                ? ''
+                                : `(${item.x1})`
+                            }`
+                        )
+                        .join(', ')}
                 </TableCell>
               )
             })}
