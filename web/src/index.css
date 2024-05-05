@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Han Sans TC';
+  font-style: normal;
+  font-display: swap;
+  src: url('../public/SourceHanSansTC-VF.otf.woff2') format('woff2');
+  /* The default unicode range in CSS is U+0-10FFFF, which includes all possible Unicode characters */
+}
