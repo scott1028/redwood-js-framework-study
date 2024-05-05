@@ -123,9 +123,9 @@ const TableCell = styled(({ isEmpty: _, writingModes: _$, ...props }) => (
       ...theme.typography.body2,
       color: 'var(--basic-color)',
       writingMode: writingModes[1] ?? writingModes[0],
-      '@page': {
-        size: 'landscape',
-      },
+      // '@page': {
+      //   size: 'landscape',
+      // },
     },
   })
 )
@@ -184,22 +184,21 @@ export const Success = ({ people, z1 = 1 }) => {
                     isEmpty
                       ? 'var(--empty-color)'
                       : isMulti
-                      ? 'var(--conflict-color)'
-                      : 'var(--occupied-color)'
+                        ? 'var(--conflict-color)'
+                        : 'var(--occupied-color)'
                   }
                 >
                   {isEmpty
                     ? positionMap[colIdx]
                     : people
-                        .map(
-                          (item) =>
-                            `${item.label}${
-                              options.noHintInMemorialTablet
-                                ? ''
-                                : `(${item.x1})`
-                            }`
-                        )
-                        .join(', ')}
+                      .map(
+                        (item) =>
+                          `${item.label}${options.noHintInMemorialTablet
+                            ? ''
+                            : `(${item.x1})`
+                          }`
+                      )
+                      .join(', ')}
                 </TableCell>
               )
             })}
