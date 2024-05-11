@@ -31,6 +31,9 @@ const READABLE_PROPERTY_KEYS = [
   'z2',
   'z3',
   'label',
+  'b1',
+  'b2',
+  'b3',
 ]
 
 export const QUERY = gql`
@@ -61,6 +64,9 @@ export const QUERY = gql`
       z2
       z3
       label
+      b1
+      b2
+      b3
     }
   }
 `

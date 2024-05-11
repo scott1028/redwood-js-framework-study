@@ -48,6 +48,9 @@ model Person {
   z2    Int?
   z3    Int?
   label String?
+  b1    Int?
+  b2    Int?
+  b3    Int?
 
   parent   Person?  @relation("PersonToParent", fields: [p0], references: [x1])
   children Person[] @relation("PersonToParent")

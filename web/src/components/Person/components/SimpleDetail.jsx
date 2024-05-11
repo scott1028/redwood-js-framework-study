@@ -55,6 +55,9 @@ export const SimpleDetail = ({ person }) => {
               <td>{person.z2}</td>
               <td>{person.z3}</td>
               <td>{person.label}</td>
+              <td>{person.b1}</td>
+              <td>{person.b2}</td>
+              <td>{person.b3}</td>
             </tr>
           ))}
         </tbody>

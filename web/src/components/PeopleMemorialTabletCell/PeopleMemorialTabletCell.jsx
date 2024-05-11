@@ -30,6 +30,9 @@ export const QUERY = gql`
       z2
       z3
       label
+      b1
+      b2
+      b3
     }
   }
 `
@@ -184,21 +187,22 @@ export const Success = ({ people, z1 = 1 }) => {
                     isEmpty
                       ? 'var(--empty-color)'
                       : isMulti
-                        ? 'var(--conflict-color)'
-                        : 'var(--occupied-color)'
+                      ? 'var(--conflict-color)'
+                      : 'var(--occupied-color)'
                   }
                 >
                   {isEmpty
                     ? positionMap[colIdx]
                     : people
-                      .map(
-                        (item) =>
-                          `${item.label}${options.noHintInMemorialTablet
-                            ? ''
-                            : `(${item.x1})`
-                          }`
-                      )
-                      .join(', ')}
+                        .map(
+                          (item) =>
+                            `${item.label}${
+                              options.noHintInMemorialTablet
+                                ? ''
+                                : `(${item.x1})`
+                            }`
+                        )
+                        .join(', ')}
                 </TableCell>
               )
             })}

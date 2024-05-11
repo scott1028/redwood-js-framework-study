@@ -25,6 +25,9 @@ export const schema = gql`
     z2: Int
     z3: Int
     label: String
+    b1: Int
+    b2: Int
+    b3: Int
     parent: Person
     children: [Person]!
   }
@@ -59,6 +62,9 @@ export const schema = gql`
     z2: Int
     z3: Int
     label: String
+    b1: Int
+    b2: Int
+    b3: Int
   }
 
   input UpdatePersonInput {
@@ -86,6 +92,9 @@ export const schema = gql`
     z2: Int
     z3: Int
     label: String
+    b1: Int
+    b2: Int
+    b3: Int
   }
 
   type Mutation {

@@ -30,6 +30,9 @@ export const QUERY = gql`
       z2
       z3
       label
+      b1
+      b2
+      b3
     }
   }
 `
