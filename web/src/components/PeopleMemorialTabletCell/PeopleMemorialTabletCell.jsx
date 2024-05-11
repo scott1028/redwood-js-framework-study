@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 import { styled } from '@mui/material/styles'
 
 import { useScaffoldContext } from '../../layouts/ScaffoldLayout/contexts/optionContext'
@@ -100,9 +102,9 @@ const TableRow = styled(({ pageBreakAfter: _, ...props }) => (
   pageBreakAfter,
 }))
 
-const TableCell = styled(({ isEmpty: _, writingModes: _$, ...props }) => (
-  <div {...props} />
-))(
+const TableCell = styled(
+  ({ isEmpty: _, writingModes: _$, color: _$$, ...props }) => <div {...props} />
+)(
   ({
     theme,
     writingModes = ['vertical-rl', 'horizontal-tb'],
@@ -113,6 +115,7 @@ const TableCell = styled(({ isEmpty: _, writingModes: _$, ...props }) => (
     '--occupied-color': theme.palette.info.main,
     '--conflict-color': theme.palette.error.main,
     '--empty-color': theme.palette.grey[500],
+    position: 'relative',
     display: 'table-cell',
     padding: theme.spacing(0.5),
     minWidth: '15px',
@@ -126,12 +129,33 @@ const TableCell = styled(({ isEmpty: _, writingModes: _$, ...props }) => (
       ...theme.typography.body2,
       color: 'var(--basic-color)',
       writingMode: writingModes[1] ?? writingModes[0],
-      // '@page': {
-      //   size: 'landscape',
-      // },
     },
   })
 )
+
+const TableCellDataWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const NameWrapper = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(0.5),
+}))
+
+const Divider = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  borderTop: `2px solid ${theme.palette.common.black}`,
+}))
+
+const BDataWrapper = styled('div')({
+  flexShrink: 0,
+  writingMode: 'horizontal-tb',
+  textAlign: 'center',
+  height: 20,
+})
 
 export const Success = ({ people, z1 = 1 }) => {
   const [options] = useScaffoldContext()
@@ -170,43 +194,72 @@ export const Success = ({ people, z1 = 1 }) => {
         const positionMap =
           rowNum === 1 ? INDEX_TO_COLUMN_MAP_ROOT : INDEX_TO_COLUMN_MAP
         return (
-          <TableRow key={rowIdx}>
-            <TableCell isEmpty writingModes={['horizontal-tb', 'vertical-rl']}>
-              第 {rowNum} 列
-            </TableCell>
-            {Array.from({ length: MAX_COLUMN }, (_, colIdx) => {
-              const people = positionCandidateMap[rowNum]?.[colIdx] ?? []
-              const isEmpty = people.length === 0
-              const isMulti = people.length > 1
-              return (
-                <TableCell
-                  key={colIdx}
-                  isEmpty={isEmpty}
-                  writingModes={isEmpty ? ['horizontal-tb'] : ['vertical-rl']}
-                  color={
+          <Fragment key={rowIdx}>
+            {rowNum === 2 && (
+              <TableRow>
+                <TableCell />
+                {Array.from({ length: MAX_COLUMN }, (_, colIdx) => (
+                  <TableCell
+                    key={colIdx}
                     isEmpty
-                      ? 'var(--empty-color)'
-                      : isMulti
-                      ? 'var(--conflict-color)'
-                      : 'var(--occupied-color)'
-                  }
-                >
-                  {isEmpty
-                    ? positionMap[colIdx]
-                    : people
-                        .map(
-                          (item) =>
-                            `${item.label}${
-                              options.noHintInMemorialTablet
-                                ? ''
-                                : `(${item.x1})`
-                            }`
-                        )
-                        .join(', ')}
-                </TableCell>
-              )
-            })}
-          </TableRow>
+                    writingModes={['horizontal-tb']}
+                  >
+                    {positionMap[colIdx]}
+                  </TableCell>
+                ))}
+              </TableRow>
+            )}
+            <TableRow>
+              <TableCell
+                isEmpty
+                writingModes={['horizontal-tb', 'vertical-rl']}
+              >
+                第 {rowNum} 列
+              </TableCell>
+              {Array.from({ length: MAX_COLUMN }, (_, colIdx) => {
+                const people = positionCandidateMap[rowNum]?.[colIdx] ?? []
+                const isEmpty = people.length === 0
+                const isMulti = people.length > 1
+                return (
+                  <TableCell
+                    key={colIdx}
+                    isEmpty={isEmpty}
+                    writingModes={isEmpty ? ['horizontal-tb'] : ['vertical-rl']}
+                    color={
+                      isEmpty
+                        ? 'var(--empty-color)'
+                        : isMulti
+                        ? 'var(--conflict-color)'
+                        : 'var(--occupied-color)'
+                    }
+                  >
+                    {isEmpty ? (
+                      <NameWrapper>{positionMap[colIdx]}</NameWrapper>
+                    ) : (
+                      <TableCellDataWrapper>
+                        <NameWrapper>
+                          {people
+                            .map(
+                              (item) =>
+                                `${item.label}${
+                                  options.noHintInMemorialTablet
+                                    ? ''
+                                    : `(${item.x1})`
+                                }`
+                            )
+                            .join(', ')}
+                        </NameWrapper>
+                        <BDataWrapper>
+                          <Divider />
+                          {isMulti ? '' : people[0].b1}
+                        </BDataWrapper>
+                      </TableCellDataWrapper>
+                    )}
+                  </TableCell>
+                )
+              })}
+            </TableRow>
+          </Fragment>
         )
       })}
     </Table>
