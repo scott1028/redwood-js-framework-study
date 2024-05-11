@@ -143,12 +143,11 @@ const NameWrapper = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(0.5),
 }))
 
-const Divider = styled('div')(({ theme }) => ({
+const Divider = styled('div')({
   position: 'absolute',
   left: 0,
   right: 0,
-  borderTop: `2px solid ${theme.palette.common.black}`,
-}))
+})
 
 const BDataWrapper = styled('div')({
   flexShrink: 0,
@@ -251,7 +250,7 @@ export const Success = ({ people, z1 = 1 }) => {
                         </NameWrapper>
                         <BDataWrapper>
                           <Divider />
-                          {isMulti ? '' : people[0].b1}
+                          <span>{isMulti ? '' : people[0].b1}</span>
                         </BDataWrapper>
                       </TableCellDataWrapper>
                     )}
