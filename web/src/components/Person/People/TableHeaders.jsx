@@ -25,6 +25,9 @@ const TableHeaders = () => (
     <th>列號</th>
     <th>座號</th>
     <th>25稱謂</th>
+    <th>b1</th>
+    <th>b2</th>
+    <th>b3</th>
   </>
 )
 

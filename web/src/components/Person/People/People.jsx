@@ -82,6 +82,9 @@ const PeopleList = ({ people }) => {
               <td>{truncate(person.z2)}</td>
               <td>{truncate(person.z3)}</td>
               <td>{truncate(person.label)}</td>
+              <td>{truncate(person.b1)}</td>
+              <td>{truncate(person.b2)}</td>
+              <td>{truncate(person.b3)}</td>
               <td>
                 <nav className="rw-table-actions">
                   {/* built-in but no-used page */}

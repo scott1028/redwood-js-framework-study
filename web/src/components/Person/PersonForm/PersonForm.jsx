@@ -585,6 +585,51 @@ const PersonForm = (props) => {
           emptyAs={'null'}
         />
         <FieldError name="label" className="rw-field-error" />
+        <Label
+          name="z3"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          b1：
+        </Label>
+        <NumberField
+          name="b1"
+          defaultValue={props.person?.b1}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="b1" className="rw-field-error" />
+        <Label
+          name="b1"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          b2：
+        </Label>
+        <NumberField
+          name="b2"
+          defaultValue={props.person?.b2}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="b2" className="rw-field-error" />
+        <Label
+          name="b3"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          b3：
+        </Label>
+        <NumberField
+          name="b3"
+          defaultValue={props.person?.b3}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          emptyAs={'null'}
+        />
+        <FieldError name="b3" className="rw-field-error" />
         {!props.children && (
           <div className="rw-button-group">
             <Button
