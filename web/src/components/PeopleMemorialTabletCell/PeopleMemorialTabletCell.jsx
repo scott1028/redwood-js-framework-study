@@ -194,7 +194,7 @@ export const Success = ({ people, z1 = 1 }) => {
           rowNum === 1 ? INDEX_TO_COLUMN_MAP_ROOT : INDEX_TO_COLUMN_MAP
         return (
           <Fragment key={rowIdx}>
-            {rowNum === 2 && (
+            {rowNum > 1 && (
               <TableRow>
                 <TableCell />
                 {Array.from({ length: MAX_COLUMN }, (_, colIdx) => (
@@ -233,7 +233,7 @@ export const Success = ({ people, z1 = 1 }) => {
                     }
                   >
                     {isEmpty ? (
-                      <NameWrapper>{positionMap[colIdx]}</NameWrapper>
+                      <NameWrapper></NameWrapper>
                     ) : (
                       <TableCellDataWrapper>
                         <NameWrapper>
