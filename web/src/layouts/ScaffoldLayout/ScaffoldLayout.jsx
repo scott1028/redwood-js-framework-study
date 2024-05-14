@@ -46,6 +46,9 @@ const ScaffoldLayout = ({ children }) => {
           <div>
             <Statistics />
           </div>
+          <div>
+            <a href="/myHome.html">My Html</a>
+          </div>
         </Header>
         <Main>{children}</Main>
       </div>
