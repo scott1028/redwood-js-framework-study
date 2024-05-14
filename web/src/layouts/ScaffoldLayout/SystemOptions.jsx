@@ -158,6 +158,9 @@ const SystemOptions = () => {
             </StyledButton>
           </ButtonWrapper>
         </MenuItem>
+        <MenuItem onClick={() => (location.href = '/myHome.html')}>
+          This is HTML
+        </MenuItem>
       </Menu>
     </StyledMuiFormGroup>
   )
