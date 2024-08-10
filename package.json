@@ -30,10 +30,13 @@
     "@mui/material": "^5.15.15",
     "clsx": "^2.1.0",
     "csv": "^6.3.8",
+    "sheetjs-ce-unofficial": "^0.20.2",
     "styled-components": "^6.1.8"
   },
   "scripts": {
     "postinstall": "./postinstall",
-    "format": "bash -c 'npx prettier --write ./'"
+    "format": "bash -c 'npx prettier --write ./'",
+    "parse-xlsx": "node -r ts-node/register ./scripts/parse-xlsx.ts",
+    "parse-xlsx:debug": "node -r ts-node/register --inspect-brk ./scripts/parse-xlsx.ts"
   }
 }
