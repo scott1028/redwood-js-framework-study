@@ -18461,6 +18461,7 @@ __metadata:
     "@redwoodjs/project-config": "npm:7.4.0"
     clsx: "npm:^2.1.0"
     csv: "npm:^6.3.8"
+    sheetjs-ce-unofficial: "npm:^0.20.2"
     styled-components: "npm:^6.1.8"
   languageName: unknown
   linkType: soft
@@ -18882,6 +18883,15 @@ __metadata:
   version: 3.0.0
   resolution: "shebang-regex@npm:3.0.0"
   checksum: 10c0/1dbed0726dd0e1152a92696c76c7f06084eb32a90f0528d11acd764043aacf76994b2fb30aa1291a21bd019d6699164d048286309a278855ee7bec06cf6fb690
+  languageName: node
+  linkType: hard
+
+"sheetjs-ce-unofficial@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "sheetjs-ce-unofficial@npm:0.20.2"
+  bin:
+    xlsx: bin/xlsx.njs
+  checksum: 10c0/67016b05b75062e781731687cf4327aa2df3981cfd98fc181096ff3c96e4575dd1c2625e860d7678324b60627502a3289efc44ffc0620a263ae5abe1f6050641
   languageName: node
   linkType: hard
 
