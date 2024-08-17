@@ -69,6 +69,9 @@ const main = () => {
   const getGeneration = getCheckGenerationFactory(headers)
   const getValueByData = getValueByDataFactory(rows)
   const output: Array<any> = []
+  output.push(
+    `index, rowIdx, cellIdx, value, generation, upValue, downValue, leftValue, rightValue`
+  )
   rows.forEach((row, rowIdx) =>
     row.forEach((value, cellIdx) => {
       const isValueChineseCharacters = getIsValueChineseCharacters(value)
@@ -79,20 +82,26 @@ const main = () => {
         const downValue = getValueBy.down()
         const leftValue = getValueBy.left()
         const rightValue = getValueBy.right()
-        output.push({
-          rowIdx,
-          cellIdx,
-          value,
-          generation,
-          upValue,
-          downValue,
-          leftValue,
-          rightValue,
-        })
+        // output.push({
+        //   rowIdx,
+        //   cellIdx,
+        //   value,
+        //   generation,
+        //   upValue,
+        //   downValue,
+        //   leftValue,
+        //   rightValue,
+        // })
+        output.push(
+          `${
+            +generation * 10000 + rowIdx + 1
+          }, ${rowIdx}, ${cellIdx}, ${value}, ${generation}, ${upValue}, ${downValue}, ${leftValue}, ${rightValue}\r\n`
+        )
       }
     })
   )
-  console.log(JSON.stringify(output, null, 2))
+  // console.log(JSON.stringify(output, null, 2))
+  console.log(output.join(''))
 }
 
 if (require.main === module) {
