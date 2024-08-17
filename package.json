@@ -8,7 +8,8 @@
   },
   "devDependencies": {
     "@redwoodjs/core": "7.4.0",
-    "@redwoodjs/project-config": "7.4.0"
+    "@redwoodjs/project-config": "7.4.0",
+    "@types/json2csv": "^5.0.7"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
@@ -30,6 +31,7 @@
     "@mui/material": "^5.15.15",
     "clsx": "^2.1.0",
     "csv": "^6.3.8",
+    "json2csv": "^6.0.0-alpha.2",
     "sheetjs-ce-unofficial": "^0.20.2",
     "styled-components": "^6.1.8"
   },

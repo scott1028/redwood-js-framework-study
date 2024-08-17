@@ -1,3 +1,4 @@
+import { Parser } from 'json2csv'
 import xlsx from 'sheetjs-ce-unofficial'
 
 const [_interpreter, _mainFilePath, inputFilePath] = process.argv
@@ -69,9 +70,9 @@ const main = () => {
   const getGeneration = getCheckGenerationFactory(headers)
   const getValueByData = getValueByDataFactory(rows)
   const output: Array<any> = []
-  output.push(
-    `index, rowIdx, cellIdx, value, generation, upValue, downValue, leftValue, rightValue`
-  )
+  // output.push(
+  //   `index, rowIdx, cellIdx, value, generation, upValue, downValue, leftValue, rightValue`
+  // )
   rows.forEach((row, rowIdx) =>
     row.forEach((value, cellIdx) => {
       const isValueChineseCharacters = getIsValueChineseCharacters(value)
@@ -82,26 +83,30 @@ const main = () => {
         const downValue = getValueBy.down()
         const leftValue = getValueBy.left()
         const rightValue = getValueBy.right()
-        // output.push({
-        //   rowIdx,
-        //   cellIdx,
-        //   value,
-        //   generation,
-        //   upValue,
-        //   downValue,
-        //   leftValue,
-        //   rightValue,
-        // })
-        output.push(
-          `${
-            +generation * 10000 + rowIdx + 1
-          }, ${rowIdx}, ${cellIdx}, ${value}, ${generation}, ${upValue}, ${downValue}, ${leftValue}, ${rightValue}\r\n`
-        )
+        output.push({
+          index: +generation * 10000 + rowIdx + 1,
+          // rowIdx,
+          // cellIdx,
+          value,
+          generation,
+          upValue,
+          downValue,
+          leftValue,
+          rightValue,
+        })
+        // output.push(
+        //   `${
+        //     +generation * 10000 + rowIdx + 1
+        //   }, ${rowIdx}, ${cellIdx}, ${value}, ${generation}, ${upValue}, ${downValue}, ${leftValue}, ${rightValue}\r\n`
+        // )
       }
     })
   )
+  const parser = new Parser({ eol: '\r\n' })
+  const csvContent = parser.parse(output)
+  console.log(csvContent)
   // console.log(JSON.stringify(output, null, 2))
-  console.log(output.join(''))
+  // console.log(output.join(''))
 }
 
 if (require.main === module) {
