@@ -5419,6 +5419,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@streamparser/json@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@streamparser/json@npm:0.0.6"
+  checksum: 10c0/09796b615ce199436afdcb529278ce3400a9b18259719b0f220ae36c840d67e8a755f70881e192e23def0c895fcf0c55e43f93221ea9fde75ba26c5acb556690
+  languageName: node
+  linkType: hard
+
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
   resolution: "@szmarczak/http-timer@npm:1.1.2"
@@ -5902,6 +5909,15 @@ __metadata:
   version: 1.0.36
   resolution: "@types/json-stable-stringify@npm:1.0.36"
   checksum: 10c0/c2f0d0075bd04681d664a7ac4ef5078289b2f790f9737cd3457b5cc199d39df2efe132e04574ad5f89c9ae50096d44c9ca5ec4aebcd6005b969009f725dbcb79
+  languageName: node
+  linkType: hard
+
+"@types/json2csv@npm:^5.0.7":
+  version: 5.0.7
+  resolution: "@types/json2csv@npm:5.0.7"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/cd8cd8fc67b119b83d544595cf46d062caccfb4034a940cf555860a6e383fb79e285a5a954961c85961a64a44bfd838eabb977b00b07f9e670c3c1dd61f2f8bf
   languageName: node
   linkType: hard
 
@@ -9002,7 +9018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^6.1.0":
+"commander@npm:^6.1.0, commander@npm:^6.2.0":
   version: 6.2.1
   resolution: "commander@npm:6.2.1"
   checksum: 10c0/85748abd9d18c8bc88febed58b98f66b7c591d9b5017cad459565761d7b29ca13b7783ea2ee5ce84bf235897333706c4ce29adf1ce15c8252780e7000e2ce9ea
@@ -14618,6 +14634,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json2csv@npm:^6.0.0-alpha.2":
+  version: 6.0.0-alpha.2
+  resolution: "json2csv@npm:6.0.0-alpha.2"
+  dependencies:
+    "@streamparser/json": "npm:^0.0.6"
+    commander: "npm:^6.2.0"
+    lodash.get: "npm:^4.4.2"
+  bin:
+    json2csv: bin/json2csv.js
+  checksum: 10c0/9d239a9dc6e7983832b75ebd98b77d891d2488613d964a0f519632560584e9b9f845ef879ad9014c7badff48f1f87ef4c285fe031719d0bebd9b8a58a3f0c25c
+  languageName: node
+  linkType: hard
+
 "json5@npm:^0.5.1":
   version: 0.5.1
   resolution: "json5@npm:0.5.1"
@@ -15025,6 +15054,13 @@ __metadata:
   version: 4.2.0
   resolution: "lodash.defaults@npm:4.2.0"
   checksum: 10c0/d5b77aeb702caa69b17be1358faece33a84497bcca814897383c58b28a2f8dfc381b1d9edbec239f8b425126a3bbe4916223da2a576bb0411c2cefd67df80707
+  languageName: node
+  linkType: hard
+
+"lodash.get@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "lodash.get@npm:4.4.2"
+  checksum: 10c0/48f40d471a1654397ed41685495acb31498d5ed696185ac8973daef424a749ca0c7871bf7b665d5c14f5cc479394479e0307e781f61d5573831769593411be6e
   languageName: node
   linkType: hard
 
@@ -18459,8 +18495,10 @@ __metadata:
     "@mui/material": "npm:^5.15.15"
     "@redwoodjs/core": "npm:7.4.0"
     "@redwoodjs/project-config": "npm:7.4.0"
+    "@types/json2csv": "npm:^5.0.7"
     clsx: "npm:^2.1.0"
     csv: "npm:^6.3.8"
+    json2csv: "npm:^6.0.0-alpha.2"
     sheetjs-ce-unofficial: "npm:^0.20.2"
     styled-components: "npm:^6.1.8"
   languageName: unknown
