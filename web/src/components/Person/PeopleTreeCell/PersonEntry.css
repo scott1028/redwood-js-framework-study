@@ -1,0 +1,45 @@
+ul {
+  position: relative;
+  list-style-type: none;
+}
+
+.line {
+  position: absolute;
+  border-bottom: 1px solid #bbb;
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  top: 10px;
+  left: 0px;
+}
+
+.line-left {
+  position: absolute;
+  border-left: 1px solid #bbb;
+  display: inline-block;
+  width: 0px;
+  height: 11px;
+  left: -1px;
+}
+
+ul:first-child > li > .item-wrapper > .line {
+  border: none;
+}
+
+ul:first-child > li > .item-wrapper > .line-left {
+  border: none;
+}
+
+.is-viewed {
+  background: green;
+  color: white;
+}
+
+span[role='presentation'] {
+  cursor: pointer;
+}
+
+.people-tree-cell-wrapper {
+  flex-direction: column;
+  display: flex;
+}

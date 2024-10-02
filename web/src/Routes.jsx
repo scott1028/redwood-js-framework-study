@@ -14,13 +14,21 @@ import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
-        <Route path="/users/new" page={UserNewUserPage} name="newUser" />
-        <Route path="/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
-        <Route path="/users/{id:Int}" page={UserUserPage} name="user" />
-        <Route path="/users" page={UserUsersPage} name="users" />
+      <Set wrap={ScaffoldLayout}>
+        <Route path="/peopleReport3" page={PeopleReport3Page} name="peopleReport3" />
+        <Route path="/peopleReport2" page={PeopleReport2Page} name="peopleReport2" />
+        <Route path="/peopleReport1" page={PeopleReport1Page} name="peopleReport1" />
+        <Route path="/peopleMemorialList" page={PeopleMemorialListPage} name="peopleMemorialList" />
+        <Route path="/peopleMemorialTablet" page={PeopleMemorialTabletPage} name="peopleMemorialTablet" />
+        <Route path="/peopleMemorialList/{z1:int}" page={PeopleMemorialListPage} name="peopleMemorialListBy" />
+        <Route path="/peopleMemorialTablet/{z1:int}" page={PeopleMemorialTabletPage} name="peopleMemorialTabletBy" />
+        <Route path="/peopleTree/{x1:int}" page={PeopleTreePage} name="personTree" />
+        <Route path="/people/new" page={PersonNewPersonPage} name="newPerson" />
+        <Route path="/people/{x1:Int}/edit" page={PersonEditPersonPage} name="editPerson" />
+        <Route path="/people/{x1:Int}" page={PersonPersonPage} name="person" />
+        <Route path="/people" page={PersonPeoplePage} name="people" />
+        <Route path="/" redirect="/peopleTree/1" name="root" />
       </Set>
-      <Route path="/" page={HomePage} name="home" />
       <Route notfound page={NotFoundPage} />
     </Router>
   )

@@ -96,7 +96,7 @@ It'd be hard to scale from side project to startup without a few tests. Redwood 
 yarn rw test
 ```
 
-To make the integration even more seamless, Redwood augments Jest with database [scenarios](https://redwoodjs.com/docs/testing#scenarios)  and [GraphQL mocking](https://redwoodjs.com/docs/testing#mocking-graphql-calls).
+To make the integration even more seamless, Redwood augments Jest with database [scenarios](https://redwoodjs.com/docs/testing#scenarios) and [GraphQL mocking](https://redwoodjs.com/docs/testing#mocking-graphql-calls).
 
 ## Ship it
 
@@ -120,3 +120,23 @@ The best way to learn Redwood is by going through the comprehensive [tutorial](h
 
 - Stay updated: read [Forum announcements](https://community.redwoodjs.com/c/announcements/5), follow us on [Twitter](https://twitter.com/redwoodjs), and subscribe to the [newsletter](https://redwoodjs.com/newsletter)
 - [Learn how to contribute](https://redwoodjs.com/docs/contributing)
+
+## Update schema & graphql example
+
+```
+$ yarn rw g sdl Position
+✔ Generating SDL files...
+  ✔ Successfully wrote file `./api/src/graphql/positions.sdl.js`
+  ✔ Successfully wrote file `./api/src/services/positions/positions.scenarios.js`
+  ✔ Successfully wrote file `./api/src/services/positions/positions.test.js`
+  ✔ Successfully wrote file `./api/src/services/positions/positions.js`
+✔ Generating types ...
+$ yarn rw g sdl Person --force
+✔ Generating SDL files...
+  ✔ Successfully wrote file `./api/src/graphql/people.sdl.js`
+  ✔ Successfully wrote file `./api/src/services/people/people.scenarios.js`
+  ✔ Successfully wrote file `./api/src/services/people/people.test.js`
+  ✔ Successfully wrote file `./api/src/services/people/people.js`
+✔ Generating types ...
+$ yarn rw dev
+```

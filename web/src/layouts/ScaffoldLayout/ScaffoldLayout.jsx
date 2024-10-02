@@ -1,28 +1,58 @@
-import { Link, routes } from '@redwoodjs/router'
+import styled from 'styled-components'
+
 import { Toaster } from '@redwoodjs/web/toast'
 
-const ScaffoldLayout = ({
-  title,
-  titleTo,
-  buttonLabel,
-  buttonTo,
-  children,
-}) => {
+import {
+  ScaffoldContextProvider,
+  useScaffoldReducer,
+} from './contexts/optionContext'
+import DBInfoItems from './DBInfoItems'
+import DBRepoItems from './DBRepoItems'
+import Documents from './Documents'
+import Headline from './Headline'
+import Main from './Main'
+import MemoTablet from './MemoTablet'
+import SystemOptions from './SystemOptions'
+
+const Header = styled('div')`
+  display: flex;
+  gap: 4px;
+
+  & > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+
+    &:first-child {
+      flex-grow: 0;
+    }
+  }
+`
+const ScaffoldLayout = ({ children }) => {
+  const stateControl = useScaffoldReducer()
   return (
-    <div className="rw-scaffold">
-      <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-      <header className="rw-header">
-        <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes[titleTo]()} className="rw-link">
-            {title}
-          </Link>
-        </h1>
-        <Link to={routes[buttonTo]()} className="rw-button rw-button-green">
-          <div className="rw-button-icon">+</div> {buttonLabel}
-        </Link>
-      </header>
-      <main className="rw-main">{children}</main>
-    </div>
+    <ScaffoldContextProvider value={stateControl}>
+      <div className="rw-scaffold">
+        <Toaster
+          toastOptions={{ className: 'rw-toast', duration: 6000 }}
+          position="bottom-center"
+        />
+        <Header className="rw-header">
+          <div>
+            <Headline />
+          </div>
+          <div>
+            <SystemOptions />
+            <MemoTablet />
+            <DBRepoItems />
+            <DBInfoItems />
+            <Documents />
+          </div>
+        </Header>
+        <Main>{children}</Main>
+      </div>
+    </ScaffoldContextProvider>
   )
 }
 

@@ -53,6 +53,21 @@ export const timeTag = (dateTime) => {
   return output
 }
 
+const isValidDate = (d) => {
+  return d instanceof Date && !isNaN(d)
+}
+
+export const formatDate = (value) => {
+  if (!value) return '-'
+  const dateValue = new Date(value)
+  if (!isValidDate(dateValue)) return '-'
+  return new Intl.DateTimeFormat('zh-TW', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+    timeZone: 'Asia/Taipei',
+  }).format(dateValue)
+}
+
 export const checkboxInputTag = (checked) => {
   return <input type="checkbox" checked={checked} disabled />
 }
