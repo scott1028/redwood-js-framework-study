@@ -1,8 +1,6 @@
 import { db } from 'src/lib/db'
 
 export const getSchema = async () => {
-  // no idea how to make it dynamic
-  await db.$executeRaw`delete from person`
   const schema = await db.$queryRaw`pragma table_info(person)`
   const columnSettingMap = Object.fromEntries(
     schema.map((columnSetting) => {

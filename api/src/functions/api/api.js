@@ -32,6 +32,11 @@ export const handler = async (event, _context) => {
 
   switch (event.path) {
     case '/api/upload': {
+      const params = event.queryStringParameters || {}
+      const skipDelete = `${params.skipDelete}` === '1'
+      if (!skipDelete) {
+        await db.$executeRaw`delete from person`
+      }
       const columnSettingMap = await getSchema('person')
       const items = await readCsvFromBuffer(event.body)
       const [headers, _headerComments, ...rows] = items

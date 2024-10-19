@@ -47,7 +47,7 @@ const StyledFormControlLabel = styled(FormControlLabel)({
   pointerEvents: 'none',
 })
 
-const uploadFile = (file, contentType, target, refetch) => {
+const uploadFile = (file, contentType, target, refetch, skipDelete = false) => {
   let fr = new FileReader()
   fr.onload = async () => {
     const content = fr.result
@@ -55,7 +55,7 @@ const uploadFile = (file, contentType, target, refetch) => {
     return fetch(
       // ref: https://redwoodjs.com/docs/how-to/custom-function#creating-a-function
       // `${location.protocol}//${location.host.split(':')[0]}:8911/api/upload`,
-      `/.redwood/functions/api/upload`,
+      `/.redwood/functions/api/upload${skipDelete ? '?skipDelete=1' : ''}`,
       {
         method: 'POST',
         body: content,
@@ -89,6 +89,7 @@ const uploadFile = (file, contentType, target, refetch) => {
 
 const SystemOptions = () => {
   const inputRef = useRef()
+  const inputRef2 = useRef()
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (e) => {
@@ -103,6 +104,10 @@ const SystemOptions = () => {
   const handleImport = useCallback(() => {
     const file = event.target.files[0]
     uploadFile(file, 'text/plain', event.target, refetch)
+  }, [refetch])
+  const handleImport2 = useCallback(() => {
+    const file = event.target.files[0]
+    uploadFile(file, 'text/plain', event.target, refetch, true)
   }, [refetch])
 
   const handleExport = useCallback(() => {
@@ -138,6 +143,11 @@ const SystemOptions = () => {
         選項
       </Button>
       <VisuallyHiddenInput type="file" onChange={handleImport} ref={inputRef} />
+      <VisuallyHiddenInput
+        type="file"
+        onChange={handleImport2}
+        ref={inputRef2}
+      />
       <Menu
         id="options-menu"
         anchorEl={anchorEl}
@@ -172,6 +182,27 @@ const SystemOptions = () => {
               startIcon={<CloudUploadIcon size="small" />}
             >
               Import
+            </StyledButton>
+          </ButtonWrapper>
+        </MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            inputRef2.current.click()
+            handleClose()
+            e.stopImmediatePropagation()
+          }}
+        >
+          <ButtonWrapper>
+            <StyledButton
+              size="small"
+              fullWidth
+              component="label"
+              role={undefined}
+              variant="contained"
+              tabIndex={-1}
+              startIcon={<CloudUploadIcon size="small" />}
+            >
+              Import2
             </StyledButton>
           </ButtonWrapper>
         </MenuItem>
