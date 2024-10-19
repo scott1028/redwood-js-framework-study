@@ -15,6 +15,9 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={ScaffoldLayout}>
+        <Route path="/peopleReport6" page={PeopleReport6Page} name="peopleReport6" />
+        <Route path="/peopleReport5" page={PeopleReport5Page} name="peopleReport5" />
+        <Route path="/peopleReport4" page={PeopleReport4Page} name="peopleReport4" />
         <Route path="/peopleReport3" page={PeopleReport3Page} name="peopleReport3" />
         <Route path="/peopleReport2" page={PeopleReport2Page} name="peopleReport2" />
         <Route path="/peopleReport1" page={PeopleReport1Page} name="peopleReport1" />

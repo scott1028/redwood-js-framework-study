@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-
 import { Toaster } from '@redwoodjs/web/toast'
-
 import {
   ScaffoldContextProvider,
   useScaffoldReducer,

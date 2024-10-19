@@ -1,16 +1,15 @@
 import { useState } from 'react'
-
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-
 import { useQuery } from '@redwoodjs/web'
 import { QUERY } from 'src/components/Person/PeopleTreeCell'
 
 import Dialog1 from './DBInfo/DialogDBInfo1'
 import Dialog2 from './DBInfo/DialogDBInfo2'
 import Dialog5 from './DBInfo/DialogDBInfo5'
-import Dialog9 from './DBInfo/DialogDBInfo9'
+import Dialog6 from './DBInfo/DialogDBInfo6'
+import Dialog10 from './DBInfo/DialogDBInfo10'
 import Dialog11 from './DBInfo/DialogDBInfo11'
 import Dialog12 from './DBInfo/DialogDBInfo12'
 import Dialog21 from './DBInfo/DialogDBInfo21'
@@ -37,12 +36,7 @@ const SystemOptions = () => {
   }
 
   const { data: { people } = { people: [] } } = useQuery(QUERY)
-    let count_sum_all = 0
-    let count_sum_any = 0
-  people.forEach((person) => {
-    if (person.x2) count_sum_all += 1
-    {/* count_sum_any += 1 */}
-  })
+    const peopleX2123 = people.filter((person) => +person.x2 > +0)
 
   return (
     <>
@@ -53,7 +47,7 @@ const SystemOptions = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        資訊({count_sum_all})
+        資訊({peopleX2123.length})
       </Button>
       <Menu
         id="options-menu"
@@ -61,14 +55,15 @@ const SystemOptions = () => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => openDialog('DialogDBInfo1')}>名字查詢索引</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo2')}>索引查詢細目</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo5')}>索引查詢家族五代</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo9')}>索引查詢祖輩九代</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo11')}>世代屬性統計</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo12')}>世代房別統計</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo21')}>祿位表表徵T1</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBInfo22')}>祿位表表徵T4</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo1')}>1 名字查詢索引</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo2')}>2 索引查詢細目</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo5')}>5 索引查詢家族五代</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo6')}>6 索引查詢祖輩九代</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo10')}>A0 欄位資料統計</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo11')}>A1 世代屬性統計</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo12')}>A2 世代房別統計</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo21')}>B1 祿位表表徵T1</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBInfo22')}>B2 祿位表表徵T4</MenuItem>
       </Menu>
       <Dialog1
         open={isDialogOpened === 'DialogDBInfo1'}
@@ -82,8 +77,12 @@ const SystemOptions = () => {
         open={isDialogOpened === 'DialogDBInfo5'}
         handleClose={closeDialog}
       />
-      <Dialog9
-        open={isDialogOpened === 'DialogDBInfo9'}
+      <Dialog6
+        open={isDialogOpened === 'DialogDBInfo6'}
+        handleClose={closeDialog}
+      />
+      <Dialog10
+        open={isDialogOpened === 'DialogDBInfo10'}
         handleClose={closeDialog}
       />
       <Dialog11

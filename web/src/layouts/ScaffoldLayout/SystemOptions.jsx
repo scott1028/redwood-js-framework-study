@@ -1,6 +1,5 @@
 import { useCallback, useState, useRef } from 'react'
 import { useMemo } from 'react'
-
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import Button from '@mui/material/Button'
@@ -10,12 +9,9 @@ import FormGroup from '@mui/material/FormGroup'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { styled } from '@mui/material/styles'
-
 import { useQuery } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
-
 import { QUERY } from 'src/components/Person/PeopleTreeCell'
-
 import { useScaffoldContext, OPTIONS } from './contexts/optionContext'
 
 const VisuallyHiddenInput = styled('input')({
@@ -47,7 +43,7 @@ const StyledFormControlLabel = styled(FormControlLabel)({
   pointerEvents: 'none',
 })
 
-const uploadFile = (file, contentType, target, refetch, skipDelete = false) => {
+const uploadFile = (file, contentType, target, refetch, skipDelete) => {
   let fr = new FileReader()
   fr.onload = async () => {
     const content = fr.result
@@ -143,11 +139,7 @@ const SystemOptions = () => {
         選項
       </Button>
       <VisuallyHiddenInput type="file" onChange={handleImport} ref={inputRef} />
-      <VisuallyHiddenInput
-        type="file"
-        onChange={handleImport2}
-        ref={inputRef2}
-      />
+      <VisuallyHiddenInput type="file" onChange={handleImport2} ref={inputRef2} />
       <Menu
         id="options-menu"
         anchorEl={anchorEl}

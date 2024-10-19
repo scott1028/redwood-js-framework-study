@@ -1,5 +1,4 @@
 import CloseIcon from '@mui/icons-material/Close'
-import Button from '@mui/material/Button'
 import MuiDialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -103,6 +102,7 @@ const Dialog = ({ open, handleClose }) => {
             color: theme.palette.grey[500],
             })}
           >
+            {'close'}
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
@@ -206,7 +206,7 @@ const Dialog = ({ open, handleClose }) => {
           </table>
       </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>關閉視窗</Button>
+        {/* <Button onClick={handleClose}>關閉視窗</Button> */}
         </DialogActions>
       </BootstrapDialog>
     </>

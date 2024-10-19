@@ -96,6 +96,7 @@ export const Success = ({ people, z1 = -1 }) => {
     .sort((person1, person2) => person1.z3 - person2.z3)
   const filteredMalePeople = filteredPeople.filter((person) => person.x6 === 1)
   const filteredFemalePeople = filteredPeople.filter((person) => person.x6 === 2)
+
   const blackList = {
     x1,
     x3,
@@ -103,7 +104,9 @@ export const Success = ({ people, z1 = -1 }) => {
     p0,
     m0,
   }
+{/*
   window.blackList = blackList
+*/}
   return (
     <div>
       {Array.from({ length: 32 * 13 }).map((_, rowIdx) => {

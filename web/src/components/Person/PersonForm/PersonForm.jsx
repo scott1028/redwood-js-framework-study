@@ -137,16 +137,16 @@ export const idTOLabel_q1 = {
   1: '嫡生',
   2: '入嗣',
   3: '承鼎',
-  4: '收養',
-  5: '託養',
+  4: '託孤',
+  5: '收養',
 }
 
 export const idTOLabel_q2 = {
   1: '失婚',
   2: '出嗣',
   3: '失蹤',
-  4: '出養',
-  5: '幼亡',
+  4: '幼亡',
+  5: '出養',
 }
 
 export const idTOLabel_n1 = {
@@ -161,8 +161,7 @@ export const idTOLabel_n2 = {
   1: '離婚',
   2: '改嫁',
   3: '失蹤',
-  4: '---',
-  5: '早逝',
+  4: '早逝',
 }
 
 const PersonForm = (props) => {

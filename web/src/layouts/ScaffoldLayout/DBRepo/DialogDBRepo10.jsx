@@ -24,7 +24,7 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
 const Dialog = ({ open, handleClose }) => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
   const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
-  const peopleP02 = people.filter((person) => person.q1 > 1)
+  const peopleP02 = people.filter((person) => !person.x2)
 
   const [options] = useScaffoldContext()
   const {
@@ -43,7 +43,7 @@ const Dialog = ({ open, handleClose }) => {
         maxWidth={false}
         >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          入嗣宗親總表( {+peopleP02?.length ?? '-'} )
+          靜默清單( {+peopleP02?.length ?? '-'} )
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -64,6 +64,7 @@ const Dialog = ({ open, handleClose }) => {
             <tr>
                 <th width="45">項次</th>
                 <td width="80">索引</td>
+                <td width="25">類</td>
                 {x3x4 ? '' :
                 <td width="25">世</td> }
                 {x3x4 ? '' :
@@ -71,6 +72,7 @@ const Dialog = ({ open, handleClose }) => {
                 <td width="25">bn</td>
                 <td width="25">mf</td>
                 <th width="70">名字</th>
+                <td>-</td>
                 {p1p2 ? '' :
                 <td width="70">父親</td> }
                 {p1p2 ? '' :
@@ -78,6 +80,16 @@ const Dialog = ({ open, handleClose }) => {
                 <td width="70">繼承</td>
                 <td width="25">屬</td>
                 <td width="25">註</td>
+                <td>-</td>
+                {m1m2 ? '' :
+                <td width="70">婚配</td> }
+                {m1m2 ? '' :
+                <td width="70">婚配</td> }
+                <td width="70">婚主</td>
+                <td width="25">屬</td>
+                <td width="25">註</td>
+                {note ? '' :
+                <td>-</td> }
                 {note ? '' :
                 <th width="300">備註</th> }
               </tr>
@@ -85,6 +97,7 @@ const Dialog = ({ open, handleClose }) => {
                 <tr key={person.x1}>
                   <th>{ idx + 1 }</th>
                   <td>{person.x1}</td>
+                  <td>{person.x2}</td>
                   {x3x4 ? '' :
                   <td>{person.x3}</td> }
                   {x3x4 ? '' :
@@ -92,6 +105,7 @@ const Dialog = ({ open, handleClose }) => {
                   <td>{person.x5}</td>
                   <td>{person.x6}</td>
                   <th>{person.name}</th>
+                  <td></td>
                   {p1p2 ? '' :
                   <td>{peopleMap[person.p1]?.name}</td> }
                   {p1p2 ? '' :
@@ -99,6 +113,16 @@ const Dialog = ({ open, handleClose }) => {
                   <td>{(person.p0 > 1) ? peopleMap[person.p0]?.name : ''}</td>
                   <td>{person.q1}</td>
                   <td>{person.q2}</td>
+                  <td></td>
+                  {m1m2 ? '' :
+                  <td>{peopleMap[person.m1]?.name}</td> }
+                  {m1m2 ? '' :
+                  <td>{peopleMap[person.m2]?.name}</td> }
+                  <td>{(person.m0 > 1) ? peopleMap[person.m0]?.name : ''}</td>
+                  <td>{person.n1}</td>
+                  <td>{person.n2}</td>
+                  {note ? '' :
+                  <td></td> }
                   {note ? '' :
                   <th align='left'>{person.note}</th> }
                 </tr>

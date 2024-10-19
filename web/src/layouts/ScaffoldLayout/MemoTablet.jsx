@@ -1,21 +1,18 @@
 import { useState, useMemo } from 'react'
-
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { styled } from '@mui/material/styles'
-
 import { routes, navigate } from '@redwoodjs/router'
-
 import { useScaffoldContext, OPTIONS } from './contexts/optionContext'
 
 const PEOPLE_MEMORIAL_TABLET_LABEL_TO = 'peopleMemorialTablet'
-const PEOPLE_MEMORIAL_TABLET_LABEL_T1 = '祿位表格(T1)'
-const PEOPLE_MEMORIAL_TABLET_LABEL_T4 = '祿位表格(T4)'
-const PEOPLE_MEMORIAL_LIST_LABEL_T1 = '祿位清單(T1)'
-const PEOPLE_MEMORIAL_LIST_LABEL_T4 = '祿位清單(T4)'
+const PEOPLE_MEMORIAL_TABLET_LABEL_T1 = '1 祿位表格(T1)'
+const PEOPLE_MEMORIAL_TABLET_LABEL_T4 = '2 祿位表格(T4)'
+const PEOPLE_MEMORIAL_LIST_LABEL_T1 = '3 祿位清單(T1)'
+const PEOPLE_MEMORIAL_LIST_LABEL_T4 = '4 祿位清單(T4)'
 
 const StyledFormControlLabel = styled(FormControlLabel)({
   pointerEvents: 'none',

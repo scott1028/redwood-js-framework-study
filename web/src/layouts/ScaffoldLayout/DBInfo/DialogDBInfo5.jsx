@@ -1,14 +1,11 @@
 import { useState } from 'react';
-
 import CloseIcon from '@mui/icons-material/Close'
-import Button from '@mui/material/Button'
 import MuiDialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/material/styles'
-
 import { useQuery } from '@redwoodjs/web'
 import { QUERY } from 'src/components/Person/PeopleTreeCell'
 
@@ -76,6 +73,7 @@ const Dialog = ({ open, handleClose }) => {
             color: theme.palette.grey[500],
             })}
           >
+            {'close'}
             <CloseIcon />
         </IconButton>
         <DialogContent dividers>
@@ -137,7 +135,7 @@ const Dialog = ({ open, handleClose }) => {
           </table>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>關閉視窗</Button>
+        {/* <Button onClick={handleClose}>關閉視窗</Button> */}
         </DialogActions>
       </BootstrapDialog>
     </>

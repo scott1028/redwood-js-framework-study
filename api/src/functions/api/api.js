@@ -29,11 +29,12 @@ import { getSchema } from '../../services/schema'
 export const handler = async (event, _context) => {
   logger.info(`${event.httpMethod} ${event.path}: api function`)
   logger.info('event:', event)
+  const params = event.queryStringParameters || {};
+  const skipDelete = params.skipDelete === '1';
 
   switch (event.path) {
     case '/api/upload': {
-      const params = event.queryStringParameters || {}
-      const skipDelete = `${params.skipDelete}` === '1'
+      // no idea how to make it dynamic
       if (!skipDelete) {
         await db.$executeRaw`delete from person`
       }

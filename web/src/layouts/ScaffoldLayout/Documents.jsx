@@ -41,10 +41,10 @@ const SystemOptions = () => {
         onClose={handleClose}
       >
         {/* <MenuItem onClick={() => (location.href = 'myDocuments.html')}>DocuMenu</MenuItem> */}
-        <MenuItem onClick={() => {window.open('/doc1/index.html'); handleClose() }}>DC1祖譜文件</MenuItem>
-        <MenuItem onClick={() => {window.open('/doc2/index.html'); handleClose() }}>DC2宗親風采</MenuItem>
-        <MenuItem onClick={() => {window.open('/doc3/index.html'); handleClose() }}>DC3祖籍探索</MenuItem>
-        <MenuItem onClick={() => {window.open('/doc4/index.html'); handleClose() }}>DC4義民節慶</MenuItem>
+        <MenuItem onClick={() => {window.open('/doc1/index.html'); handleClose() }}>DC1 祖譜文件</MenuItem>
+        <MenuItem onClick={() => {window.open('/doc2/index.html'); handleClose() }}>DC2 宗親風采</MenuItem>
+        <MenuItem onClick={() => {window.open('/doc3/index.html'); handleClose() }}>DC3 祖籍探索</MenuItem>
+        <MenuItem onClick={() => {window.open('/doc4/index.html'); handleClose() }}>DC4 義民節慶</MenuItem>
       </Menu>
     </>
   )

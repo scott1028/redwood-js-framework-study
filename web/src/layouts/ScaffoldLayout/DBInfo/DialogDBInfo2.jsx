@@ -1,7 +1,5 @@
 import { useState } from 'react';
-
 import CloseIcon from '@mui/icons-material/Close'
-import Button from '@mui/material/Button'
 import MuiDialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -42,10 +40,10 @@ const Dialog = ({ open, handleClose }) => {
                     '登','雲','朝','富','貴']
   const stringX4 = ['','1廣一','2廣二','3廣三','4廣四','5廣五','6良房']
   const stringX6 = ['','1男性','2女性','3???','4???','男','女']
-  const stringN1 = ['','1入嫁','2出嫁','3入贅','4出贅','5平婚','6???']
-  const stringN2 = ['','1離婚','2改嫁','3失蹤','4???','5早逝','6???']
-  const stringQ1 = ['','1嫡生','2入嗣','3承鼎','4收養','5託孤','6???']
-  const stringQ2 = ['','1失婚','2出嗣','3失蹤','4出養','5幼亡','6???']
+  const stringN1 = ['','1入嫁','2出嫁','3入贅','4出贅','5平婚']
+  const stringN2 = ['','1離婚','2改嫁','3失蹤','4早逝','5???']
+  const stringQ1 = ['','1嫡生','2入嗣','3承鼎','4託孤','5收養']
+  const stringQ2 = ['','1失婚','2出嗣','3失蹤','4幼亡','5出養']
 
   return (
     <>
@@ -68,6 +66,7 @@ const Dialog = ({ open, handleClose }) => {
             color: theme.palette.grey[500],
             })}
           >
+            {'close'}
             <CloseIcon />
         </IconButton>
         <DialogContent dividers>
@@ -190,7 +189,7 @@ const Dialog = ({ open, handleClose }) => {
           </table>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>關閉視窗</Button>
+        {/* <Button onClick={handleClose}>關閉視窗</Button> */}
         </DialogActions>
       </BootstrapDialog>
     </>

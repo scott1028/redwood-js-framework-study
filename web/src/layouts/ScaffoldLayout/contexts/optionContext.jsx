@@ -12,87 +12,97 @@ const ScaffoldContext = createContext()
 
 export const OPTIONS = [
   {
+    key: 'option1',
+    label: '1 索引',
+  },
+  {
     key: 'option5',
-    label: '排行',
+    label: '2 排行',
   },
   {
     key: 'option6',
-    label: '性別',
-  },
-  {
-    key: 'option1',
-    label: '索引',
+    label: '3 性別',
   },
   {
     key: 'option8',
-    label: '出生',
+    label: '4 出生',
   },
   {
     key: 'option81',
-    label: '歲次',
+    label: '5 歲次',
   },
   {
     key: 'option82',
-    label: '生肖',
+    label: '6 生肖',
   },
   {
     key: 'option9',
-    label: '享年',
+    label: '7 享年',
   },
   {
     key: 'option22',
-    label: '祿位',
+    label: '8 祿位',
   },
   {
     key: 'option21',
-    label: '備註',
+    label: '9 備註',
   },
   {
     key: 'isExpandedByDefault',
-    label: '預設展開',
+    label: '10 預設展開',
   },
   {
     key: 'NotAutoWrap',
-    label: '不自動換行',
+    label: '11 不自動換行',
   },
   {
     key: 'noX1InMemoTablet',
-    label: '不顯示(索引)',
+    label: '11 不顯示(索引)',
     category: 'memorialTablet',
   },
   {
     key: 'noX3InMemoTablet',
-    label: '不顯示(世代)',
+    label: '12 不顯示(世代)',
     category: 'memorialTablet',
   },
   {
     key: 'noX4InMemoTablet',
-    label: '不顯示(房序)',
+    label: '13 不顯示(房序)',
     category: 'memorialTablet',
   },
   {
     key: 'noP0InMemoTablet',
-    label: '不顯示(尊親)',
+    label: '14 不顯示(尊親)',
     category: 'memorialTablet',
   },
   {
     key: 'noM0InMemoTablet',
-    label: '不顯示(婚主)',
+    label: '15 不顯示(婚主)',
     category: 'memorialTablet',
   },
   {
     key: 'noGenBranchInReport',
-    label: '不顯示(世代房序)',
+    label: '11 不顯示(世代房序)',
     category: 'dbInfoReporter',
   },
   {
-    key: 'noPaMaInReport',
-    label: '不顯示(父母欄位)',
+    key: 'noP1P2InReport',
+    label: '12 不顯示(父母欄位)',
+    category: 'dbInfoReporter',
+  },
+  {
+    key: 'noM1M2InReport',
+    label: '13 不顯示(婚配欄位)',
     category: 'dbInfoReporter',
   },
   {
     key: 'noNoteInReport',
-    label: '不顯示(備註欄位)',
+    label: '14 不顯示(備註欄位)',
+    category: 'dbInfoReporter',
+  },
+  {
+    key: 'noUpDTimeInReport',
+    label: '15 不顯示(更新日期)',
     category: 'dbInfoReporter',
   },
 ]
