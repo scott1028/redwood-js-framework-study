@@ -4,42 +4,41 @@ import { QUERY } from 'src/components/Person/PeopleTreeCell'
 
 const PeopleReport1Page = () => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
-  const peopleMap = Object.fromEntries(
-    people.map((person) => [person.x1, person])
-  )
-  const peopleX21 = people.filter((person) => person.p0)
+  // const peopleMap = Object.fromEntries(
+  //   people.map((person) => [person.x1, person])
+  // )
+  // const peopleX21 = people.filter((person) => person.p0)
 
   let keyGEN = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   let peopleLink = [keyGEN]
 
   keyGEN[0] = people[0]?.x1 ?? 0
   const peopleG01 = people.filter((person) => person.p0 === keyGEN[0])
-  if (peopleG01.length === 0) peopleLink.push(keyGEN)
+  if (peopleG01.length === 0) peopleLink.push([...keyGEN])
   let indexG01 = 0
   while (indexG01 < peopleG01.length) {
     keyGEN[1] = peopleG01[indexG01].x1 ?? 0
     const peopleG02 = people.filter((person) => person.p0 === keyGEN[1])
-    if (peopleG02.length === 0) peopleLink.push(keyGEN)
+    if (peopleG02.length === 0) peopleLink.push([...keyGEN])
     let indexG02 = 0
     while (indexG02 < peopleG02.length) {
       keyGEN[2] = peopleG02[indexG02].x1 ?? 0
       const peopleG03 = people.filter((person) => person.p0 === keyGEN[2])
-      if (peopleG03.length === 0) peopleLink.push(keyGEN)
+      if (peopleG03.length === 0) peopleLink.push([...keyGEN])
       let indexG03 = 0
       while (indexG03 < peopleG03.length) {
         keyGEN[3] = peopleG03[indexG03].x1 ?? 0
         const peopleG04 = people.filter((person) => person.p0 === keyGEN[3])
-        if (peopleG04.length === 0) peopleLink.push(keyGEN)
+        if (peopleG04.length === 0) peopleLink.push([...keyGEN])
         let indexG04 = 0
         while (indexG04 < peopleG04.length) {
           keyGEN[4] = peopleG04[indexG04].x1 ?? 0
           const peopleG05 = people.filter((person) => person.p0 === keyGEN[4])
-          if (peopleG05.length === 0) peopleLink.push(keyGEN)
+          if (peopleG05.length === 0) peopleLink.push([...keyGEN])
           let indexG05 = 0
           while (indexG05 < peopleG05.length) {
             keyGEN[5] = peopleG05[indexG05].x1 ?? 0
-            peopleLink.push(keyGEN)
-            keyGEN = [...keyGEN]
+            peopleLink.push([...keyGEN])
             indexG05++
           }
           indexG04++
