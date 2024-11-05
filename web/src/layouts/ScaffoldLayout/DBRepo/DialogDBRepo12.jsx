@@ -25,7 +25,7 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
 const Dialog = ({ open, handleClose }) => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
   const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
-  const peopleX91 = people.filter((person) => (+person.x9 > 79) && (+person.x2 > 0))
+  const peopleX91 = people.filter((person) => (+person.x9 > 60) && (+person.x2 > 0))
 
   peopleX91.sort((currPerson, nextPerson) => {
     return nextPerson.x9 - currPerson.x9;
@@ -48,7 +48,7 @@ const Dialog = ({ open, handleClose }) => {
         maxWidth={false}
         >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          {'仙祖享年排行(80歲含以上)'}( {+peopleX91?.length ?? '-'} )
+          {'仙祖高壽排行(60歲以上)'}( {+peopleX91?.length ?? '-'} )
         </DialogTitle>
         <IconButton
           aria-label="close"

@@ -53,7 +53,7 @@ const PeopleList = ({ people }) => {
               <td>
                 <Link
                   to={routes.personTree({ x1: person.x1 })}
-                  title={`Show person ${person.x1} detail`}
+                  title={`Show person ${person.x1} Tree views`}
                 >
                   {truncate(person.x1)}
                 </Link>

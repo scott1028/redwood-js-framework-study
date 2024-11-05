@@ -23,15 +23,18 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
 
 const Dialog = ({ open, handleClose }) => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
-  const peopleX21 = people.filter((person) => person.x2 === 1)
+  const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
+//const peopleX21 = people.filter((person) => person.x2 === 1)
+
   const [x1, setX1] = useState('');
-  const personG5 = peopleX21.find(person => person.x1 === +x1) ?? {};
-  let   gn = personG5.x3
-  const personG4 = peopleX21.find(person => person.x1 === +personG5.p0) ?? {};
-  const personG3 = peopleX21.find(person => person.x1 === +personG4.p0) ?? {};
-  const personG2 = peopleX21.find(person => person.x1 === +personG3.p0) ?? {};
-  const personG1 = peopleX21.find(person => person.x1 === +personG2.p0) ?? {};
   //    const me = people.find(person => person.x1 === +x1) ?? {};
+  const personG5 = people.find(person => person.x1 === +x1) ?? {};
+  let   gn = personG5.x3
+
+  const personG4 = people.find(person => person.x1 === +personG5.p0) ?? {};
+  const personG3 = people.find(person => person.x1 === +personG4.p0) ?? {};
+  const personG2 = people.find(person => person.x1 === +personG3.p0) ?? {};
+  const personG1 = people.find(person => person.x1 === +personG2.p0) ?? {};
 
   const stringG = ['高祖','曾祖','祖輩','父輩','==','子輩']
   const childrenG0 = people.filter(person => +person.x1 === +personG1.x1);
@@ -49,8 +52,6 @@ const Dialog = ({ open, handleClose }) => {
     ...childrenG4,
     ...childrenG5,
   ];
-
-  const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
 
   return (
     <>
@@ -113,9 +114,6 @@ const Dialog = ({ open, handleClose }) => {
                         {personG4.x1 === person.x1 ? '!' : ''}
                         {personG5.x1 === person.x1 ? '!' : ''}
                     </td>
-{/*
-                    <th>{+x1 === person.x1 ? '@' : stringG[person.x3 - gn + 3]}</th>
-*/}
                     <td>{person.x1   ?? ''}</td>
                     <td>{person.x5   ?? ''}</td>
                     <td>{person.x6   ?? ''}</td>

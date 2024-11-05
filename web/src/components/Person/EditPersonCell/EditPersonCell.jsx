@@ -100,7 +100,7 @@ export const Success = ({ person }) => {
   }
 
   return (
-    <div className="rw-segment">
+    <div className="rw-segment" style={ {width:300} }>
       <header className="rw-segment-header">
         <h2 className="rw-heading rw-heading-secondary">
           Edit Person {person?.id}

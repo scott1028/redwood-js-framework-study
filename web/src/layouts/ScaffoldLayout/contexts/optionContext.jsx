@@ -52,7 +52,7 @@ export const OPTIONS = [
     label: '10 預設展開',
   },
   {
-    key: 'NotAutoWrap',
+    key: 'isNotAutoWrap',
     label: '11 不自動換行',
   },
   {

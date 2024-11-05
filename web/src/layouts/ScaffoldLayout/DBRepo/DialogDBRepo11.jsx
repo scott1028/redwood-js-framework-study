@@ -25,7 +25,6 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
 const Dialog = ({ open, handleClose }) => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
   const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
-  const peopleX81 = people.filter((person) => (person.x8 !== '') && (+person.x2 > 0 ))
 
   const [x2, setX2] = useState('');
   const [x3, setX3] = useState('');
@@ -33,15 +32,22 @@ const Dialog = ({ open, handleClose }) => {
   const [x6, setX6] = useState('');
   const [x7, setX7] = useState('');
 
+  const peopleX81 = people.filter((person) =>
+    (+person.x2 > 0) && (
+    (person.x8 !== null) && (+x7 !== 3) ||
+    (person.x9 !== null) && (+person.x9 > 60) && (+x7 !== 2) && (+x7 !== 1)
+  ))
+
   const peopleX2 = peopleX81.filter(person => +person.x2 === +x2 || (x2 === ''));
   const peopleX3 = peopleX2.filter (person => +person.x3 === +x3 || (x3 === ''));
   const peopleX4 = peopleX3.filter (person => +person.x4 === +x4 || (x4 === ''));
   const peopleX6 = peopleX4.filter (person => +person.x6 === +x6 || (x6 === ''));
 
   peopleX6.sort((currPerson, nextPerson) => {
-    if (+x7 === 3) { return currPerson.name.localeCompare(nextPerson.name) ?? ''; }
+    if (+x7 === 4) { return currPerson.name.localeCompare(nextPerson.name) ?? ''; }
     if (+x7 === 1) { return currPerson.x8 - nextPerson.x8; }
     if (+x7 === 2) { return nextPerson.x8 - currPerson.x8; }
+    if (+x7 === 3) { return nextPerson.x9 - currPerson.x9; }
   });
 
   const [options] = useScaffoldContext()
@@ -61,7 +67,7 @@ const Dialog = ({ open, handleClose }) => {
         maxWidth={false}
         >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          宗親出生列表( {+peopleX6?.length ?? '-'} )
+          宗親出生享年列表( {+peopleX6?.length ?? '-'} )
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -148,7 +154,8 @@ const Dialog = ({ open, handleClose }) => {
             <option value="*">{'0 -無-'}</option>
             <option value="1">{'1 出生年序'}</option>
             <option value="2">{'2 出生反序'}</option>
-            <option value="3">{'3 名字排序'}</option>
+            <option value="3">{'3 高壽排序'}</option>
+            <option value="4">{'4 名字排序'}</option>
           </select>
 
           <table border="1">
@@ -163,6 +170,7 @@ const Dialog = ({ open, handleClose }) => {
                 <td width="25">mf</td>
                 <th width="70">名字</th>
                 <th width="80">出生</th>
+                <th width="60">享年</th>
                 <td width="70">繼承</td>
                 <td width="25">屬</td>
                 <td width="25">註</td>
@@ -185,6 +193,7 @@ const Dialog = ({ open, handleClose }) => {
                   <td>{person.x6}</td>
                   <th>{person.name}</th>
                   <th>{person.x8}</th>
+                  <th>{person.x9}</th>
                   <td>{(person.p0 > 1) ? peopleMap[person.p0]?.name : ''}</td>
                   <td>{ person.q1 }</td>
                   <td>{ person.q2 }</td>

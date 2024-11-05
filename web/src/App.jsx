@@ -16,7 +16,7 @@ import './index.css'
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider titleTemplate="yanDB">
+    <RedwoodProvider titleTemplate="yanDB5">
       <RedwoodApolloProvider>
         <Routes />
       </RedwoodApolloProvider>

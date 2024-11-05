@@ -194,7 +194,7 @@ const SystemOptions = () => {
               tabIndex={-1}
               startIcon={<CloudUploadIcon size="small" />}
             >
-              Import2
+              Append
             </StyledButton>
           </ButtonWrapper>
         </MenuItem>

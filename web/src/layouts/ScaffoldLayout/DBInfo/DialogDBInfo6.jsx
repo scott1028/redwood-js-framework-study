@@ -108,6 +108,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th width="90">祖輩稱謂</th>
                 <td width="75">索引號碼</td>
                 <td width="25">bn</td>
+                <td width="25">mf</td>
                 <th width="75">傳承名字</th>
                 <td width="50">屬性</td>
                 <td>-</td>
@@ -124,6 +125,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[9]}</th>
                 <td>{(x1exists[9]) ? personG9.x1    : ''}</td>
                 <td>{(x1exists[9]) ? personG9.x5    : ''}</td>
+                <td>{(x1exists[9]) ? personG9.x6    : ''}</td>
                 <th>{(x1exists[9]) ? personG9.name  : ''}</th>
                 <td>{(x1exists[9]) ? string5[personG9.q1] : ''}</td>
                 <td></td>
@@ -140,6 +142,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[8]}</th>
                 <td>{(x1exists[8]) ? personG8.x1    : ''}</td>
                 <td>{(x1exists[8]) ? personG8.x5    : ''}</td>
+                <td>{(x1exists[8]) ? personG8.x6    : ''}</td>
                 <th>{(x1exists[8]) ? personG8.name  : ''}</th>
                 <td>{(x1exists[8]) ? string5[personG8.q1] : ''}</td>
                 <td></td>
@@ -156,6 +159,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[7]}</th>
                 <td>{(x1exists[7]) ? personG7.x1    : ''}</td>
                 <td>{(x1exists[7]) ? personG7.x5    : ''}</td>
+                <td>{(x1exists[7]) ? personG7.x6    : ''}</td>
                 <th>{(x1exists[7]) ? personG7.name  : ''}</th>
                 <td>{(x1exists[7]) ? string5[personG7.q1] : ''}</td>
                 <td></td>
@@ -172,6 +176,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[6]}</th>
                 <td>{(x1exists[6]) ? personG6.x1    : ''}</td>
                 <td>{(x1exists[6]) ? personG6.x5    : ''}</td>
+                <td>{(x1exists[6]) ? personG6.x6    : ''}</td>
                 <th>{(x1exists[6]) ? personG6.name  : ''}</th>
                 <td>{(x1exists[6]) ? string5[personG6.q1] : ''}</td>
                 <td></td>
@@ -188,6 +193,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[5]}</th>
                 <td>{(x1exists[5]) ? personG5.x1    : ''}</td>
                 <td>{(x1exists[5]) ? personG5.x5    : ''}</td>
+                <td>{(x1exists[5]) ? personG5.x6    : ''}</td>
                 <th>{(x1exists[5]) ? personG5.name  : ''}</th>
                 <td>{(x1exists[5]) ? string5[personG5.q1] : ''}</td>
                 <td></td>
@@ -204,6 +210,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[4]}</th>
                 <td>{(x1exists[4]) ? personG4.x1    : ''}</td>
                 <td>{(x1exists[4]) ? personG4.x5    : ''}</td>
+                <td>{(x1exists[4]) ? personG4.x6    : ''}</td>
                 <th>{(x1exists[4]) ? personG4.name  : ''}</th>
                 <td>{(x1exists[4]) ? string5[personG4.q1] : ''}</td>
                 <td></td>
@@ -220,6 +227,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[3]}</th>
                 <td>{(x1exists[3]) ? personG3.x1    : ''}</td>
                 <td>{(x1exists[3]) ? personG3.x5    : ''}</td>
+                <td>{(x1exists[3]) ? personG3.x6    : ''}</td>
                 <th>{(x1exists[3]) ? personG3.name  : ''}</th>
                 <td>{(x1exists[3]) ? string5[personG3.q1] : ''}</td>
                 <td></td>
@@ -236,6 +244,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[2]}</th>
                 <td>{(x1exists[2]) ? personG2.x1    : ''}</td>
                 <td>{(x1exists[2]) ? personG2.x5    : ''}</td>
+                <td>{(x1exists[2]) ? personG2.x6    : ''}</td>
                 <th>{(x1exists[2]) ? personG2.name  : ''}</th>
                 <td>{(x1exists[2]) ? string5[personG2.q1] : ''}</td>
                 <td></td>
@@ -252,6 +261,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[1]}</th>
                 <td>{(x1exists[1]) ? personG1.x1    : ''}</td>
                 <td>{(x1exists[1]) ? personG1.x5    : ''}</td>
+                <td>{(x1exists[1]) ? personG1.x6    : ''}</td>
                 <th>{(x1exists[1]) ? personG1.name  : ''}</th>
                 <td>{(x1exists[1]) ? string5[personG1.q1] : ''}</td>
                 <td></td>
@@ -268,6 +278,7 @@ const Dialog = ({ open, handleClose }) => {
                 <th>{string2[0]}</th>
                 <td>{(x1exists[0]) ? personG0.x1    : ''}</td>
                 <td>{(x1exists[0]) ? personG0.x5    : ''}</td>
+                <td>{(x1exists[0]) ? personG0.x6    : ''}</td>
                 <th>{(x1exists[0]) ? personG0.name  : ''}</th>
                 <td>{(x1exists[0]) ? string5[personG0.q1] : ''}</td>
                 <td></td>

@@ -4,12 +4,14 @@ const [_interpreter, _mainFilePath, inputFilePath] = process.argv
 
 const VALID_CATEGORIES: Array<number> = [1, 2]
 
+const colG1 = 5
+
 const getValidColumnIdx = (limit = 0) => {
   const output: Array<number> = []
   if (!limit) {
     return output
   }
-  let idx = 2
+  let idx = colG1
   while (idx <= limit) {
     output.push(idx)
     idx += 3
@@ -48,12 +50,22 @@ const getValueByDataFactory =
       getMoveTo(() => (cellStartIdx -= 1), isReset)
     const right = (isReset?: boolean) =>
       getMoveTo(() => (cellStartIdx += 1), isReset)
+    const leftUp = (isReset?: boolean) => {
+      left(false)
+      return up(isReset);
+    }
+    const leftDown = (isReset?: boolean) => {
+      left(false)
+      return down(isReset);
+    }
 
     return {
       up,
       down,
       left,
       right,
+      leftUp,
+      leftDown,
       reset,
     }
   }
@@ -74,7 +86,7 @@ const getCheckGenerationFactory =
 
 const main = () => {
   if (!inputFilePath) {
-    console.log('Input example: yarn parse-xlsx ./data.xlsx')
+    console.log('Input example: yarn run parse-xlsx ./data.xlsx')
     return
   }
 
@@ -88,29 +100,18 @@ const main = () => {
   const getGeneration = getCheckGenerationFactory(headers)
   const getValueByData = getValueByDataFactory(rows)
   const output: Array<any> = []
-  output.push(`x1,x2,x3,x4,x5,x6,name,x8,x9,m1,p0,m0,note,z1,z2,z3,label`)
-  output.push(
-    `索引,類別,世代,房序,排行,性別,姓名,出生,享年,婚配,繼承,婚主,備註,塔號,列號,座號,稱謂`
-  )
-  output.push(`1,,,,,,嚴氏族譜,,,,,,,,,,`)
-  const descendantMap: Record<string, number | null> = {
-    0: 1,
-    1: null,
-    2: null,
-    3: null,
-    4: null,
-    5: null,
-    6: null,
-    7: null,
-    8: null,
-    9: null,
-    10: null,
-    11: null,
-    12: null,
-  }
+  output.push(`x1,x2,x3,x4,x5,x6,name,x8,x9,p1,p2,p0,q1,q2,m1,m2,m0,n1,n2,note,z1,z2,z3,label,b1`)
+  output.push(`索引,類別,世代,房序,排行,性別,姓名,出生,享年,父親,母親,繼承,Q1,Q2,婚配,婚配,婚主,N1,N2,備註,塔號,列號,座號,稱謂,B1`)
+  output.push(`1,,,,,,嚴氏族譜,,,,,,,,,,,,,,,,,,`)
+
+  let nameGEN = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+  let p0GEN   = [1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1,]
+  let p1GEN   = [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,]
+  let p2GEN   = [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,]
   let mx4 = '6'
+
   rows.forEach((row, rowIdx) => {
-    const categoryIdx = +row[0]
+    const categoryIdx = +row[colG1-2]
     if (!VALID_CATEGORIES.includes(categoryIdx)) {
       return
     }
@@ -120,12 +121,16 @@ const main = () => {
       }
       const getValueBy = getValueByData(cellIdx, rowIdx)
       const isValueChineseCharacters = Boolean(value)
+
       if (isValueChineseCharacters) {
         const generation = getGeneration(cellIdx)
         const upValue = getValueBy.up() ?? ''
         const downValue = getValueBy.down() ?? ''
         const leftValue = getValueBy.left() ?? ''
         const rightValue = getValueBy.right() ?? ''
+        const leftUpValue = getValueBy.leftUp() ?? ''
+        const leftDownValue = getValueBy.leftDown() ?? ''
+
         // output.push({
         //   rowIdx,
         //   cellIdx,
@@ -135,43 +140,68 @@ const main = () => {
         //   downValue,
         //   leftValue,
         //   rightValue,
+        //   leftUp,    //繼承屬性: 出嗣[*], 入嗣[2..5], 空白=1嫡生; ~:改設類別=0
+        //   leftDown,  //性別: 空白=男性, 記號=女性 (配偶之性別反之)
         // })
-        const x2 = categoryIdx
+
+        let x2 = categoryIdx
         const x3 = generation
         // 1-3: 0, 4~: mx
-        mx4 = row[1] ? row[1] : mx4
-        const x4 = +generation >= 4 ? `${row[1] ?? mx4}` : '0'
+
+        mx4 = row[colG1-1] ? row[colG1-1] : mx4
+        const x4 = +generation >= 4 ? `${row[colG1-1] ?? mx4}` : '0'
+
         const x1 = +generation * 100000 + rowIdx + 2 + +x4 * 10000
         const x5 = categoryIdx === 1 ? leftValue : ''
-        const x6 = ''
-        const name = value
-        let x8 = rightValue ? rightValue : ''
-        const x9 = ''
-        const p1 = ''
-        const p2 = ''
-        const m1 = downValue ? x1 + 1 : ''
-        //      const m2 = ''
-        //      const m3 = ''
-        const p0 = categoryIdx === 1 ? descendantMap[+generation - 1] ?? '' : ''
-        //      const q1 = ''
-        //      const q2 = ''
-        const m0 = categoryIdx === 2 ? x1 - 1 : ''
-        const n1 = ''
-        const noteTmp =
-          categoryIdx === 1 ? upValue : categoryIdx === 2 ? downValue : ''
-        const note = noteTmp.includes('祿位') ? '' : noteTmp
-        // const z1 = ''
-        // const z2 = ''
-        // const z3 = ''
-        // const label = ''
-        const b1 = ''
 
+        let x6 =0
+        if (categoryIdx === 1)
+              { (leftDownValue === '') ? x6 = 1 : x6 = 2 }
+        else  { (leftValue === '')     ? x6 = 2 : x6 = 1 }
+
+        const name = value
         if (/房$/.exec(name) && +x3 === 1) {
           return
         }
 
+        const m2Yes = (categoryIdx === 1) && (nameGEN[ +generation ] === value) ? 1 : 0
+        const noteM2 = (m2Yes === 1) ? p0GEN[+generation + 1] : ''
+
+        const noteTmp =
+          categoryIdx === 1 ? upValue : categoryIdx === 2 ? downValue : ''
+        let note = noteTmp.includes('祿位') ? '' : noteTmp
+
+
+        let   x8 = rightValue
+        const x9 = ''
+
+        const p0 = categoryIdx === 1 ? p0GEN[ +generation ] ?? '' : ''
+        let   p1 = categoryIdx === 1 ? p1GEN[ +generation ] ?? '' : ''
+        let   p2 = categoryIdx === 1 ? p2GEN[ +generation ] ?? '' : ''
+        let   q1 = ''
+        let   q2 = ''
+
+        if   ( categoryIdx ===  1 ) {
+          if ( leftUpValue === '*') { note = ':' + note;   x2=0 ; q1='1'; q2='2'; } else
+          if ( leftUpValue === '~') { note = ';' + noteM2; x2=0;} else
+          if ( leftUpValue === '' ) { q1='1'}
+          if (+leftUpValue  >  +1 ) { q1=leftUpValue; p1=''; p2=''; }
+          if (+p1 === 0) p1='';
+          if (+p2 === 0) p2='';
+        }
+
+        const m1 = categoryIdx === 1 ? (downValue !== '') ? !m2Yes ? x1 + 1 : '' : '' : ''
+        const m2 = categoryIdx === 1 ? (downValue !== '') ?  m2Yes ? x1 + 1 : '' : '' : ''
+        //nst m3 = ''
+        const m0 = categoryIdx === 2 ? (name !== '') &&
+          (p0GEN[+generation +1] > 1) ? p0GEN[+generation +1] : '' : ''
+
+        const n1 = ''
+        const n2 = ''
+
         // case01: +/\((?<year>\d+)\)/.exec('3123')?.groups?.year
         // case02 +/\((?<year>前\d+)\)/.exec('(前3123)')?.groups?.year.replace(/前/, '')
+
         const _case01Year = x8
           ? /\((?<year>\d+)\)/.exec(x8)?.groups?.year ?? ''
           : ''
@@ -188,14 +218,31 @@ const main = () => {
           ? tmp?.replace?.('祿位', '')?.split('-') ?? ['', '', '']
           : ['', '', '']
 
-        const label = z1 === '' ? '' : name
+        const mfLabel = x6 === 1 ? '公' : categoryIdx === 2 ? '婆' : '姑婆'
+        const label = z1 === '' ? '' :
+              categoryIdx === 1 ? name + mfLabel : upValue + mfLabel + name
+
+        const b1 = ''
+        const b2 = ''
+        const b3 = ''
 
         output.push(
-          `${x1},${x2},${x3},${x4},${x5},${x6},${name},${x8},${x9},${m1},${p0},${m0},${note},${z1},${z2},${z3},${label}`
+          `${x1},${x2},${x3},${x4},${x5},${x6},${name},${x8},${x9},${p1},${p2},${p0},${q1},${q2},${m1},${m2},${m0},${n1},${n2},${note},${z1},${z2},${z3},${label},${b1}`
         )
-        if (categoryIdx === 1) {
-          descendantMap[`${generation}`] = x1
-          // console.debug('decendantMap:', descendantMap)
+        // (isValueChineseCharacters) //
+{/*
+        if (categoryIdx === +1) {
+          valueP0[+generation] = x1;
+          valueP1[+generation] = (+x6 === 1) ? x1 : (downValue !== '') ? x1 + 1 : 0
+          valueP2[+generation] = (+x6 === 2) ? x1 : (downValue !== '') ? x1 + 1 : 0
+        }
+*/}
+        if ( categoryIdx === +1 ) {
+          if (nameGEN [ +generation    ] !== name) {
+                p0GEN [ +generation +1 ] = x1;
+                p1GEN [ +generation +1 ] = (+x6 === 1) ? x1 : (downValue !== '') ? x1 + 1 : 0 }
+                p2GEN [ +generation +1 ] = (+x6 === 2) ? x1 : (downValue !== '') ? x1 + 1 : 0
+              nameGEN [ +generation    ] = name;
         }
       }
     })
@@ -204,6 +251,19 @@ const main = () => {
   console.log(output.join('\r\n'))
 }
 
+{/*   修改摘要：
+
+  v1: 行定位 @(世代數字) ++3, max = 12,
+      列定位 @(col,row) 不為空白且中文 排除{'良房','大房','二房','三房','四房','五房'}
+  v2: 新增判斷性別 . @leftDownValue 有記號者為女性 空白為男性
+  v3: 新設繼承屬性 * @leftUpValue   有記號者為過房繼承出嗣方 類別改設為0 避免重複統計
+      強制設定類別 ~ @leftUpValue,  記號 ~ 類別改設為 0	  記號 3 類別改設為 3
+  v4: 推論設定祿位稱呼 + 判別宗親女性祿位標記姑婆
+  v5: 判斷配偶空白 下一代尊親配偶欄設0
+      判斷女性宗親 子代之[P1,P2] 交換位置
+  v6: 判斷二婚 (階段完成 不足部分 由主程式提供修補 m2Link)
+
+*/}
 if (require.main === module) {
   main()
 }

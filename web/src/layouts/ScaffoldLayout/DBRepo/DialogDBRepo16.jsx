@@ -23,8 +23,8 @@ const BootstrapDialog = styled(MuiDialog)(({ theme }) => ({
 const Dialog = ({ open, handleClose }) => {
   const { data: { people } = { people: [] } } = useQuery(QUERY)
   const peopleMap = Object.fromEntries(people.map(person => [person.x1, person]));
-  const peoplePP = people.filter((person) => person.note !== null)
-//const peoplePP = people.filter((person) => person.note?.slice(0,1) === '#')
+//const peoplePP = people.filter((person) => person.note !== null)
+  const peoplePP = people.filter((person) => person.note?.slice(0,1) === '#')
 
   let keyM0 = ''
 
@@ -106,7 +106,7 @@ const Dialog = ({ open, handleClose }) => {
           <table>
             <tbody>
               <p>修正內容：</p>
-{/*
+
               {peoplePP.map((person, idx) => (
                 <tr key={person.x1}>
                   {person.x1}{','}
@@ -116,26 +116,26 @@ const Dialog = ({ open, handleClose }) => {
                   {person.x5}{','}
                   {person.x6}{',"'}
                   {person.name}{'",'}
-                  {','}
-                  {','}
-                  {','}
-                  {','}
-                  {','}
-                  {','}
-                  {','}
-                  {','}
+                  {person.x8}{','}
+                  {person.x9}{','}
+                  {person.p1}{','}
+                  {person.p2}{','}
+                  {person.p0}{','}
+                  {person.q1}{','}
+                  {person.q2}{','}
+                  {person.m1}{','}
                   {person.m2}{','}
-                  {','}
-                  {','}
-                  {',"('}
-                  {person.note.slice(1)}{'m2)",'}
+                  {person.m0}{','}
+                  {person.n1}{','}
+                  {person.n2}{',"'}
+                  {person.note.slice(1)}{'",'}
                   {','}
                   {','}
                   {','}
                   {','}
                 </tr>
               ))}
-*/}
+
             </tbody>
           </table>
           </DialogContent>

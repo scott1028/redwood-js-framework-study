@@ -79,15 +79,16 @@ const DBRepoItems = () => {
         open={open}
         onClose={handleClose}
       >
-{/*
+
         <MenuItem
           onClick={() => {
             navigate(routes.peopleReport1())
             handleClose()
           }}
         >
-          1 宗親索引總表
+          1 橫式族譜(A4)
         </MenuItem>
+{/*
         <MenuItem
           onClick={() => {
             navigate(routes.peopleReport2())
@@ -138,8 +139,8 @@ const DBRepoItems = () => {
         <MenuItem onClick={() => openDialog('DialogDBRepo4')}>D4 祿位紀錄總表</MenuItem>
         <MenuItem onClick={() => openDialog('DialogDBRepo5')}>D5 更新紀錄總表</MenuItem>
         <MenuItem onClick={() => openDialog('DialogDBRepo6')}>D6 資料過濾列表</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBRepo11')}>D11 宗親出生</MenuItem>
-        <MenuItem onClick={() => openDialog('DialogDBRepo12')}>D12 仙祖享年</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBRepo11')}>D11 宗親出生列表</MenuItem>
+        <MenuItem onClick={() => openDialog('DialogDBRepo12')}>D12 仙祖高壽列表</MenuItem>
         <MenuItem onClick={() => openDialog('DialogDBRepo13')}>D13 m2LIST</MenuItem>
         <MenuItem onClick={() => openDialog('DialogDBRepo14')}>D14 mxfLIST</MenuItem>
         <MenuItem onClick={() => openDialog('DialogDBRepo15')}>D15 m2LINK</MenuItem>

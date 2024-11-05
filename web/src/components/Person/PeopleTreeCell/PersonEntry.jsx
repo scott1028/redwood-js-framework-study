@@ -225,7 +225,7 @@ const PersonEntry = (props) => {
                 maried2.x8 && (
                   <>
                     {'('}
-                    {options.option8 && <>{maried1.x8}</>}
+                    {options.option8 && <>{maried2.x8}</>}
                     {options.option81 && (
                       <>{idTOLabel_x81[year_x81(maried2.x8)]}</>
                     )}
@@ -248,6 +248,7 @@ const PersonEntry = (props) => {
               )}
             </>
           )}
+{/*
           {maried3 && (
             <>
               {', '}
@@ -256,7 +257,7 @@ const PersonEntry = (props) => {
                 maried3.x8 && (
                   <>
                     {'('}
-                    {options.option8 && <>{maried1.x8}</>}
+                    {options.option8 && <>{maried3.x8}</>}
                     {options.option81 && (
                       <>{idTOLabel_x81[year_x81(maried3.x8)]}</>
                     )}
@@ -279,6 +280,7 @@ const PersonEntry = (props) => {
               )}
             </>
           )}
+*/}
           {options.option21 && <>{note ? ` -- ${note} ` : ''}</>}
           {/* TODO: search "option1" in source code your find where it defined */}
           {/*options.option1 && '上方 option1 已經打勾'*/}

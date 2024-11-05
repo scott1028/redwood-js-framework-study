@@ -36,7 +36,7 @@ const SystemOptions = () => {
   }
 
   const { data: { people } = { people: [] } } = useQuery(QUERY)
-    const peopleX2123 = people.filter((person) => +person.x2 > +0)
+    const peopleX2123 = people.filter((person) => +person.x2 > 0)
 
   return (
     <>
